@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarity Dash - Data Analyst Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Tailwind Config & Base Styles */
+        :root {
+            --brand-bg: #111827;
+            --brand-surface: #1F2937;
+            --brand-border: #374151;
+            --brand-text: #F3F4F6;
+            --brand-chaos: #F43F5E;
+            --brand-process: #60A5FA;
+            --brand-accent: #818CF8;
+            --brand-clarity: #34D399;
+            --brand-cta: #F59E0B;
+        }
+        body {
+            background-color: var(--brand-bg);
+            color: var(--brand-text);
+            font-family: 'Inter', sans-serif;
+            cursor: none; /* Hide default cursor */
+        }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-roboto-mono { font-family: 'Roboto Mono', monospace; }
+
+        /* Tailwind JIT Config */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: 'var(--brand-bg)',
+                            surface: 'var(--brand-surface)',
+                            border: 'var(--brand-border)',
+                            text: 'var(--brand-text)',
+                            chaos: 'var(--brand-chaos)',
+                            process: 'var(--brand-process)',
+                            accent: 'var(--brand-accent)',
+                            clarity: 'var(--brand-clarity)',
+                            cta: 'var(--brand-cta)',
+                        },
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        'roboto-mono': ['Roboto Mono', 'monospace'],
+                    },
+                    keyframes: {
+                        'shockwave': {
+                            '0%': { transform: 'scale(0)', opacity: '1' },
+                            '100%': { transform: 'scale(20)', opacity: '0' },
+                        },
+                        'fade-in-slow': {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        'fade-in-scale-up': {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        'glitch': {
+                            '0%, 100%': { transform: 'translate(0, 0)', opacity: '1' },
+                            '10%': { transform: 'translate(-2px, 2px)', opacity: '0.8' },
+                            '20%': { transform: 'translate(2px, -2px)', opacity: '1' },
+                            '30%': { transform: 'translate(-2px, -2px)', opacity: '0.9' },
+                            '40%': { transform: 'translate(2px, 2px)', opacity: '0.7' },
+                            '50%': { transform: 'translate(0, 0)', opacity: '1' },
+                            '60%': { transform: 'skewX(10deg)', opacity: '0.8' },
+                            '70%': { transform: 'skewX(-10deg)', opacity: '1' },
+                            '80%': { transform: 'translate(-1px, 1px)', opacity: '0.9' },
+                            '90%': { transform: 'translate(1px, -1px)', opacity: '1' },
+                        },
+                        'glitch-subtle': {
+                            '0%, 100%': { textShadow: 'none' },
+                            '50%': { textShadow: '1px 1px 0 var(--brand-chaos), -1px -1px 0 var(--brand-process)' },
+                        },
+                         'icon-glow': {
+                            '0%, 100%': { filter: 'drop-shadow(0 0 2px #fff)' },
+                            '50%': { filter: 'drop-shadow(0 0 8px var(--brand-accent))' },
+                        },
+                        'icon-bounce': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-4px)' },
+                        },
+                        'icon-rotate': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(90deg)' },
+                        },
+                        'pulse-right': {
+                            '0%': { transform: 'scaleX(0)' },
+                            '100%': { transform: 'scaleX(1)' },
+                        },
+                        'pulse-left': {
+                            '0%': { transform: 'scaleX(0)' },
+                            '100%': { transform: 'scaleX(1)' },
+                        },
+                        'shimmer': {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' },
+                        },
+                        'pulse-cta': {
+                             '0%, 100%': { boxShadow: '0 0 0 0 rgba(245, 158, 11, 0.7)' },
+                             '70%': { boxShadow: '0 0 0 10px rgba(245, 158, 11, 0)' },
+                        },
+                        'pulse-process': {
+                             '0%, 100%': { boxShadow: '0 0 0 0 rgba(96, 165, 250, 0.7)' },
+                             '70%': { boxShadow: '0 0 0 10px rgba(96, 165, 250, 0)' },
+                        },
+                        'pulse-clarity': {
+                             '0%, 100%': { boxShadow: '0 0 0 0 rgba(52, 211, 153, 0.7)' },
+                             '70%': { boxShadow: '0 0 0 10px rgba(52, 211, 153, 0)' },
+                        },
+                        'pulse-accent': {
+                             '0%, 100%': { boxShadow: '0 0 0 0 rgba(129, 140, 248, 0.4)' },
+                             '70%': { boxShadow: '0 0 0 20px rgba(129, 140, 248, 0)' },
+                        },
+                        'gradient-pan': {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
+                        },
+                        'draw-path': {
+                            'to': { strokeDashoffset: '0' }
+                        }
+                    },
+                    animation: {
+                        'shockwave': 'shockwave 0.8s ease-out forwards',
+                        'fade-in-slow': 'fade-in-slow 1s ease-in-out forwards',
+                        'fade-in-scale-up': 'fade-in-scale-up 0.5s ease-out forwards',
+                        'glitch': 'glitch 0.3s steps(2, end) infinite',
+                        'glitch-subtle': 'glitch-subtle 3s ease-in-out infinite',
+                        'icon-glow': 'icon-glow 1.5s ease-in-out infinite',
+                        'icon-bounce': 'icon-bounce 0.5s ease-in-out',
+                        'icon-rotate': 'icon-rotate 0.5s ease-in-out forwards',
+                        'pulse-right': 'pulse-right 0.5s ease-out forwards',
+                        'pulse-left': 'pulse-left 0.5s ease-out forwards',
+                        'shimmer': 'shimmer 3s linear infinite',
+                        'pulse-cta': 'pulse-cta 2s infinite',
+                        'pulse-process': 'pulse-process 2s infinite',
+                        'pulse-clarity': 'pulse-clarity 2s infinite',
+                        'pulse-accent': 'pulse-accent 2.5s infinite',
+                        'gradient-pan': 'gradient-pan 3s ease infinite',
+                    }
+                }
+            }
+        }
+        
+        /* 3D Flip Card Utilities */
+        .perspective { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .backface-hidden { backface-visibility: hidden; }
+
+        /* Interactive Glow Effect for Testimonials */
+        .interactive-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .interactive-glow::before {
+            content: '';
+            position: absolute;
+            left: var(--x, 50%);
+            top: var(--y, 50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle closest-side, rgba(129, 140, 248, 0.1), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+            pointer-events: none;
+            opacity: 0;
+        }
+        .interactive-glow:hover::before {
+            opacity: 1;
+        }
+
+        /* Interactive Workflow SVG Styles */
+        .path-clarity {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-path 1s ease-in-out forwards;
+            transition: opacity 0.5s;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.1.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+        "react/": "https://aistudiocdn.com/react@^19.1.1/",
+        "recharts": "https://aistudiocdn.com/recharts@^3.2.1"
+      }
+    }
+    </script>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
