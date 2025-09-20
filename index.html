@@ -11,19 +11,18 @@
     <style>
         /* Custom Tailwind Config & Base Styles */
         :root {
-            --brand-bg: #111827;
-            --brand-surface: #1F2937;
-            --brand-border: #374151;
-            --brand-text: #F3F4F6;
-            --brand-chaos: #F43F5E;
-            --brand-process: #60A5FA;
-            --brand-accent: #818CF8;
-            --brand-clarity: #34D399;
-            --brand-cta: #F59E0B;
+            /* Data Architect Theme */
+            --architect-dark: #0A192F;
+            --architect-surface: #112240;
+            --architect-cyan: #64FFDA;
+            --architect-magenta: #E02997;
+            --architect-gold: #FFD700;
+            --architect-text: #CCD6F6;
+            --architect-text-secondary: #8892B0;
         }
         body {
-            background-color: var(--brand-bg);
-            color: var(--brand-text);
+            background-color: var(--architect-dark);
+            color: var(--architect-text);
             font-family: 'Inter', sans-serif;
             cursor: none; /* Hide default cursor */
         }
@@ -36,16 +35,14 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            bg: 'var(--brand-bg)',
-                            surface: 'var(--brand-surface)',
-                            border: 'var(--brand-border)',
-                            text: 'var(--brand-text)',
-                            chaos: 'var(--brand-chaos)',
-                            process: 'var(--brand-process)',
-                            accent: 'var(--brand-accent)',
-                            clarity: 'var(--brand-clarity)',
-                            cta: 'var(--brand-cta)',
+                        architect: {
+                            dark: 'var(--architect-dark)',
+                            surface: 'var(--architect-surface)',
+                            cyan: 'var(--architect-cyan)',
+                            magenta: 'var(--architect-magenta)',
+                            gold: 'var(--architect-gold)',
+                            text: 'var(--architect-text)',
+                            'text-secondary': 'var(--architect-text-secondary)',
                         },
                     },
                     fontFamily: {
@@ -129,6 +126,15 @@
                         },
                         'draw-path': {
                             'to': { strokeDashoffset: '0' }
+                        },
+                        'data-flow': {
+                            '0%': { transform: 'translateX(-100%)', opacity: '0' },
+                            '50%': { opacity: '1' },
+                            '100%': { transform: 'translateX(100%)', opacity: '0' }
+                        },
+                        'blueprint-draw': {
+                            '0%': { strokeDashoffset: '1000' },
+                            '100%': { strokeDashoffset: '0' }
                         }
                     },
                     animation: {
@@ -148,6 +154,9 @@
                         'pulse-clarity': 'pulse-clarity 2s infinite',
                         'pulse-accent': 'pulse-accent 2.5s infinite',
                         'gradient-pan': 'gradient-pan 3s ease infinite',
+                        'data-flow': 'data-flow 3s ease-in-out infinite',
+                        'blueprint-draw': 'blueprint-draw 2s ease-in-out forwards',
+                        'draw-path': 'blueprint-draw 1.5s ease-in-out forwards'
                     }
                 }
             }
@@ -179,6 +188,27 @@
         }
         .interactive-glow:hover::before {
             opacity: 1;
+        }
+
+        /* Slider Styling */
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--architect-cyan), var(--architect-magenta));
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--architect-cyan), var(--architect-magenta));
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
         }
 
         /* Interactive Workflow SVG Styles */
