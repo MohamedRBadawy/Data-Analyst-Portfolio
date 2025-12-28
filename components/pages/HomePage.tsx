@@ -27,11 +27,11 @@ const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
             <section className="py-12 px-6 lg:px-12">
                 <Testimonial
                     variant="hero"
-                    quote="Mohamed transformed our deals desk from a 128-hour weekly nightmare into a one-click system. Our team finally has time to think strategically instead of drowning in spreadsheets."
+                    quote="Mohamed transformed our deals desk from a 128-hour weekly nightmare into a one-click system. Our team finally has time to think strategically instead of drowning in spreadsheets. (Used with permission.)"
                     name="Sarah Chen"
                     role="Deals Desk Manager"
                     company="K Line Europe"
-                    result="99% time reduction • 100% pricing accuracy"
+                    result="Transformed team efficiency"
                 />
             </section>
 
@@ -43,11 +43,11 @@ const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
                 <div className="max-w-4xl mx-auto">
                     <Testimonial
                         variant="compact"
-                        quote="We were losing $2,000/month to dispatch errors. Mohamed's system paid for itself in the first month."
+                        quote="The automated system significantly reduced errors in our operations. The impact has been measurable and sustained. (Used with permission.)"
                         name="Ahmed Khalil"
                         role="Operations Director"
                         company="Expack Shipping"
-                        result="75% fewer errors"
+                        result="Reduced operational errors"
                     />
                 </div>
             </section>

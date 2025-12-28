@@ -12,26 +12,30 @@ interface ProjectsPageProps {
 
 const allTags = Array.from(new Set(projectsData.flatMap(p => p.tags)));
 
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
-    const { setIsHovering } = useInteraction();
-    
-    // Find the corresponding case study to link to the detail page
-    const caseStudy = caseStudies.find(cs => cs.title === project.title);
+interface ProjectCardProps {
+    project: Project;
+    onViewDetails?: () => void;
+}
 
-    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!caseStudy) {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => {
+    const { setIsHovering } = useInteraction();
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+        // Trigger on Enter or Space key
+        if ((e.key === 'Enter' || e.key === ' ') && onViewDetails) {
             e.preventDefault();
-            // Optionally, handle projects without a detail page, e.g., open project.url
+            onViewDetails();
         }
-        // The click will be handled by the parent anchor if a case study exists
     };
 
     return (
-        <div 
-            onClick={handleClick}
+        <button 
+            onClick={onViewDetails}
+            onKeyDown={handleKeyDown}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className="group holographic-panel rounded-xl overflow-hidden flex flex-col cursor-pointer h-full"
+            className="group holographic-panel rounded-xl overflow-hidden flex flex-col cursor-pointer h-full w-full text-left focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-bg transition-all"
+            aria-label={`View details for ${project.title}`}
         >
             <div className="overflow-hidden h-48 bg-brand-bg">
                 {project.image.endsWith('.mp4') ? (
@@ -56,7 +60,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </button>
     );
 };
 
@@ -74,6 +78,14 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
             return searchMatch && tagMatch;
         });
     }, [searchTerm, selectedTag]);
+
+    const handleArchiveClick = () => {
+        // Scroll to the archive section smoothly
+        const archiveElement = document.getElementById('archive');
+        if (archiveElement) {
+            archiveElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
     
     return (
         <div className="min-h-screen">
@@ -84,7 +96,13 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
                 
                 <div id="archive" className="pt-16">
                     <div className="text-center mb-12">
-                        <ScramblingHeading text="Full Project Archive" />
+                        <button 
+                            onClick={handleArchiveClick}
+                            className="cursor-pointer hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-bg rounded-lg p-2"
+                            aria-label="Full Project Archive"
+                        >
+                            <ScramblingHeading text="Full Project Archive" />
+                        </button>
                         <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">A complete collection of dashboards, automations, and tools I've built. Use the filters to explore my work.</p>
                     </div>
 
@@ -123,13 +141,15 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
                     {/* Project Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredProjects.length > 0 ? filteredProjects.map(project => {
-                            const caseStudy = caseStudies.find(cs => cs.title === project.title);
-                            return caseStudy ? (
-                                <div key={project.title} onClick={() => showProjectDetailPage(caseStudy)}>
-                                    <ProjectCard project={project} />
-                                </div>
-                            ) : (
-                                <ProjectCard key={project.title} project={project} />
+                            const caseStudy = project.caseStudyId 
+                                ? caseStudies.find(cs => cs.id === project.caseStudyId)
+                                : null;
+                            return (
+                                <ProjectCard 
+                                    key={project.title} 
+                                    project={project}
+                                    onViewDetails={caseStudy ? () => showProjectDetailPage(caseStudy) : undefined}
+                                />
                             );
                         }) : (
                             <div className="md:col-span-2 lg:col-span-3 text-center py-16 holographic-panel rounded-lg">

@@ -30,6 +30,19 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, title, quote, i
     };
 
     const isClickable = !!caseStudyId;
+    
+    // Determine if image is initials (short string) or URL
+    const isInitials = image && image.length <= 2;
+    const getInitialsColor = (initials: string) => {
+        const colors: { [key: string]: string } = {
+            'AH': 'bg-blue-600',
+            'JS': 'bg-purple-600',
+            'FA': 'bg-pink-600',
+            'SC': 'bg-emerald-600',
+            'AK': 'bg-cyan-600'
+        };
+        return colors[initials] || 'bg-slate-600';
+    };
 
     return (
         <div 
@@ -48,7 +61,13 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, title, quote, i
             )}
             <div className="mt-6 flex items-center justify-between z-10 border-t border-brand-border/50 pt-6">
                  <div className="flex items-center">
-                    <img src={image} alt={name} className="w-12 h-12 rounded-full mr-4 border-2 border-brand-accent" />
+                    {isInitials ? (
+                        <div className={`w-12 h-12 rounded-full mr-4 border-2 border-brand-accent flex items-center justify-center ${getInitialsColor(image)} text-white font-bold text-sm`}>
+                            {image}
+                        </div>
+                    ) : (
+                        <img src={image} alt={name} className="w-12 h-12 rounded-full mr-4 border-2 border-brand-accent" />
+                    )}
                     <div>
                         <h4 className="font-poppins font-bold text-brand-text-primary">{name}</h4>
                         <p className="text-sm text-brand-text-secondary">{title}</p>
