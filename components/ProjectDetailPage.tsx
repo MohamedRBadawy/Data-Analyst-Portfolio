@@ -162,6 +162,16 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                         </div>
                     </section>
 
+                    {/* How the Impact Was Measured - Transparency & Auditability */}
+                    {project.howMeasured && (
+                        <section>
+                            <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6">How the Impact Was Measured</h3>
+                            <p className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-border/50 pl-6 sm:pl-8">
+                                {project.howMeasured}
+                            </p>
+                        </section>
+                    )}
+
                     <section>
                         <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-8 text-center">Key Deliverables</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
