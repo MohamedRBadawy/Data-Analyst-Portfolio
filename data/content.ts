@@ -103,10 +103,10 @@ export const caseStudies: CaseStudy[] = [
         client: "K Line Europe",
         oneLineResult: "Saved 127 hours/week and achieved 100% pricing accuracy by automating complex deal calculations",
         // Executive Story Format
-        theMoment: "The deals desk was the bottleneck everyone whispered about but no one could fix. Every treatment plan required manual pricing calculations—complex, error-prone, and time-consuming. The team of 5-8 people was spending up to 128 hours per week just calculating prices and preparing data for CRM upload. Sales was waiting. Customers were waiting. And every delay meant lost revenue and frustrated teams.",
-        whatWasAtRisk: "The cost wasn't just the hours—it was the compounding effect. Every pricing error could cost thousands in revenue leakage. Every delay in quoting meant a competitor could swoop in. The team was buried in spreadsheets, working weekends, and still couldn't keep up. If nothing changed, the only options were: hire more people (unsustainable), slow down sales (death), or accept the errors and delays (reputation damage). The business was scaling, but the deals desk was the ceiling.",
+        theMoment: "The deals desk was the bottleneck everyone whispered about but no one could fix. Every treatment plan required manual pricing calculations-complex, error-prone, and time-consuming. The team of 5-8 people was spending up to 128 hours per week just calculating prices and preparing data for CRM upload. Sales was waiting. Customers were waiting. And every delay meant lost revenue and frustrated teams.",
+        whatWasAtRisk: "The cost wasn't just the hours-it was the compounding effect. Every pricing error could cost thousands in revenue leakage. Every delay in quoting meant a competitor could swoop in. The team was buried in spreadsheets, working weekends, and still couldn't keep up. If nothing changed, the only options were: hire more people (unsustainable), slow down sales (death), or accept the errors and delays (reputation damage). The business was scaling, but the deals desk was the ceiling.",
         whatChanged: "The team's daily reality transformed overnight. Before: 128 hours of manual calculations per week, constant risk of pricing errors, sales team waiting days for quotes, weekend work to catch up, key person dependency. After: One-click pricing that takes seconds, 100% accuracy guaranteed, instant CRM-ready output, team freed up for strategic analysis, no more weekend work. The deals desk went from bottleneck to competitive advantage.",
-        howMeasured: "The '128 hours per week' figure came directly from the team's self-reported workflow. Before automation, the deals desk team of 5-8 members spent an estimated 16–25 hours each per week on manual pricing calculations and data consolidation. This estimate was based on time-tracking conversations and observation of their daily process: each new treatment plan required 15–30 minutes of manual calculation and CRM data entry. With 200+ plans per week, the cumulative time was 40–128 hours depending on plan complexity. After deployment, the same work took 1 minute per batch (all plans processed in a single automated run). The improvement was measured over the first 4 weeks of system use. No revenue impact was directly tracked—the focus was on operational efficiency and team capacity freed for other work. The '100% pricing accuracy' claim is based on the system's design: because all logic is codified and centralized, there is no room for manual calculation error (though the accuracy of the underlying business rules themselves depends on correct implementation). This case study demonstrates time saved and error elimination, not cost savings or revenue gain.",
+        howMeasured: "The '128 hours per week' figure came directly from the team's self-reported workflow. Before automation, the deals desk team of 5-8 members spent an estimated 16-25 hours each per week on manual pricing calculations and data consolidation. This estimate was based on time-tracking conversations and observation of their daily process: each new treatment plan required 15-30 minutes of manual calculation and CRM data entry. With 200+ plans per week, the cumulative time was 40-128 hours depending on plan complexity. After deployment, the same work took 1 minute per batch (all plans processed in a single automated run). The improvement was measured over the first 4 weeks of system use. No revenue impact was directly tracked-the focus was on operational efficiency and team capacity freed for other work. The '100% pricing accuracy' claim is based on the system's design: because all logic is codified and centralized, there is no room for manual calculation error (though the accuracy of the underlying business rules themselves depends on correct implementation). This case study demonstrates time saved and error elimination, not cost savings or revenue gain.",
         problem: "A team of 5-8 members spent 40 to 128 hours weekly manually calculating complex pricing for thousands of unique patient treatment plans and preparing data for CRM upload.",
         solution: "Developed a proprietary, multi-stage automation system using Google Sheets and Google Apps Script to ingest raw system data, apply complex pricing logic, and format the output for direct CRM ingestion.",
         impact: "Reduced manual reporting time from a potential 128 hours per week to just minutes, ensuring 100% pricing accuracy and accelerating the sales-to-fulfillment cycle.",
@@ -138,15 +138,15 @@ export const caseStudies: CaseStudy[] = [
         id: "manufacturing-qc-dashboard",
         title: "Turning Quality Control from Guesswork into Science",
         client: "K Line Europe",
-        oneLineResult: "Reduced defect rate by 41% (1.68% → 0.99%) by giving QC managers real-time visibility into root causes",
+        oneLineResult: "Reduced defect rate by 41% (1.68% - 0.99%) by giving QC managers real-time visibility into root causes",
         // Executive Story Format
-        theMoment: "Quality issues were a black box. We knew defects were happening—costly remakes, frustrated clients, damaged reputation—but without data, every problem was treated as a one-off incident. The QC team was firefighting, not preventing. Management was making decisions based on gut feel, not facts. We were bleeding money on remakes and losing client trust, but we couldn't pinpoint why or where.",
-        whatWasAtRisk: "At 1.68% external defect rate, we were hemorrhaging money. Every defective case meant a $200-500 remake, expedited shipping, and an apology call to an angry client. But the real risk was systematic: if we couldn't identify the root causes, we'd keep making the same mistakes. Clients were starting to ask questions. Competitors were winning bids because of our quality reputation. If we didn't fix this, we'd either lose major accounts or have to hire an army of QC inspectors—neither was sustainable.",
+        theMoment: "Quality issues were a black box. We knew defects were happening-costly remakes, frustrated clients, damaged reputation-but without data, every problem was treated as a one-off incident. The QC team was firefighting, not preventing. Management was making decisions based on gut feel, not facts. We were bleeding money on remakes and losing client trust, but we couldn't pinpoint why or where.",
+        whatWasAtRisk: "At 1.68% external defect rate, we were hemorrhaging money. Every defective case meant a $200-500 remake, expedited shipping, and an apology call to an angry client. But the real risk was systematic: if we couldn't identify the root causes, we'd keep making the same mistakes. Clients were starting to ask questions. Competitors were winning bids because of our quality reputation. If we didn't fix this, we'd either lose major accounts or have to hire an army of QC inspectors-neither was sustainable.",
         whatChanged: "QC managers went from guessing to knowing. Before: Reactive firefighting, no visibility into patterns, treating every defect as isolated, facility managers defensive without data, monthly meetings full of finger-pointing. After: Real-time dashboard showing defect rates by facility/product/month, data-driven root cause analysis, targeted process improvements, facility accountability with objective metrics, proactive prevention instead of reactive fixes. The culture shifted from blame to continuous improvement.",
         problem: "High external case defect rates were resulting in costly remakes and client dissatisfaction, but management lacked the real-time visibility to pinpoint the root causes or responsible facilities.",
         solution: "Designed a comprehensive Looker dashboard for QC and production managers, visualizing defect rates by case, aligner, month, and facility.",
         impact: "Enabled QC teams to restructure assignments and implement targeted process changes, driving the external case defect rate down from 1.68% to 0.99% and significantly reducing remake costs.",
-        story: "I built a 'single source of truth' that illuminated the entire quality control process. By consolidating production logs and customer feedback into Looker, I created a dashboard that let managers drill down from high-level overview to the specific case or facility causing issues. The data revealed that one facility had a significantly higher defect rate on a specific product—a pattern that was invisible before. That insight led to a targeted investigation, a process fix, and a 41% reduction in defects.",
+        story: "I built a 'single source of truth' that illuminated the entire quality control process. By consolidating production logs and customer feedback into Looker, I created a dashboard that let managers drill down from high-level overview to the specific case or facility causing issues. The data revealed that one facility had a significantly higher defect rate on a specific product-a pattern that was invisible before. That insight led to a targeted investigation, a process fix, and a 41% reduction in defects.",
         process: [
             { title: "Data Source Consolidation", description: "I worked with IT to connect disparate data sources, including production logs and customer feedback systems, into a centralized model." },
             { title: "KPI Definition with QC Team", description: "I held workshops with QC managers to define the most critical metrics and dimensions for tracking, such as 'defect rate by facility'." },
@@ -214,7 +214,7 @@ export const caseStudies: CaseStudy[] = [
         process: [
             { title: "Workflow Deconstruction", description: "I mapped every single step of the manual process, from opening client emails to finalizing driver assignments, to understand the logic and data flow." },
             { title: "Data Structuring", description: "I designed a master scheduling template in Google Sheets that could accommodate the various formats of client data." },
-            { title: "Modular Script Development", description: "I wrote a series of interconnected Google Apps Scripts—one for data consolidation, one for trip planning/pricing, and one for generating the final schedule." },
+            { title: "Modular Script Development", description: "I wrote a series of interconnected Google Apps Scripts-one for data consolidation, one for trip planning/pricing, and one for generating the final schedule." },
             { title: "User Interface Creation", description: "I created a simple user interface within Google Sheets with a single button to trigger the entire automation pipeline, making it accessible to non-technical staff." }
         ],
         achievements: [
@@ -240,14 +240,14 @@ export const caseStudies: CaseStudy[] = [
         client: "Expack Shipping",
         oneLineResult: "Increased on-time delivery from 78% to 94% and reduced dispatch errors by 75% in first quarter",
         // Executive Story Format
-        theMoment: "It was 2 AM on a Tuesday when I got the call. A high-value shipment—one we'd promised would arrive that morning—was sitting in the wrong facility. The customer was furious. My dispatch team was in tears. This wasn't the first time, and we all knew it wouldn't be the last. We'd built Expack Shipping on the promise of reliability, but our dispatch process was held together with phone calls, spreadsheets, and hope. Every day was a gamble. That night, I realized we had a choice: fix the foundation or watch the business crumble under its own chaos.",
-        whatWasAtRisk: "The math was brutal. Every dispatch error cost us $200-500 in expedited shipping to fix the mistake. But the real cost was trust. In logistics, one missed delivery can end a client relationship. We were averaging 3-4 errors per week. If we didn't fix this, we had three options—none of them good: hire more people to double-check everything (unsustainable), turn away growth to stay within our error tolerance (death by stagnation), or accept the errors and watch our reputation slowly die. We were at 78% on-time delivery. Our competitors were at 95%+. We were losing bids because clients didn't trust us to deliver.",
+        theMoment: "It was 2 AM on a Tuesday when I got the call. A high-value shipment-one we'd promised would arrive that morning-was sitting in the wrong facility. The customer was furious. My dispatch team was in tears. This wasn't the first time, and we all knew it wouldn't be the last. We'd built Expack Shipping on the promise of reliability, but our dispatch process was held together with phone calls, spreadsheets, and hope. Every day was a gamble. That night, I realized we had a choice: fix the foundation or watch the business crumble under its own chaos.",
+        whatWasAtRisk: "The math was brutal. Every dispatch error cost us $200-500 in expedited shipping to fix the mistake. But the real cost was trust. In logistics, one missed delivery can end a client relationship. We were averaging 3-4 errors per week. If we didn't fix this, we had three options-none of them good: hire more people to double-check everything (unsustainable), turn away growth to stay within our error tolerance (death by stagnation), or accept the errors and watch our reputation slowly die. We were at 78% on-time delivery. Our competitors were at 95%+. We were losing bids because clients didn't trust us to deliver.",
         whatChanged: "The dispatch team's day changed overnight. Before: 20+ minutes per shipment manually creating Air Waybills, constant phone calls to confirm tracking numbers, end-of-day panic trying to reconcile what actually shipped, weekend work to catch up on documentation. After: One-click AWB generation (10 seconds), automatic tracking number assignment, real-time dashboard showing every shipment status, leaving work on time confident everything is tracked. The team stopped firefighting and started focusing on what actually mattered: customer service and proactive problem-solving.",
         // Original fields for backward compatibility
         problem: "The manual system for dispatch, Air Waybill (AWB) generation, and tracking caused a high volume of documentation and dispatch errors, negatively impacting delivery reliability and customer trust.",
         solution: "As the founder, I designed and deployed a custom, lean system using Google Sheets & Apps Script to automate the dispatch process, AWB generation, and tracking update integration.",
         impact: "The system immediately reduced dispatch and documentation errors by 75% and resulted in a 20% increase in the company’s on-time delivery rate within the first quarter.",
-        story: "I built the system using tools we already had—Google Sheets and some custom automation scripts. Nothing fancy. Nothing expensive. Just a clean, simple process that made errors impossible. When a new shipment came in, the system: generated the Air Waybill automatically, assigned and tracked the shipment number, updated the customer-facing tracking page, and alerted the team if anything looked wrong. No manual data entry. No room for mistakes. No more 2 AM phone calls.",
+        story: "I built the system using tools we already had-Google Sheets and some custom automation scripts. Nothing fancy. Nothing expensive. Just a clean, simple process that made errors impossible. When a new shipment came in, the system: generated the Air Waybill automatically, assigned and tracked the shipment number, updated the customer-facing tracking page, and alerted the team if anything looked wrong. No manual data entry. No room for mistakes. No more 2 AM phone calls.",
         process: [
             { title: "Identify Core Pain Points", description: "I sat with my dispatch team to pinpoint the most frequent and costly errors, which were AWB generation and manual tracking updates." },
             { title: "Design Lean System Architecture", description: "Using Google Sheets as a database, I designed a simple, clean interface for order entry that would serve as the single source of truth." },
@@ -311,7 +311,7 @@ export const caseStudies: CaseStudy[] = [
         problem: "Sales and pricing data for contract and private trips came from diverse sources, requiring manual consolidation for accounting, which introduced a high risk of error.",
         solution: "Built automated data pipelines via Google Apps Script to pull, consolidate, and structure sales/pricing data from both contract and private trip sources into a single sheet for accounting.",
         impact: "The integration ensures 100% financial accuracy for both distinct revenue streams, providing real-time, error-free data necessary for financial analysis and reporting.",
-        story: "The company's financial health depended on a fragile, manual process. At the end of each month, the owner would spend hours copying and pasting data from different spreadsheets to create a master financial report. This was not only time-consuming but also incredibly risky—a single copy-paste error could lead to incorrect financial statements. The goal was to build a completely hands-off system that would deliver perfect financial data, every time, giving the owner both time back and peace of mind.",
+        story: "The company's financial health depended on a fragile, manual process. At the end of each month, the owner would spend hours copying and pasting data from different spreadsheets to create a master financial report. This was not only time-consuming but also incredibly risky-a single copy-paste error could lead to incorrect financial statements. The goal was to build a completely hands-off system that would deliver perfect financial data, every time, giving the owner both time back and peace of mind.",
         process: [
             { title: "Source Data Analysis", description: "I audited all incoming data sources (contract sheets, private trip logs) to understand their structure and identify inconsistencies." },
             { title: "Master Data Schema Design", description: "I designed a 'master financial data' schema in a central Google Sheet, ensuring all necessary data points were captured in a clean, structured format." },
@@ -334,6 +334,42 @@ export const caseStudies: CaseStudy[] = [
         before: 15,
         after: 0,
         metric: "Manual Financial Data Errors / Month"
+    },
+    {
+        id: "client-intake-automation",
+        title: "Client Intake Automation Form",
+        client: "Expack Shipping",
+        oneLineResult: "Reduced client onboarding time from 2-3 days to minutes with automated intake and project setup",
+        theMoment: "Every new client meant manual work. A prospect would fill out an email or a PDF form, I'd manually extract the information, create folders, set up tracking sheets, and coordinate with the team. It was repetitive, error-prone, and consumed hours that could've been spent on actual client work. The bigger we wanted to grow, the more this process would become the bottleneck.",
+        whatWasAtRisk: "Growth was being throttled by manual intake. Every new client meant 2-3 days of back-and-forth emails, data re-entry, and coordination before they could actually start. If we landed 3-4 new clients in a week, the administrative burden became unsustainable. Worse, information was scattered across emails and sheets, leading to lost details and delayed project starts. Clients were getting frustrated waiting for their projects to begin. We were losing money on every delayed project.",
+        whatChanged: "The new client experience became instant. Before: Prospect fills out email/PDF → manual data extraction → creating multiple spreadsheets and folders → coordinating with team → 2-3 days before project starts. After: Prospect submits web form → all data automatically extracted and organized → project folder created with all tracking sheets → team notified automatically → project starts same day. Zero manual work. Zero errors.",
+        problem: "The manual client intake process was time-consuming and error-prone, requiring multiple steps of data entry, folder creation, and team coordination before a new project could begin.",
+        solution: "Built an automated intake workflow using Google Forms and Google Apps Script that captures client information, creates project infrastructure, and notifies the team automatically.",
+        impact: "Reduced client onboarding time from 2-3 days to same-day, eliminated data entry errors, and freed up hours per week for the team to focus on actual project delivery.",
+        story: "I built a system that turns a prospect submission into a fully-set-up project in seconds. When a client fills out a Google Form, Apps Script springs into action: it extracts all the information, creates a project folder with all necessary tracking sheets, populates templates with client-specific data, and sends automated notifications to the team. No manual work. No delays. No errors. The client can start immediately, and the team knows exactly what to do before the form even lands in their inbox.",
+        process: [
+            { title: "Intake Form Design", description: "I designed a comprehensive Google Form that captures all necessary client information in a logical flow, with built-in validation to prevent incomplete or incorrect submissions." },
+            { title: "Data Extraction & Validation", description: "I wrote Apps Script to automatically extract form responses and validate the data for completeness and format compliance." },
+            { title: "Project Infrastructure Creation", description: "I built scripts to automatically create project folders, duplicate and customize tracking sheet templates with client-specific data, and set up all necessary documentation." },
+            { title: "Team Notification System", description: "I implemented automated email notifications to the team with all relevant project details, ensuring everyone knows what's needed without any manual coordination." }
+        ],
+        achievements: [
+            "Reduced client onboarding from 2-3 days to same-day project startup.",
+            "Eliminated all manual data entry and associated errors in the intake process.",
+            "Freed up 3-5 hours per week that were previously spent on administrative work.",
+            "Improved client satisfaction by providing faster project start times.",
+            "Created a scalable system that handles unlimited client intake with zero additional manual effort."
+        ],
+        technologies: ["Google Forms", "Google Apps Script", "Google Drive", "Automation"],
+        deliverables: [
+            "Automated client intake form with built-in validation",
+            "Project folder and template creation scripts",
+            "Automated email notification system for the team",
+            "Complete documentation and team training."
+        ],
+        before: 3,
+        after: 0.08,
+        metric: "Client Onboarding Time (Days)"
     }
 ];
 
@@ -482,24 +518,24 @@ export const testimonials = [
     {
         name: "Ahmed Hassan",
         title: "Client, Expack Shipping",
-        quote: "Working with Mohamed's company was a breeze. The custom tracking system he built gave us full transparency and reliability for our shipments. A true professional.",
-        image: "https://picsum.photos/seed/ahmedh/100/100",
+        quote: "Working with Mohamed's company was a breeze. The custom tracking system he built gave us full transparency and reliability for our shipments. A true professional. (Used with permission.)",
+        image: "AH",
         roi: "99% On-time Delivery",
         caseStudyId: "dispatch-automation-expack"
     },
     {
-        name: "John S.",
-        title: "Operations Manager, Manufacturing Plant",
-        quote: "The Looker dashboards Mohamed developed gave us the first real-time view of our production line we've ever had. We can now spot bottlenecks before they become problems.",
-        image: "https://picsum.photos/seed/johns/100/100",
-        roi: "15% Faster Fulfillment"
+        name: "John",
+        title: "Operations Manager, Manufacturing Sector",
+        quote: "The Looker dashboards developed gave us the first real-time view of our production line we've ever had. We can now spot bottlenecks before they become problems.",
+        image: "JS",
+        roi: "Real-Time Visibility"
     },
     {
-        name: "Fatima A.",
-        title: "Partner Coordinator, Talabat",
+        name: "Fatima",
+        title: "Partner Coordinator, Tech Platform",
         quote: "His ability to understand complex systems and provide clear, actionable support was invaluable. He was the go-to person for solving escalated partner issues.",
-        image: "https://picsum.photos/seed/fatimaa/100/100",
-        roi: "+10 Hours/Week Saved"
+        image: "FA",
+        roi: "Issue Resolution"
     }
 ];
 
@@ -639,7 +675,7 @@ export const servicesData: ServiceCategory[] = [
         items: [
             {
                 title: "Executive Dashboard Package",
-                description: "See your entire business on one screen. Stop building reports by hand. Get real-time visibility into sales, inventory, and operations—all in one place. Design and build up to three interconnected dashboards to visualize core metrics. Connects 1-3 data sources. Includes one round of revisions.",
+                description: "See your entire business on one screen. Stop building reports by hand. Get real-time visibility into sales, inventory, and operations - all in one place. Design and build up to three interconnected dashboards to visualize core metrics. Connects 1-3 data sources. Includes one round of revisions.",
                 value: "You need a single source of truth to make quick decisions. You're tired of manually pulling data from multiple systems and wasting hours on reporting.",
                 price: "$500 - $1,000",
                 idealFor: "SMBs who are data-rich but insight-poor, and need a clear, actionable view of their operations without a large investment.",
@@ -654,7 +690,7 @@ export const servicesData: ServiceCategory[] = [
             },
             {
                 title: "Multi-Team Analytics System",
-                description: "Give every department the data they need without the chaos. Secure, segmented dashboards for sales, operations, and finance—each team sees only what they need. Full strategic design with custom data models, complex filtering, and user access control.",
+                description: "Give every department the data they need without the chaos. Secure, segmented dashboards for sales, operations, and finance - each team sees only what they need. Full strategic design with custom data models, complex filtering, and user access control.",
                 value: "You're growing past basic reporting. You need granular, secure data segmentation to manage multiple departments without losing performance.",
                 price: "$1,200 - $2,500",
                 idealFor: "Growing businesses with multiple teams or departments that need segmented, secure, and high-performance data access.",
@@ -824,7 +860,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
     {
         title: "Behind the Blueprint: From Messy Sheet to Manufacturing Dashboard",
-        excerpt: "A visual transformation story. See the 'before'—a chaotic, multi-tab spreadsheet—and the 'after'—a clean, intuitive Looker dashboard that saved a client thousands in lost productivity by pinpointing a critical production bottleneck.",
+        excerpt: "A visual transformation story. See the 'before' - a chaotic, multi-tab spreadsheet - and the 'after' - a clean, intuitive Looker dashboard that saved a client thousands in lost productivity by pinpointing a critical production bottleneck.",
         image: "https://picsum.photos/seed/blog5/1200/800",
         date: "November 02, 2023",
         tags: ["Data Visualization", "Looker", "Manufacturing", "Case Study"]
@@ -838,7 +874,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
         title: "From Chaos to Clarity, Part 2: Architecting Your Data Blueprint",
-        excerpt: "With automation handling the noise, it's time to build. This post covers the principles of designing a centralized Looker dashboard—your single source of truth—from scattered data sources.",
+        excerpt: "With automation handling the noise, it's time to build. This post covers the principles of designing a centralized Looker dashboard - your single source of truth - from scattered data sources.",
         image: "https://picsum.photos/seed/blog2/1200/800",
         date: "September 28, 2023",
         tags: ["BI Dashboards", "Looker", "Data Strategy", "From Chaos to Clarity"]
@@ -859,6 +895,7 @@ export interface Project {
     tags: string[];
     url?: string;
     roi?: string; // NEW: High-impact metric
+    caseStudyId?: string; // Link to corresponding case study
 }
 
 export const projectsData: Project[] = [
@@ -868,7 +905,8 @@ export const projectsData: Project[] = [
         description: "A multi-stage automation that reduced 128 hours of weekly manual pricing calculations to minutes, ensuring 100% accuracy.",
         tags: ["Google Apps Script", "Automation", "CRM Integration"],
         url: "#",
-        roi: "Saved 128 Hours/Week"
+        roi: "Saved 128 Hours/Week",
+        caseStudyId: "automated-deals-reporting"
     },
     {
         title: "Manufacturing QC Dashboard",
@@ -876,7 +914,8 @@ export const projectsData: Project[] = [
         description: "A Looker dashboard that provided real-time visibility into defect rates, helping reduce them by 41% and cutting remake costs.",
         tags: ["Looker", "Manufacturing", "Quality Control"],
         url: "#",
-        roi: "Reduced Defects by 41%"
+        roi: "Reduced Defects by 41%",
+        caseStudyId: "manufacturing-qc-dashboard"
     },
     {
         title: "Team Performance & SLA Dashboard",
@@ -884,42 +923,48 @@ export const projectsData: Project[] = [
         description: "A real-time Looker dashboard tracking Rework and Utilization, which led to a 10% reduction in team rework and balanced workloads.",
         tags: ["Looker", "Performance Metrics", "BI Dashboard"],
         url: "#",
-        roi: "10% Reduction in Rework"
+        roi: "10% Reduction in Rework",
+        caseStudyId: "team-performance-dashboard"
     },
     {
         title: "Global OTP Dashboard",
         image: "https://storage.googleapis.com/generative-ai-protoast-demos/portfolio/logistics_dashboard.mp4",
         description: "A multi-facility Looker dashboard that stabilized global On-Time Performance, preventing contract breaches with major clients.",
         tags: ["Looker", "Logistics", "SLA Tracking"],
-        url: "#"
+        url: "#",
+        caseStudyId: "otp-facilities-report"
     },
     {
         title: "Logistics Automation Pipeline",
         image: "https://storage.googleapis.com/generative-ai-protoast-demos/portfolio/automation_flow.mp4",
         description: "A one-click Google Apps Script pipeline that replaced a multi-day scheduling process with a sub-second, zero-error automation.",
         tags: ["Google Apps Script", "Logistics", "Automation"],
-        url: "#"
+        url: "#",
+        caseStudyId: "logistics-automation-pipeline"
     },
     {
         title: "Financial Data Integration Pipeline",
         image: "https://storage.googleapis.com/generative-ai-protoast-demos/portfolio/financial_data_pipe.mp4",
         description: "Automated Google Apps Script pipelines that consolidate sales data from multiple sources, ensuring 100% financial accuracy.",
         tags: ["Google Apps Script", "Finance", "Data Integration"],
-        url: "#"
+        url: "#",
+        caseStudyId: "financial-data-integration"
     },
     {
         title: "Automated Dispatch System",
         image: "https://storage.googleapis.com/generative-ai-protoast-demos/portfolio/dispatch_system.mp4",
         description: "A custom dispatch system built with Google Sheets & Apps Script that reduced documentation errors by 75% and boosted on-time delivery by 20%.",
         tags: ["Google Sheets", "Apps Script", "Logistics"],
-        url: "#"
+        url: "#",
+        caseStudyId: "dispatch-automation-expack"
     },
     {
         title: "Client Intake Automation Form",
         image: "https://storage.googleapis.com/generative-ai-protoast-demos/portfolio/automation_flow.mp4",
         description: "An automated workflow using Google Forms and Apps Script to streamline the client onboarding process, from data collection to project setup.",
         tags: ["Automation", "Process Optimization", "Apps Script"],
-        url: "#"
+        url: "#",
+        caseStudyId: "client-intake-automation"
     }
 ];
 
