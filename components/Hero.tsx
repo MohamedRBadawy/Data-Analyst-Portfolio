@@ -63,20 +63,17 @@ const Hero: React.FC<HeroProps> = ({ navigateTo }) => {
                 <div className="w-full max-w-3xl mb-12 opacity-0 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
                     <div className="bg-brand-surface/30 border border-brand-border/30 rounded-xl p-6 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-6">
                         <div className="flex flex-col text-left">
-                            <span className="text-xs text-brand-text-secondary uppercase tracking-widest mb-1">Trusted By Industry Leaders</span>
-                            <div className="flex items-center gap-2">
-                                <span className="font-bold text-white text-lg">K LINE EUROPE</span>
-                                <span className="text-xs bg-brand-border/20 text-brand-border px-2 py-0.5 rounded border border-brand-border/30">Fortune 500</span>
-                            </div>
+                            <span className="text-xs text-brand-text-secondary uppercase tracking-widest mb-1">Real-World Results</span>
+                            <p className="text-brand-text-primary text-sm leading-relaxed max-w-xs">
+                                Documented improvements across 7 completed projects: measurable reductions in time, defects, and delivery risk.
+                            </p>
                         </div>
                         <div className="h-px w-full md:w-px md:h-12 bg-brand-border/20"></div>
                         <div className="flex flex-col text-left">
-                            <span className="text-xs text-brand-text-secondary uppercase tracking-widest mb-1">Proven Outcomes</span>
-                            <div className="flex items-center gap-3">
-                                <span className="font-mono text-brand-cta font-bold text-lg">$200K+ ROI</span>
-                                <span className="text-brand-text-secondary text-sm">•</span>
-                                <span className="font-mono text-brand-accent font-bold text-lg">500+ Hours Saved</span>
-                            </div>
+                            <span className="text-xs text-brand-text-secondary uppercase tracking-widest mb-1">Transparent Details</span>
+                            <p className="text-brand-text-primary text-sm leading-relaxed max-w-xs">
+                                See before/after metrics, process breakdown, and achievements for each case below. No aggregates—full visibility.
+                            </p>
                         </div>
                     </div>
                 </div>
