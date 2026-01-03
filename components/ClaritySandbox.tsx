@@ -362,17 +362,18 @@ const ClaritySandbox: React.FC = () => {
     };
 
     return (
-        <section className="py-16 lg:py-20">
-            <div className="text-center mb-16">
-                <ScramblingHeading text="The Clarity Sandbox" />
-                <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">This isn't just theory. Click a filter to actively transform chaotic data into a clear, structured pattern.</p>
-            </div>
-            <div ref={containerRef} className="relative max-w-7xl mx-auto h-[600px] md:h-[500px] flex flex-col md:flex-row gap-8 holographic-panel p-4 rounded-xl">
-                <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-xl z-0" />
-                <div className="chaos-zone w-full md:w-1/3 h-1/3 md:h-full rounded-lg border border-brand-chaos/50 z-10">
-                    {/* This div is a visual container for the initial particle positions */}
+        <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
+            <div className="content-container">
+                <div className="text-center mb-16">
+                    <ScramblingHeading text="The Clarity Sandbox" />
+                    <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">This isn't just theory. Click a filter to actively transform chaotic data into a clear, structured pattern.</p>
                 </div>
-                <div className="w-full md:w-px h-px md:h-full bg-brand-border z-10" />
+                <div ref={containerRef} className="relative max-w-7xl mx-auto h-[600px] md:h-[500px] flex flex-col md:flex-row gap-[var(--space-xl)] holographic-panel p-[var(--space-lg)] rounded-xl">
+                    <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-xl z-0" />
+                    <div className="chaos-zone w-full md:w-1/3 h-1/3 md:h-full rounded-lg border border-brand-chaos/50 z-10">
+                        {/* This div is a visual container for the initial particle positions */}
+                    </div>
+                    <div className="w-full md:w-px h-px md:h-full bg-brand-border z-10" />
                 <div className="clarity-zone flex-grow h-2/3 md:h-full relative flex flex-col z-10">
                     <div className="flex justify-center md:justify-start gap-4 flex-wrap">
                         {(['automate', 'centralize', 'visualize'] as Pattern[]).map(p => (
@@ -403,8 +404,10 @@ const ClaritySandbox: React.FC = () => {
                     </div>
                 </div>
             </div>
+            </div>
         </section>
     );
 };
 
 export default ClaritySandbox;
+

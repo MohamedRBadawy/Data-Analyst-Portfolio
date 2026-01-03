@@ -7,12 +7,13 @@ const Resources: React.FC = () => {
     const { setIsHovering } = useInteraction();
 
     return (
-        <section className="py-16 lg:py-20">
-            <div className="text-center mb-16">
-                <ScramblingHeading text="My Resource Hub" />
+        <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
+            <div className="content-container">
+                <div className="text-center mb-16">
+                    <ScramblingHeading text="Resources & Tools" />
                 <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">I build tools and templates to help you get started. Here's a practical guide to jumpstart your own journey to clarity.</p>
             </div>
-            <div className="max-w-3xl mx-auto holographic-panel rounded-xl p-8 flex flex-col md:flex-row items-center gap-8">
+            <div className="max-w-3xl mx-auto holographic-panel rounded-xl p-[var(--space-lg)] flex flex-col md:flex-row items-center gap-[var(--space-xl)]">
                 <div className="text-brand-accent bg-brand-accent/10 p-4 rounded-lg">
                     <DownloadIcon size={48} />
                 </div>
@@ -29,6 +30,7 @@ const Resources: React.FC = () => {
                 >
                     Download Now
                 </a>
+            </div>
             </div>
         </section>
     );

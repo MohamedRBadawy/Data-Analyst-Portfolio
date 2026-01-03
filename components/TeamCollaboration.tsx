@@ -21,19 +21,20 @@ const TeamCollaboration: React.FC<TeamCollaborationProps> = ({ navigateToContact
     };
 
     return (
-        <section className="py-16 lg:py-20">
-            <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-16">
-                    <ScramblingHeading text="Leadership & Collaborative Growth" />
-                    <p className="text-xl text-brand-text-secondary mt-6 max-w-3xl mx-auto">
-                        True clarity is built together. My approach to leadership is centered on mentoring and empowering teams. We practice together, we build together, and we help each other grow, turning individual skills into collective strength.
-                    </p>
+        <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
+            <div className="content-container">
+                <div className="max-w-5xl mx-auto">
+                    <div className="text-center mb-16">
+                        <ScramblingHeading text="Leadership & Collaborative Growth" />
+                        <p className="text-xl text-brand-text-secondary mt-6 max-w-3xl mx-auto">
+                            True clarity is built together. My approach to leadership is centered on mentoring and empowering teams. We practice together, we build together, and we help each other grow, turning individual skills into collective strength.
+                        </p>
                 </div>
 
                 <div
                     ref={panelRef}
                     onMouseMove={handleMouseMove}
-                    className="holographic-panel rounded-xl p-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden interactive-glow"
+                    className="holographic-panel rounded-xl p-[var(--space-lg)] flex flex-col md:flex-row items-center gap-[var(--space-xl)] relative overflow-hidden interactive-glow"
                 >
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent animate-gradient-pan" />
                     <div className="text-brand-accent bg-brand-accent/10 p-4 rounded-full flex-shrink-0 z-10">
@@ -55,6 +56,7 @@ const TeamCollaboration: React.FC<TeamCollaborationProps> = ({ navigateToContact
                         Request Help
                     </button>
                 </div>
+            </div>
             </div>
         </section>
     );

@@ -59,7 +59,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, reversed = false, 
             onClick={onViewDetails}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 items-center holographic-panel p-6 sm:p-8 rounded-xl cursor-pointer`}
+            className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-[var(--space-xl)] items-center holographic-panel p-6 sm:p-8 rounded-xl cursor-pointer`}
         >
             <div className="lg:w-1/2">
                 {/* One-Line Result - NEW */}
@@ -74,7 +74,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, reversed = false, 
                 <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-4">{study.title}</h3>
                 <p className="mb-2"><strong className="text-brand-chaos text-glow-chaos">Problem:</strong> {study.problem}</p>
                 <p className="mb-4"><strong className="text-brand-clarity text-glow-accent">Impact:</strong> {study.impact}</p>
-                <div className="btn-tertiary mt-4">
+                <div className="inline-flex items-center px-4 py-2 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-[10px] uppercase font-roboto-mono font-bold tracking-[0.15em] text-brand-text-secondary group-hover:text-brand-text-primary group-hover:bg-brand-accent/10 transition-all duration-300 mt-4">
                     View Project Details &rarr;
                 </div>
             </div>
@@ -116,20 +116,22 @@ interface CaseStudiesProps {
 
 const CaseStudies: React.FC<CaseStudiesProps> = ({ showProjectDetailPage }) => {
     return (
-        <section className="py-16 lg:py-20">
-            <div className="text-center mb-16">
-                <ScramblingHeading text="Featured Projects" />
-                <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">A selection of projects demonstrating real business impact.</p>
-            </div>
-            <div className="max-w-6xl mx-auto space-y-12">
-                {caseStudies.map((study, index) => (
-                    <CaseStudyCard
-                        key={study.title}
-                        study={study}
-                        reversed={index % 2 !== 0}
-                        onViewDetails={() => showProjectDetailPage(study)}
-                    />
-                ))}
+        <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
+            <div className="content-container">
+                <div className="text-center mb-16">
+                    <ScramblingHeading text="Featured Projects" />
+                    <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">A selection of projects demonstrating real business impact.</p>
+                </div>
+                <div className="max-w-6xl mx-auto space-y-12">
+                    {caseStudies.map((study, index) => (
+                        <CaseStudyCard
+                            key={study.title}
+                            study={study}
+                            reversed={index % 2 !== 0}
+                            onViewDetails={() => showProjectDetailPage(study)}
+                        />
+                    ))}
+                </div>
             </div>
         </section>
     );

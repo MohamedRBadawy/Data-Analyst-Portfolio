@@ -69,10 +69,10 @@ const CostOfInactionSection: React.FC = () => {
 
                 <div className="mb-20">
                     <h3 className="text-h3 font-poppins text-brand-accent mb-10 text-center">The Hidden Tax on Your Business</h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-xl)]">
                         {costs.map((cost, index) => (
-                            <div key={index} className="holographic-panel rounded-xl p-8 hover:border-brand-chaos/60 transition-all duration-300 group">
-                                <div className="w-14 h-14 rounded-lg bg-brand-chaos/10 flex items-center justify-center mb-6 text-brand-chaos group-hover:scale-110 transition-transform duration-300">
+                            <div key={index} className="holographic-panel rounded-xl p-[var(--space-lg)] hover:border-brand-chaos/60 transition-all duration-300 group">
+                                <div className="w-14 h-14 rounded-lg bg-brand-chaos/10 flex items-center justify-center mb-6 text-brand-chaos group-hover:scale-105 transition-transform duration-300">
                                     {cost.icon}
                                 </div>
                                 <h4 className="text-xl font-poppins font-bold text-brand-text-primary mb-4">
@@ -108,7 +108,7 @@ const CostOfInactionSection: React.FC = () => {
                         </span>
                     </div>
 
-                    <button className="btn btn-primary px-8 py-4 text-lg shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:shadow-[0_0_30px_rgba(239,68,68,0.6)] border-brand-chaos text-white bg-brand-chaos/90 hover:bg-brand-chaos transition-all duration-300">
+                    <button className="btn btn-primary px-8 py-4 text-lg shadow-[0_0_20px_color-mix(in_srgb,var(--brand-chaos)_40%,transparent)] hover:shadow-[0_0_30px_color-mix(in_srgb,var(--brand-chaos)_60%,transparent)] border-brand-chaos text-white bg-brand-chaos/90 hover:bg-brand-chaos transition-all duration-300">
                         Book Your Audit to Stop the Bleeding
                     </button>
                     <p className="text-sm text-brand-text-secondary mt-6">
@@ -121,3 +121,4 @@ const CostOfInactionSection: React.FC = () => {
 };
 
 export default CostOfInactionSection;
+

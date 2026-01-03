@@ -4,6 +4,7 @@ import { CaseStudy } from '../data/content';
 import { useMatrixCountUp } from '../hooks/useMatrixCountUp';
 import { useInteraction } from '../context/InteractionContext';
 import ScramblingHeading from './ScramblingHeading';
+import SectionIndex from './SectionIndex';
 import { CheckIcon, ClipboardListIcon, CodeIcon } from '../constants';
 
 interface ProjectDetailPageProps {
@@ -55,15 +56,18 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
     ];
 
     return (
-        <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-8 lg:px-16 animate-reveal-in">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen py-0 px-4 sm:px-8 lg:px-16 animate-reveal-in">
+            <SectionIndex sectionIds={['the-moment', 'what-was-at-risk', 'what-changed', 'how-it-worked', 'my-process', 'the-results', 'how-impact-measured']} />
+
+            <div className="max-w-4xl mx-auto pt-8 sm:pt-12">
                 <button
                     onClick={onBack}
                     onMouseEnter={() => setIsHovering(true)}
                     onMouseLeave={() => setIsHovering(false)}
-                    className="btn btn-secondary mb-8"
+                    className="inline-flex items-center px-4 py-2 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-[10px] sm:text-xs font-roboto-mono font-bold uppercase tracking-[0.15em] text-brand-text-secondary hover:text-brand-text-primary hover:bg-brand-accent/10 hover:border-brand-accent/40 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mb-8 group"
                 >
-                    &larr; Back to Work
+                    <span className="mr-2 transition-transform duration-300 group-hover:-translate-x-1">&larr;</span>
+                    Back to Work
                 </button>
 
                 <header className="text-center my-12">
@@ -80,7 +84,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                 <article className="space-y-16">
                     {/* Executive Story Format - Show if available */}
                     {project.theMoment && (
-                        <section>
+                        <section id="the-moment" data-title="Moment">
                             <h3 className="font-poppins text-h3 text-brand-chaos text-glow-chaos mb-6">The Moment</h3>
                             <p className="text-lg text-brand-text-primary leading-relaxed border-l-4 border-brand-chaos pl-6 sm:pl-8">
                                 {project.theMoment}
@@ -89,7 +93,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     )}
 
                     {project.whatWasAtRisk && (
-                        <section>
+                        <section id="what-was-at-risk" data-title="Risk">
                             <h3 className="font-poppins text-h3 text-brand-chaos text-glow-chaos mb-6">What Was at Risk</h3>
                             <p className="text-lg text-brand-text-primary leading-relaxed border-l-4 border-brand-chaos pl-6 sm:pl-8">
                                 {project.whatWasAtRisk}
@@ -98,7 +102,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     )}
 
                     {project.whatChanged && (
-                        <section>
+                        <section id="what-changed" data-title="The Pivot">
                             <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6">What Changed</h3>
                             <p className="text-lg text-brand-text-primary leading-relaxed border-l-4 border-brand-accent pl-6 sm:pl-8">
                                 {project.whatChanged}
@@ -107,12 +111,12 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     )}
 
                     {/* How It Worked - Original story field */}
-                    <section>
+                    <section id="how-it-worked" data-title="Logic">
                         <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-6">{project.theMoment ? 'How It Worked' : 'The Story'}</h3>
                         <p className="text-xl text-brand-text-primary leading-relaxed border-l-4 border-brand-accent pl-6 sm:pl-8">{project.story}</p>
                     </section>
 
-                    <section>
+                    <section id="my-process" data-title="Process">
                         <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-8 text-center">My Process</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {project.process.map((step, index) => (
@@ -124,9 +128,9 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                         </div>
                     </section>
 
-                    <section>
+                    <section id="the-results" data-title="Results">
                         <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-8 text-center">The Results</h3>
-                        <div className="flex flex-col lg:flex-row gap-8 holographic-panel p-6 sm:p-8 rounded-lg">
+                        <div className="flex flex-col lg:flex-row gap-[var(--space-xl)] holographic-panel p-6 sm:p-8 rounded-lg">
                             <div className="lg:w-1/2">
                                 <div className="flex items-center mb-4">
                                     <ClipboardListIcon className="w-8 h-8 text-brand-clarity mr-3" />
@@ -164,11 +168,519 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
 
                     {/* How the Impact Was Measured - Transparency & Auditability */}
                     {project.howMeasured && (
-                        <section>
+                        <section id="how-impact-measured" data-title="Audit">
                             <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6">How the Impact Was Measured</h3>
                             <p className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-border/50 pl-6 sm:pl-8">
                                 {project.howMeasured}
                             </p>
+                        </section>
+                    )}
+
+                    {/* Evidence & Artifacts - Proof of Work */}
+                    {project.id === 'automated-deals-reporting' && (
+                        <section>
+                            <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+
+                            <div className="space-y-8">
+                                {/* Artifact 1: Apps Script Execution Log */}
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Apps Script Execution Log</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Shows real-time execution data from actual batch processing runs. Each entry displays timestamp, processing duration in milliseconds, record count, and success status.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System processes 200+ deal records consistently in under 1 second per batch, with 100% success rate (zero failures).
+                                    </p>
+                                    <a href="/artifacts/deals-reporting/execution-log.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📄 View Execution Log (PDF)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (no deal IDs, client names, or amounts shown)
+                                    </p>
+                                </div>
+
+                                {/* Artifact 2: Process Flow Diagram */}
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Before/After Process Flow</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Visual comparison of manual workflow (6-8 steps, 16-25 hours) versus automated system (4 steps, 0.3 seconds).
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System eliminates human error points and consolidates complex logic into single automated pipeline. Manual steps that took hours complete in milliseconds.
+                                    </p>
+                                    <a href="/artifacts/deals-reporting/process-flow.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        🖼️ View Process Diagram (PNG)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (represents methodology, not specific business logic)
+                                    </p>
+                                </div>
+
+                                {/* Artifact 3: Sample Output File */}
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. CRM-Ready Output Sample</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Real CSV export format showing actual output structure: consistent columns, accurate calculations, zero manual corrections needed.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System produces perfectly formatted, CRM-ready output with no manual intervention. Data is consistent, accurate, and ready for one-click import.
+                                    </p>
+                                    <a href="/artifacts/deals-reporting/output-sample.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📥 Download CSV Sample
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (Deal IDs, patient names, and prices replaced with [REDACTED])
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 p-6 bg-brand-surface rounded-lg border border-brand-border">
+                                <p className="text-sm text-brand-text-secondary text-center">
+                                    <strong>Artifacts Storage & Access:</strong> All artifacts are anonymized, static files hosted with the portfolio. No external links or live system data exposed.
+                                </p>
+                            </div>
+                        </section>
+                    )}
+
+                    {project.id === 'manufacturing-qc-dashboard' && (
+                        <section>
+                            <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+
+                            <div className="space-y-8">
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Dashboard Before/After Comparison</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Visual comparison showing defect rate metrics before and after dashboard implementation, with facility-level performance breakdown.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Dashboard provided real-time visibility enabling QC managers to identify root causes and drive a 41% defect reduction.
+                                    </p>
+                                    <a href="/artifacts/manufacturing-qc/dashboard-before-after.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        🖼️ View Dashboard (PNG)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (facility names generalized)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Root Cause Analysis Report</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Sample analysis showing how dashboard data revealed specific quality issues and led to targeted process improvements.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Dashboard insights were actionable and directly drove measurable quality improvements across facilities.
+                                    </p>
+                                    <a href="/artifacts/manufacturing-qc/root-cause-analysis-sample.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📄 View Analysis (PDF)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (facility and product names generalized)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Facility Defect Data Sample</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Real dataset showing defect metrics by facility and product type, demonstrating data quality and granularity available to managers.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Dashboard is backed by consistent, reliable data that managers can drill down into for analysis.
+                                    </p>
+                                    <a href="/artifacts/manufacturing-qc/facility-defect-data-sample.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📥 Download Data (CSV)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (facility names generalized)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 p-6 bg-brand-surface rounded-lg border border-brand-border">
+                                <p className="text-sm text-brand-text-secondary text-center">
+                                    <strong>Artifacts Storage & Access:</strong> All artifacts are anonymized, static files hosted with the portfolio. No external links or live system data exposed.
+                                </p>
+                            </div>
+                        </section>
+                    )}
+
+                    {project.id === 'otp-facilities-report' && (
+                        <section>
+                            <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+
+                            <div className="space-y-8">
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Global OTP Trend Dashboard</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Real-time dashboard showing OTP progression from below-threshold to stable above 50%, with facility-level performance comparison and alert indicators.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Dashboard enabled real-time visibility and immediate response to OTP drops, preventing contract breach and stabilizing performance.
+                                    </p>
+                                    <a href="/artifacts/otp-facilities/global-otp-dashboard.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        🖼️ View Dashboard (PNG)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (facility names generalized)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Facility Performance Analysis</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Deep dive analysis showing how dashboard data revealed facility-specific OTP drivers and enabled targeted improvement initiatives.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Dashboard insights led to specific, measurable facility improvements and overall OTP stabilization above critical threshold.
+                                    </p>
+                                    <a href="/artifacts/otp-facilities/facility-otp-analysis-sample.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📄 View Analysis (PDF)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (facility names generalized)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Weekly OTP Performance Tracking</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        12-week dataset showing OTP progression by facility, demonstrating sustained improvement and prevention of contract breach risk.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> OTP improvement was measured weekly across all facilities, showing consistent, data-driven progress toward contractual targets.
+                                    </p>
+                                    <a href="/artifacts/otp-facilities/weekly-otp-tracking.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📥 Download Data (CSV)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (facility names generalized)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 p-6 bg-brand-surface rounded-lg border border-brand-border">
+                                <p className="text-sm text-brand-text-secondary text-center">
+                                    <strong>Artifacts Storage & Access:</strong> All artifacts are anonymized, static files hosted with the portfolio. No external links or live system data exposed.
+                                </p>
+                            </div>
+                        </section>
+                    )}
+
+                    {project.id === 'logistics-automation-pipeline' && (
+                        <section>
+                            <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+
+                            <div className="space-y-8">
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Scheduling Process Flow Diagram</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Before/after visual comparison showing manual scheduling (48 hours, 5+ steps) versus automated system (1 second, fully automatic).
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Complete elimination of manual data consolidation, enabling instant scheduling and complex contract support.
+                                    </p>
+                                    <a href="/artifacts/logistics-automation/scheduling-process-flow.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        🖼️ View Process Flow (PNG)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (client names generalized)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Sample Automation Output</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Real scheduling output showing generated trip assignments, pricing, and driver allocations ready for immediate dispatch.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System generates production-ready schedules with consistent pricing and optimized driver assignments in sub-second time.
+                                    </p>
+                                    <a href="/artifacts/logistics-automation/scheduling-output-sample.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📥 Download Schedule (CSV)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (client and driver names generalized)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Automation Execution Log</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Complete execution log showing all automation steps completing successfully with zero errors across multiple test runs.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System reliably executes complex scheduling logic in milliseconds with 100% success rate and zero manual intervention.
+                                    </p>
+                                    <a href="/artifacts/logistics-automation/automation-execution-log.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📄 View Log (PDF)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (no sensitive scheduling data)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 p-6 bg-brand-surface rounded-lg border border-brand-border">
+                                <p className="text-sm text-brand-text-secondary text-center">
+                                    <strong>Artifacts Storage & Access:</strong> All artifacts are anonymized, static files hosted with the portfolio. No external links or live system data exposed.
+                                </p>
+                            </div>
+                        </section>
+                    )}
+
+                    {project.id === 'dispatch-automation-expack' && (
+                        <section>
+                            <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+
+                            <div className="space-y-8">
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Dispatch Workflow Improvement Diagram</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Before/after process flow showing elimination of manual AWB creation, tracking entry, and reconciliation steps through automation.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Automation eliminated multiple error-prone manual touchpoints, resulting in 75% error reduction and 20% OTD improvement.
+                                    </p>
+                                    <a href="/artifacts/dispatch-automation/dispatch-workflow-before-after.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        🖼️ View Workflow (PNG)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (no shipment details)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Air Waybill Generation Quality Sample</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Sample batch of auto-generated Air Waybills showing consistent formatting, accurate data population, and zero errors or manual corrections needed.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System generates production-ready documentation at scale with perfect consistency and zero defects.
+                                    </p>
+                                    <a href="/artifacts/dispatch-automation/awb-generation-sample-batch.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📄 View Sample (PDF)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (tracking numbers and addresses anonymized)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Dispatch Performance Metrics</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        4-week performance dataset showing error elimination and on-time delivery improvement from 78% to 94% as automation matured.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Measurable, sustained improvement in dispatch reliability with zero errors maintained over extended operation.
+                                    </p>
+                                    <a href="/artifacts/dispatch-automation/dispatch-performance-metrics.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📥 Download Metrics (CSV)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (facility names generalized)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 p-6 bg-brand-surface rounded-lg border border-brand-border">
+                                <p className="text-sm text-brand-text-secondary text-center">
+                                    <strong>Artifacts Storage & Access:</strong> All artifacts are anonymized, static files hosted with the portfolio. No external links or live system data exposed.
+                                </p>
+                            </div>
+                        </section>
+                    )}
+
+                    {project.id === 'team-performance-dashboard' && (
+                        <section>
+                            <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+
+                            <div className="space-y-8">
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Team Performance Dashboard</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Real-time dashboard showing individual and team rework rates, utilization metrics, and SLA compliance with trend analysis over 8 weeks.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Dashboard provided objective performance visibility enabling managers to identify improvement opportunities and guide team coaching.
+                                    </p>
+                                    <a href="/artifacts/team-performance/team-performance-dashboard.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        🖼️ View Dashboard (PNG)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (team member names generalized)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Performance Coaching Case Study</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Real example of how dashboard data transformed performance management from subjective assessment to data-driven coaching with measurable improvement.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Dashboard metrics enabled specific, targeted coaching that resulted in measured performance improvement for struggling team members.
+                                    </p>
+                                    <a href="/artifacts/team-performance/performance-coaching-example.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📄 View Case Study (PDF)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (team member identities protected)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Weekly Performance Metrics</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        8-week dataset showing individual team member rework and utilization metrics, demonstrating team-wide improvement and performance variation visibility.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Consistent metrics tracking enabled fair workload distribution and targeted support where needed, driving overall team efficiency.
+                                    </p>
+                                    <a href="/artifacts/team-performance/team-performance-weekly.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📥 Download Metrics (CSV)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (team member names generalized)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 p-6 bg-brand-surface rounded-lg border border-brand-border">
+                                <p className="text-sm text-brand-text-secondary text-center">
+                                    <strong>Artifacts Storage & Access:</strong> All artifacts are anonymized, static files hosted with the portfolio. No external links or live system data exposed.
+                                </p>
+                            </div>
+                        </section>
+                    )}
+
+                    {project.id === 'financial-data-integration' && (
+                        <section>
+                            <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+
+                            <div className="space-y-8">
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Financial Data Consolidation Flow</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Diagram showing automated consolidation of multiple data sources (contract trips, private trips, adjustments, payments) into unified financial report.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System consolidates complex, multi-source financial data automatically, eliminating manual entry errors and ensuring 100% accuracy.
+                                    </p>
+                                    <a href="/artifacts/financial-integration/financial-data-consolidation-flow.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        🖼️ View Flow (PNG)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (column names generic)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Monthly Financial Report Comparison</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Before/after comparison showing specific errors found in manual consolidation versus zero errors in automated system.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Automation eliminated 15+ monthly errors, ensuring audit-ready financial accuracy and reducing reconciliation time to zero.
+                                    </p>
+                                    <a href="/artifacts/financial-integration/monthly-financial-report-comparison.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📄 View Comparison (PDF)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (amounts may be redacted or representative)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Consolidated Financial Dataset</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Sample of consolidated monthly financial data showing clean structure, consistent calculations, and complete data integrity across all revenue streams.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System produces perfectly formatted, audit-ready financial data with zero manual corrections needed.
+                                    </p>
+                                    <a href="/artifacts/financial-integration/monthly-financial-data-sample.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📥 Download Data (CSV)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (client names may be generalized)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 p-6 bg-brand-surface rounded-lg border border-brand-border">
+                                <p className="text-sm text-brand-text-secondary text-center">
+                                    <strong>Artifacts Storage & Access:</strong> All artifacts are anonymized, static files hosted with the portfolio. No external links or live system data exposed.
+                                </p>
+                            </div>
+                        </section>
+                    )}
+
+                    {project.id === 'client-intake-automation' && (
+                        <section>
+                            <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+
+                            <div className="space-y-8">
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Intake Automation Workflow Diagram</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Complete workflow showing form submission triggering automated folder creation, template population, and team notification in 45 seconds.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> Complete end-to-end automation eliminates 2-3 days of manual onboarding work, enabling same-day project startup.
+                                    </p>
+                                    <a href="/artifacts/client-intake/intake-automation-workflow.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        🖼️ View Workflow (PNG)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (no client-specific details)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Sample Intake Form Submission</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Example intake form response showing how submitted data automatically triggers folder creation and template population for new project setup.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System captures all necessary project information from single form and auto-generates complete project infrastructure.
+                                    </p>
+                                    <a href="/artifacts/client-intake/sample-intake-form-submission.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📄 View Sample (PDF)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (client names and contact info generalized)
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Automation Execution Logs</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Multiple automation runs showing consistent 45-second execution time, 100% success rate, and zero errors across all automation steps.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> System reliably handles unlimited client intakes with zero manual work and zero failures, enabling scalable growth.
+                                    </p>
+                                    <a href="/artifacts/client-intake/intake-automation-logs.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📥 Download Logs (CSV)
+                                    </a>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized (no sensitive project data)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 p-6 bg-brand-surface rounded-lg border border-brand-border">
+                                <p className="text-sm text-brand-text-secondary text-center">
+                                    <strong>Artifacts Storage & Access:</strong> All artifacts are anonymized, static files hosted with the portfolio. No external links or live system data exposed.
+                                </p>
+                            </div>
                         </section>
                     )}
 
@@ -181,6 +693,24 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                     <span className="text-brand-text-primary">{item}</span>
                                 </div>
                             ))}
+                        </div>
+                    </section>
+
+                    <section className="mt-20 py-16 border-t border-brand-border/20">
+                        <div className="text-center">
+                            <h3 className="font-poppins text-h3 text-brand-text-primary mb-4">Interested in Similar Results?</h3>
+                            <p className="text-brand-text-secondary mb-8 max-w-2xl mx-auto">
+                                This is one example of how I transform operational chaos into automated clarity. Ready to explore what's possible for your business?
+                            </p>
+                            <button
+                                onClick={onBack}
+                                onMouseEnter={() => setIsHovering(true)}
+                                onMouseLeave={() => setIsHovering(false)}
+                                className="inline-flex items-center px-8 py-4 bg-brand-cta text-brand-bg font-poppins font-bold rounded-lg hover:shadow-[0_8px_24px_rgba(255,199,0,0.3)] transition-all duration-300"
+                            >
+                                Explore More Projects
+                                <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                            </button>
                         </div>
                     </section>
                 </article>

@@ -15,14 +15,15 @@ const Contact: React.FC = () => {
     ];
 
     return (
-        <section className="py-16 lg:py-20">
-            <div className="text-center mb-12">
-                <ScramblingHeading text="Let's Optimize Your Workflow Together" />
-                <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">
-                    Ready to turn chaos into clarity? The first step is a conversation. Book a complimentary audit, and let's build your blueprint for success.
-                </p>
-                <p className="font-roboto-mono text-brand-accent mt-6">I'll respond within 24 business hours.</p>
-            </div>
+        <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
+            <div className="content-container">
+                <div className="text-center mb-12">
+                    <ScramblingHeading text="Let's Optimize Your Workflow Together" />
+                    <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">
+                        Ready to turn chaos into clarity? The first step is a conversation. Book a complimentary audit, and let's build your blueprint for success.
+                    </p>
+                    <p className="font-roboto-mono text-brand-accent mt-6">I'll respond within 24 business hours.</p>
+                </div>
             <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-12">
                     <a
@@ -62,6 +63,7 @@ const Contact: React.FC = () => {
                         mohamed.raouf.badawy88@gmail.com
                     </a>
                 </div>
+            </div>
             </div>
         </section>
     );

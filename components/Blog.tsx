@@ -20,34 +20,35 @@ const Blog: React.FC = () => {
     }, [searchTerm, selectedTag]);
 
     return (
-        <section className="py-16 lg:py-20">
-            <div className="text-center mb-16">
-                <ScramblingHeading text="Insights & Articles" />
-                <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">Here's how I think about solving complex data problems. I share my thoughts on strategy, automation, and finding business clarity.</p>
-            </div>
-            
-            <div className="max-w-6xl mx-auto mb-12 p-6 holographic-panel rounded-xl">
-                <div className="flex flex-col md:flex-row gap-4 mb-4">
-                    <input
-                        type="text"
-                        placeholder="Search articles..."
-                        value={searchTerm}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
-                        className="w-full md:w-1/2 p-3 bg-brand-bg border border-brand-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-accent text-brand-text-primary"
-                    />
+        <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
+            <div className="content-container">
+                <div className="text-center mb-16">
+                    <ScramblingHeading text="Insights & Articles" />
+                    <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">Here's how I think about solving complex data problems. I share my thoughts on strategy, automation, and finding business clarity.</p>
                 </div>
-                 <div className="flex flex-wrap gap-2">
-                    <button 
-                        onClick={() => setSelectedTag(null)}
-                        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === null ? 'bg-brand-accent text-brand-bg' : 'bg-brand-surface hover:bg-brand-border'}`}
-                    >
-                        All
-                    </button>
-                    {allTags.map(tag => (
+                
+                <div className="max-w-6xl mx-auto mb-12 p-6 holographic-panel rounded-xl">
+                    <div className="flex flex-col md:flex-row gap-4 mb-4">
+                        <input
+                            type="text"
+                            placeholder="Search articles..."
+                            value={searchTerm}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
+                            className="w-full md:w-1/2 p-3 bg-brand-bg border border-brand-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-accent text-brand-text-primary"
+                        />
+                    </div>
+                     <div className="flex flex-wrap gap-2">
                         <button 
-                            key={tag}
-                            onClick={() => setSelectedTag(tag)}
-                            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === tag ? 'bg-brand-accent text-brand-bg' : 'bg-brand-surface hover:bg-brand-border'}`}
+                            onClick={() => setSelectedTag(null)}
+                            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === null ? 'bg-brand-accent text-brand-bg' : 'bg-brand-surface hover:bg-brand-border'}`}
+                        >
+                            All
+                        </button>
+                        {allTags.map(tag => (
+                            <button 
+                                key={tag}
+                                onClick={() => setSelectedTag(tag)}
+                                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === tag ? 'bg-brand-accent text-brand-bg' : 'bg-brand-surface hover:bg-brand-border'}`}
                         >
                             {tag}
                         </button>
@@ -55,7 +56,7 @@ const Blog: React.FC = () => {
                 </div>
             </div>
 
-            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-[var(--space-xl)]">
                 {filteredPosts.length > 0 ? filteredPosts.map(post => (
                     <a 
                         href="#" 
@@ -81,6 +82,7 @@ const Blog: React.FC = () => {
                         <p className="text-brand-text-secondary/70">Try a different search or filter.</p>
                     </div>
                 )}
+            </div>
             </div>
         </section>
     );

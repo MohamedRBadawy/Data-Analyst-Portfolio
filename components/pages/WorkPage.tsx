@@ -2,6 +2,8 @@ import React from 'react';
 import ScramblingHeading from '../ScramblingHeading';
 import ProjectsPage from '../ProjectsPage';
 import ExperiencePage from '../ExperiencePage';
+import Testimonials from '../Testimonials';
+import SectionNav from '../SectionNav';
 import { CaseStudy, WorkExperience } from '../../data/content';
 import NextPageButton from '../NextPageButton';
 import { Page } from '../../App';
@@ -22,15 +24,20 @@ const WorkPage: React.FC<WorkPageProps> = ({ showProjectDetailPage, showExperien
                         This is a collection of my professional experience and a deep dive into the projects I've delivered. Explore how I've transformed complex challenges into clear, data-driven solutions.
                     </p>
                 </div>
-                
+                <SectionNav sectionIds={['work-experience', 'case-studies', 'testimonials', 'archive']} />
+
                 {/* Experience Section */}
-                <div className="mb-24">
-                   <ExperiencePage showMainPage={() => {}} showDetailPage={showExperienceDetailPage} />
+                <div className="mb-24" id="work-experience" data-title="EXPERIENCE">
+                    <ExperiencePage showMainPage={() => { }} showDetailPage={showExperienceDetailPage} />
                 </div>
 
-                {/* Projects Section */}
-                <div>
-                   <ProjectsPage showMainPage={() => {}} showProjectDetailPage={showProjectDetailPage} />
+                <div id="case-studies" data-title="CASE STUDIES">
+                    <ProjectsPage showMainPage={() => { }} showProjectDetailPage={showProjectDetailPage} />
+                </div>
+
+                {/* Testimonials Section */}
+                <div id="testimonials" className="mb-24" data-title="TESTIMONIALS">
+                    <Testimonials showProjectDetailPage={showProjectDetailPage} />
                 </div>
             </div>
             <NextPageButton navigateTo={navigateTo} nextPage="about" label="About" />

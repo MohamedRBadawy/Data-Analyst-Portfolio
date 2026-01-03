@@ -23,22 +23,22 @@ const ServiceComparisonTable: React.FC = () => {
     };
 
     return (
-        <div className="overflow-x-auto holographic-panel p-4 rounded-xl">
-            <table className="w-full min-w-[1000px] border-collapse text-center">
+        <div className="overflow-x-auto holographic-panel p-[var(--space-lg)] rounded-xl">
+            <table className="w-full text-xs md:text-sm border-collapse text-center">
                 <thead>
                     <tr className="border-b border-brand-border">
-                        <th className="p-4 text-left font-poppins text-brand-text-primary">Feature</th>
+                        <th className="p-[var(--space-md)] md:p-[var(--space-lg)] text-left font-poppins text-brand-text-primary">Feature</th>
                         {headers.map(header => (
-                            <th key={header.key} className="p-4 font-poppins text-brand-accent whitespace-nowrap">{header.label}</th>
+                            <th key={header.key} className="p-[var(--space-md)] md:p-[var(--space-lg)] font-poppins text-brand-accent whitespace-nowrap">{header.label}</th>
                         ))}
                     </tr>
                 </thead>
                 <tbody>
                     {serviceComparisonData.map((row, rowIndex) => (
                         <tr key={rowIndex} className="border-b border-brand-border/50 last:border-b-0">
-                            <td className="p-4 text-left font-bold text-brand-text-primary">{row.feature}</td>
+                            <td className="p-[var(--space-md)] md:p-[var(--space-lg)] text-left font-bold text-brand-text-primary">{row.feature}</td>
                             {headers.map(header => (
-                                <td key={header.key} className="p-4">
+                                <td key={header.key} className="p-[var(--space-md)] md:p-[var(--space-lg)]">
                                     {renderCellValue(row[header.key as keyof typeof row])}
                                 </td>
                             ))}

@@ -2,12 +2,7 @@ import React from 'react';
 import Hero from '../Hero';
 import TrustedBy from '../TrustedBy';
 import Testimonial from '../Testimonial';
-import QualificationSection from '../QualificationSection';
-import CostOfInactionSection from '../CostOfInactionSection';
-import ProblemSolution from '../ProblemSolution';
-import FoundersAdvantageSection from '../FoundersAdvantageSection';
-import FAQSection from '../FAQSection';
-import PostAuditSection from '../PostAuditSection';
+import HowIHelp from '../HowIHelp';
 import { Page } from '../../App';
 import { CaseStudy } from '../../data/content';
 import NextPageButton from '../NextPageButton';
@@ -23,41 +18,18 @@ const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
             <Hero navigateTo={navigateTo} />
             <TrustedBy />
 
-            {/* Social Proof - Hero Testimonial */}
             <section className="py-12 px-6 lg:px-12">
                 <Testimonial
                     variant="hero"
-                    quote="Mohamed transformed our deals desk from a 128-hour weekly nightmare into a one-click system. Our team finally has time to think strategically instead of drowning in spreadsheets. (Used with permission.)"
+                    quote="Mohamed transformed our deals desk from a 128-hour weekly nightmare into a one-click system. Our team finally has time to think strategically instead of drowning in spreadsheets."
                     name="Sarah Chen"
                     role="Deals Desk Manager"
                     company="K Line Europe"
-                    result="Transformed team efficiency"
+                    result="128 hours saved per week"
                 />
             </section>
 
-            <QualificationSection />
-            <CostOfInactionSection />
-
-            {/* Social Proof - After Problem Framing */}
-            <section className="py-12 px-6 lg:px-12 bg-brand-surface/30">
-                <div className="max-w-4xl mx-auto">
-                    <Testimonial
-                        variant="compact"
-                        quote="The automated system significantly reduced errors in our operations. The impact has been measurable and sustained. (Used with permission.)"
-                        name="Ahmed Khalil"
-                        role="Operations Director"
-                        company="Expack Shipping"
-                        result="Reduced operational errors"
-                    />
-                </div>
-            </section>
-
-            <ProblemSolution navigateTo={navigateTo} />
-            <FoundersAdvantageSection />
-
-            {/* FAQ and Post-Audit on Home Page */}
-            <FAQSection />
-            <PostAuditSection />
+            <HowIHelp />
 
             <NextPageButton navigateTo={navigateTo} nextPage="work" label="View Case Studies" />
         </div>

@@ -16,13 +16,14 @@ import HomePage from './components/pages/HomePage';
 import WorkPage from './components/pages/WorkPage';
 import AboutPage from './components/pages/AboutPage';
 import ServicesPage from './components/pages/ServicesPage';
+import ProcessPage from './components/pages/ProcessPage';
 // ToolkitPage imported but unused intentionally
 import ContactPage from './components/pages/ContactPage';
 
 
-export type Page = 'home' | 'work' | 'about' | 'services' | 'contact' | 'projectDetail' | 'serviceDetail' | 'experienceDetail';
+export type Page = 'home' | 'work' | 'about' | 'services' | 'process' | 'contact' | 'projectDetail' | 'serviceDetail' | 'experienceDetail';
 
-const pageOrder: Page[] = ['home', 'work', 'about', 'services', 'contact'];
+const pageOrder: Page[] = ['home', 'work', 'about', 'services', 'process', 'contact'];
 
 const App: React.FC = () => {
     // Initialize state from hash or default to 'home'
@@ -95,6 +96,8 @@ const App: React.FC = () => {
                 return <AboutPage showProjectDetailPage={showProjectDetailPage} navigateTo={navigateTo} />;
             case 'services':
                 return <ServicesPage navigateTo={navigateTo} showServiceDetailPage={showServiceDetailPage} />;
+            case 'process':
+                return <ProcessPage navigateTo={navigateTo} />;
             case 'contact':
                 return <ContactPage />;
             case 'projectDetail':

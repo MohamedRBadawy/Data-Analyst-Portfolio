@@ -523,10 +523,13 @@ export const industriesData: Industry[] = [
 ];
 
 export const milestones = [
-    { year: 2010, title: "Graduated Cairo University", description: "Earned a Bachelor of Commerce in Accounting, which gave me a strong foundation in financial processes and business logic.", position: '10%' },
-    { year: 2017, title: "Joined Talabat", description: "As a Partner Support Specialist, I honed my technical assistance and problem-solving skills, training partners on the platform.", position: '35%' },
-    { year: 2018, title: "Founded Expack Shipping", description: "As founder, I led operations and helped the team by building the custom dispatch and tracking systems that drove our efficiency.", position: '60%' },
-    { year: 2023, title: "Data & BI Lead at K Line Europe", description: "Solely responsible for preparing data and building all operational dashboards in Looker. Partnered with teams to redesign workflows and built AI/MES prototypes.", position: '90%' },
+    { year: 2010, title: "Graduated Cairo University", description: "Earned a Bachelor of Commerce in Accounting, which gave me a strong foundation in financial processes and business logic.", position: '5%' },
+    { year: 2013, title: "Early Operations & Manual Limits", description: "Worked across accounting, teaching, B2B sales, and pharmacy operations. High effort, fast learning, no leverage. Recognized the limits of manual work.", position: '20%' },
+    { year: 2015, title: "High-Volume Operations Exposure", description: "Entered KPI-driven customer support and operations environments. Repeated exposure to broken workflows, manual coordination failures, and visibility gaps at scale.", position: '35%' },
+    { year: 2017, title: "Operations Specialist at Talabat", description: "Dispatcher and partner support managing ~50 drivers per shift. Real-time order coordination exposed manual process failures and decision latency.", position: '50%' },
+    { year: 2018, title: "Founded Expack Shipping", description: "Built custom dispatch and tracking systems to solve operational chaos. Scaled to 94% on-time delivery before operational complexity caused cash flow collapse.", position: '65%' },
+    { year: 2022, title: "System Thinking Crystallized", description: "After Expack's operational failure, recognized: systems must be designed before scaling. Process redesign comes before automation.", position: '80%' },
+    { year: 2023, title: "Operational Data Systems Lead at K Line Europe", description: "Sole owner of data lifecycle and automation systems. Leading MES development and AI agent integration across workflows.", position: '95%' },
 ];
 
 export const testimonials = [
@@ -1000,9 +1003,9 @@ export const experienceData: WorkExperience[] = [
     {
         id: "kline",
         company: "K Line Europe",
-        role: "Data & BI Lead",
+        role: "Operational Data Systems Lead",
         dates: "2023 - Present",
-        summary: "As the sole data specialist, I am responsible for the entire data lifecycle, from preparing raw data to building executive-level BI dashboards. I partner with operational teams to redesign workflows and build automation tools. Currently, I am leading the development of a new MES using Tulip and spearheading the integration of AI agents into our core workflows to automate manual processes.",
+        summary: "As the sole owner of data and automation systems, I manage the complete data lifecycle—from raw data preparation to executive-level dashboards. I lead cross-functional workflow redesigns and build automation tools that eliminate manual work. Currently leading development of a new Manufacturing Execution System (MES) using Tulip, and driving company-wide integration of AI agents into core operational workflows.",
         contributions: [
             "Leading the development of a new Manufacturing Execution System (MES) using the Tulip platform, having successfully built and demonstrated the initial prototype.",
             "Spearheading a company-wide initiative to integrate AI and AI agents into departmental workflows, designing systems to offload heavy manual work.",
@@ -1029,19 +1032,41 @@ export const experienceData: WorkExperience[] = [
             { category: "Core Skills", items: ["Process Optimization", "Workflow Design", "AI Workflow Design", "Systems Thinking"] }
         ],
         zohoExpertise: [
-            { product: "Zoho Projects", usage: "Managed project timelines, resource allocation, and task dependencies for all data-centric initiatives, ensuring projects were delivered on schedule." },
-            { product: "Zoho Analytics", usage: "Served as the primary developer for BI dashboards, connecting multiple data sources to create comprehensive reports that tracked KPIs across the organization." },
-            { product: "Zoho CRM", usage: "Automated the flow of sales and deals data into the CRM, providing the sales team with a real-time, accurate single source of truth for client interactions and performance." },
-            { product: "Zoho Desk", usage: "Integrated the support desk system with production databases to streamline issue resolution, linking customer tickets directly to relevant operational data." },
-            { product: "Zoho Inventory", usage: "Developed custom solutions within Zoho Inventory to optimize stock level tracking and automate reorder point notifications, reducing manual checks and preventing stockouts." }
+            { product: "Zoho Projects", usage: "Own configuration and optimization of project management system. Defined workflows, resource allocation rules, and task dependencies for all data-centric initiatives. System owner responsible for ongoing maintenance and team training." },
+            { product: "Zoho Analytics", usage: "System owner and primary developer for all BI dashboards. Architect data connections across multiple sources, build executive KPI reports, and maintain data pipeline integrity organization-wide." },
+            { product: "Zoho CRM", usage: "Own CRM data architecture and automation workflows. Designed and maintain automated data flows that provide sales team with real-time, accurate single source of truth for client interactions and performance." },
+            { product: "Zoho Desk", usage: "System owner responsible for support desk infrastructure. Built and maintain integrations between support system and production databases, enabling direct linkage between customer tickets and operational data." },
+            { product: "Zoho Inventory", usage: "Own Zoho Inventory configuration and custom automation. Built stock tracking optimizations and automated reorder point notifications. System owner responsible for ongoing optimization and error prevention." }
         ],
+    },
+    {
+        id: "operations-support",
+        company: "Operations & Customer Support",
+        role: "Operations Specialist",
+        dates: "2014 - 2017",
+        summary: "Worked across high-pressure, KPI-driven operations environments including customer support, delivery coordination, and real-time dispatch. Managed operations for telecom support (Xceed/Teleperformance - DU), collections (Raya - Etisalat), delivery operations (Fetcher), and live dispatcher coordination (Talabat - ~50 drivers per shift). Repeated exposure to manual process failures at scale.",
+        contributions: [
+            "Coordinated real-time dispatch and order management in high-volume environments.",
+            "Managed customer support escalations and partner training across multiple platforms.",
+            "Identified recurring operational bottlenecks caused by lack of real-time visibility.",
+            "Recognized that process failures were structural, not human error."
+        ],
+        achievements: [
+            "Developed deep understanding of operational friction at scale.",
+            "Recognized patterns: manual coordination creates decision latency and visibility gaps.",
+            "Identified that systems were failing people, not the other way around."
+        ],
+        projects: [],
+        tools: [
+            { category: "Operations", items: ["Dispatch Coordination", "Customer Support", "Real-Time Problem Solving", "KPI Management"] }
+        ]
     },
     {
         id: "expack",
         company: "Expack Shipping",
         role: "Founder",
         dates: "2018 - 2022",
-        summary: "As the founder, I built the company from the ground up, overseeing all aspects of operations, business development, and technology. A key focus was creating lean, technology-driven processes to compete with larger players, leading me to develop a custom dispatch and tracking system that became our core operational advantage.",
+        summary: "As the founder, I built the company from the ground up, overseeing all aspects of operations, business development, and technology. A key focus was creating lean, technology-driven processes to compete with larger players, leading me to develop a custom dispatch and tracking system that became our core operational advantage. The company ultimately failed due to operational chaos outpacing cash flow, not lack of demand — a lesson that shaped my approach to systems design.",
         contributions: [
             "Designed and built the company's entire operational infrastructure using Google Sheets and Google Apps Script.",
             "Automated key logistics processes including dispatch, Air Waybill (AWB) generation, and package tracking.",

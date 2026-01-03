@@ -30,28 +30,18 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, title, quote, i
     };
 
     const isClickable = !!caseStudyId;
-    
+
     // Determine if image is initials (short string) or URL
     const isInitials = image && image.length <= 2;
-    const getInitialsColor = (initials: string) => {
-        const colors: { [key: string]: string } = {
-            'AH': 'bg-blue-600',
-            'JS': 'bg-purple-600',
-            'FA': 'bg-pink-600',
-            'SC': 'bg-emerald-600',
-            'AK': 'bg-cyan-600'
-        };
-        return colors[initials] || 'bg-slate-600';
-    };
 
     return (
-        <div 
+        <div
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onClick={isClickable ? onViewDetails : undefined}
             onMouseEnter={isClickable ? () => setIsHovering(true) : undefined}
             onMouseLeave={isClickable ? () => setIsHovering(false) : undefined}
-            className={`interactive-glow holographic-panel rounded-xl p-8 flex flex-col ${isClickable ? 'cursor-pointer' : ''}`}
+            className={`interactive-glow holographic-panel rounded-xl p-8 flex flex-col border border-brand-border/20 ${isClickable ? 'cursor-pointer' : ''}`}
         >
             <p className="text-brand-text-primary flex-grow z-10 text-lg leading-relaxed">"{quote}"</p>
             {caseStudyId && (
@@ -60,9 +50,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, title, quote, i
                 </div>
             )}
             <div className="mt-6 flex items-center justify-between z-10 border-t border-brand-border/50 pt-6">
-                 <div className="flex items-center">
+                <div className="flex items-center">
                     {isInitials ? (
-                        <div className={`w-12 h-12 rounded-full mr-4 border-2 border-brand-accent flex items-center justify-center ${getInitialsColor(image)} text-white font-bold text-sm`}>
+                        <div className="w-12 h-12 rounded-full mr-4 border-2 border-brand-accent flex items-center justify-center bg-brand-border text-brand-text-primary font-bold text-sm">
                             {image}
                         </div>
                     ) : (
@@ -96,19 +86,21 @@ const Testimonials: React.FC<TestimonialsProps> = ({ showProjectDetailPage }) =>
     };
 
     return (
-        <section className="py-16 lg:py-20">
-            <div className="text-center mb-16">
-                <ScramblingHeading text="Don't Just Take My Word For It" />
-                <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">See how my work has translated into real, measurable results for my clients and partners.</p>
-            </div>
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {testimonials.map((t, i) => (
-                    <TestimonialCard 
-                        key={i} 
-                        {...t} 
-                        onViewDetails={() => handleViewDetails(t.caseStudyId)}
-                    />
-                ))}
+        <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
+            <div className="content-container">
+                <div className="text-center mb-16">
+                    <ScramblingHeading text="Don't Just Take My Word For It" />
+                    <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">See how my work has translated into real, measurable results for my clients and partners.</p>
+                </div>
+                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-xl)]">
+                    {testimonials.map((t, i) => (
+                        <TestimonialCard
+                            key={i}
+                            {...t}
+                            onViewDetails={() => handleViewDetails(t.caseStudyId)}
+                        />
+                    ))}
+                </div>
             </div>
         </section>
     );

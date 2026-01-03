@@ -11,11 +11,11 @@ interface ExperiencePageProps {
 const ExperienceCard: React.FC<{ experience: WorkExperience; onViewDetails: () => void; }> = ({ experience, onViewDetails }) => {
     const { setIsHovering } = useInteraction();
     return (
-        <div 
+        <div
             onClick={onViewDetails}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className="holographic-panel rounded-xl p-8 flex flex-col cursor-pointer"
+            className="holographic-panel rounded-xl p-[var(--space-lg)] flex flex-col cursor-pointer"
         >
             <div className="flex-grow">
                 <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent">{experience.company}</h3>
@@ -23,7 +23,7 @@ const ExperienceCard: React.FC<{ experience: WorkExperience; onViewDetails: () =
                 <p className="font-roboto-mono text-sm text-brand-text-secondary/70 mb-4">{experience.dates}</p>
                 <p className="text-brand-text-secondary">{experience.summary}</p>
             </div>
-            <div className="btn-tertiary mt-8 self-start">
+            <div className="inline-flex items-center px-4 py-2 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-[10px] uppercase font-roboto-mono font-bold tracking-[0.15em] text-brand-text-secondary group-hover:text-brand-text-primary group-hover:bg-brand-accent/10 transition-all duration-300 mt-8 self-start">
                 View Details &rarr;
             </div>
         </div>
@@ -32,7 +32,7 @@ const ExperienceCard: React.FC<{ experience: WorkExperience; onViewDetails: () =
 
 const ExperiencePage: React.FC<ExperiencePageProps> = ({ showDetailPage }) => {
     return (
-        <div className="min-h-screen">
+        <section className="min-h-screen">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
                     <ScramblingHeading text="Work Experience" />
@@ -47,7 +47,7 @@ const ExperiencePage: React.FC<ExperiencePageProps> = ({ showDetailPage }) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

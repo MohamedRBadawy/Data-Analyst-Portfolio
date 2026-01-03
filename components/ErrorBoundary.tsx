@@ -40,7 +40,7 @@ class ErrorBoundary extends Component<Props, State> {
                         </div>
                         <button
                             onClick={() => window.location.reload()}
-                            className="bg-[#FFC700] text-[#02040A] font-bold py-3 px-8 rounded hover:scale-105 transition-transform"
+                            className="bg-[#FFC700] text-[#02040A] font-bold py-3 px-8 rounded hover:scale-102 transition-transform"
                         >
                             REBOOT SYSTEM
                         </button>
@@ -54,3 +54,4 @@ class ErrorBoundary extends Component<Props, State> {
 }
 
 export default ErrorBoundary;
+

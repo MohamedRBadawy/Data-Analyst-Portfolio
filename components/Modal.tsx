@@ -44,7 +44,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
         >
             <div
                 ref={modalRef}
-                className="holographic-panel rounded-xl p-8 max-w-4xl w-full mx-4 relative"
+                className="holographic-panel rounded-xl p-[var(--space-lg)] max-w-4xl w-full mx-4 relative"
                 onClick={(e) => e.stopPropagation()}
                 tabIndex={-1}
             >

@@ -1,12 +1,11 @@
 import React from 'react';
 import Services from '../Services';
-import EngagementModelSection from '../EngagementModelSection';
-import FAQSection from '../FAQSection';
-import PostAuditSection from '../PostAuditSection';
 import LiveAudit from '../LiveAudit';
 import { ServiceItem } from '../../data/content';
 import { Page } from '../../App';
 import NextPageButton from '../NextPageButton';
+
+import SectionNav from '../SectionNav';
 
 interface ServicesPageProps {
     showServiceDetailPage: (service: ServiceItem) => void;
@@ -16,12 +15,14 @@ interface ServicesPageProps {
 const ServicesPage: React.FC<ServicesPageProps> = ({ showServiceDetailPage, navigateTo }) => {
     return (
         <div className="animate-reveal-in">
-            <Services onViewDetails={showServiceDetailPage} />
-            <EngagementModelSection />
-            <FAQSection />
-            <PostAuditSection />
-            <LiveAudit navigateToContact={() => navigateTo('contact')} />
-            <NextPageButton navigateTo={navigateTo} nextPage="contact" label="Contact" />
+            <SectionNav sectionIds={['services', 'workflow-audit']} />
+            <div id="services" data-title="MY SERVICES">
+                <Services onViewDetails={showServiceDetailPage} />
+            </div>
+            <div id="workflow-audit" data-title="WORKFLOW AUDIT">
+                <LiveAudit navigateToContact={() => navigateTo('contact')} />
+            </div>
+            <NextPageButton navigateTo={navigateTo} nextPage="process" label="How I Work" />
         </div>
     );
 };

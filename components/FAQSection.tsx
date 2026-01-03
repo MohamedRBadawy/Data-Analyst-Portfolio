@@ -40,7 +40,7 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <section className="py-20 px-6 lg:px-12 relative">
+        <section id="faq" className="py-20 px-6 lg:px-12 relative">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
                     <h2 className="text-h2 font-poppins text-brand-text-primary mb-4">
@@ -104,3 +104,4 @@ const FAQSection: React.FC = () => {
 };
 
 export default FAQSection;
+

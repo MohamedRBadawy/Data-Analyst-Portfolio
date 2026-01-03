@@ -129,3 +129,4 @@ const FoundersAdvantageSection: React.FC = () => {
 };
 
 export default FoundersAdvantageSection;
+

@@ -20,9 +20,10 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
                     onClick={onBack}
                     onMouseEnter={() => setIsHovering(true)}
                     onMouseLeave={() => setIsHovering(false)}
-                    className="btn btn-secondary mb-8"
+                    className="inline-flex items-center px-4 py-2 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-[10px] sm:text-xs font-roboto-mono font-bold uppercase tracking-[0.15em] text-brand-text-secondary hover:text-brand-text-primary hover:bg-brand-accent/10 hover:border-brand-accent/40 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mb-8 group"
                 >
-                    &larr; Back to Services
+                    <span className="mr-2 transition-transform duration-300 group-hover:-translate-x-1">&larr;</span>
+                    Back to Services
                 </button>
 
                 <header className="text-center my-12">
@@ -31,7 +32,7 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
                 </header>
 
                 <article className="space-y-12">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--space-xl)]">
                         {/* Key Features */}
                         <div className="holographic-panel p-8 rounded-lg">
                             <div className="flex items-center mb-4">
@@ -50,7 +51,7 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
 
                         {/* Deliverables */}
                         <div className="holographic-panel p-8 rounded-lg">
-                             <div className="flex items-center mb-4">
+                            <div className="flex items-center mb-4">
                                 <ClipboardListIcon className="w-6 h-6 text-brand-clarity mr-3" />
                                 <h3 className="font-poppins font-bold text-xl">What You Get</h3>
                             </div>
@@ -65,7 +66,7 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
                         </div>
                     </div>
 
-                     {/* You're a great fit if... */}
+                    {/* You're a great fit if... */}
                     <div className="holographic-panel p-8 rounded-lg">
                         <div className="flex items-center mb-4">
                             <LightBulbIcon className="w-6 h-6 text-brand-clarity mr-3" />
@@ -80,10 +81,10 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
                             ))}
                         </ul>
                     </div>
-                    
+
                     {/* Ideal For & Pricing */}
                     <div className="holographic-panel p-8 rounded-lg">
-                        <div className="flex flex-col md:flex-row md:items-center gap-8">
+                        <div className="flex flex-col md:flex-row md:items-center gap-[var(--space-xl)]">
                             <div className="flex-grow">
                                 <div className="flex items-center mb-3">
                                     <UserIcon className="w-6 h-6 text-brand-process mr-3" />

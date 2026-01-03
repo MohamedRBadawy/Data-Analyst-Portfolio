@@ -29,7 +29,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
     };
 
     return (
-        <button 
+        <button
             onClick={onViewDetails}
             onKeyDown={handleKeyDown}
             onMouseEnter={() => setIsHovering(true)}
@@ -39,16 +39,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
         >
             <div className="overflow-hidden h-48 bg-brand-bg">
                 {project.image.endsWith('.mp4') ? (
-                    <video 
-                        src={project.image} 
-                        autoPlay 
-                        loop 
-                        muted 
-                        playsInline 
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    <video
+                        src={project.image}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102"
                     />
                 ) : (
-                    <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102" />
                 )}
             </div>
             <div className="p-6 flex flex-col flex-grow">
@@ -86,17 +86,17 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
             archiveElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
-    
+
     return (
-        <div className="min-h-screen">
-             <div className="max-w-7xl mx-auto">
+        <section className="min-h-screen">
+            <div className="max-w-7xl mx-auto">
                 <div id="featured">
                     <CaseStudies showProjectDetailPage={showProjectDetailPage} />
                 </div>
-                
+
                 <div id="archive" className="pt-16">
                     <div className="text-center mb-12">
-                        <button 
+                        <button
                             onClick={handleArchiveClick}
                             className="cursor-pointer hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-bg rounded-lg p-2"
                             aria-label="Full Project Archive"
@@ -119,14 +119,14 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
                             <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-brand-text-secondary" size={24} />
                         </div>
                         <div className="flex flex-wrap gap-2">
-                            <button 
+                            <button
                                 onClick={() => setSelectedTag(null)}
                                 className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === null ? 'bg-brand-accent text-brand-bg' : 'bg-brand-border/50 hover:bg-brand-border text-brand-text-primary'}`}
                             >
                                 All Projects
                             </button>
                             {allTags.map(tag => (
-                                <button 
+                                <button
                                     key={tag}
                                     onClick={() => setSelectedTag(tag)}
                                     className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === tag ? 'bg-brand-accent text-brand-bg' : 'bg-brand-border/50 hover:bg-brand-border text-brand-text-primary'}`}
@@ -139,14 +139,14 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
 
 
                     {/* Project Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-xl)]">
                         {filteredProjects.length > 0 ? filteredProjects.map(project => {
-                            const caseStudy = project.caseStudyId 
+                            const caseStudy = project.caseStudyId
                                 ? caseStudies.find(cs => cs.id === project.caseStudyId)
                                 : null;
                             return (
-                                <ProjectCard 
-                                    key={project.title} 
+                                <ProjectCard
+                                    key={project.title}
                                     project={project}
                                     onViewDetails={caseStudy ? () => showProjectDetailPage(caseStudy) : undefined}
                                 />
@@ -160,8 +160,8 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
                     </div>
                 </div>
 
-             </div>
-        </div>
+            </div>
+        </section>
     );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeIcon, UserIcon, BriefcaseIcon, LightBulbIcon, ToolkitIcon, MailIcon } from '../constants';
+import { HomeIcon, UserIcon, BriefcaseIcon, LightBulbIcon, CogIcon, MailIcon } from '../constants';
 import { Page } from '../App';
 
 interface BottomNavBarProps {
@@ -12,6 +12,7 @@ const navItems: { id: Page, text: string, icon: React.ReactElement }[] = [
     { id: 'work', text: 'Work', icon: <BriefcaseIcon /> },
     { id: 'about', text: 'About', icon: <UserIcon /> },
     { id: 'services', text: 'Services', icon: <LightBulbIcon /> },
+    { id: 'process', text: 'Process', icon: <CogIcon /> },
     { id: 'contact', text: 'Contact', icon: <MailIcon /> },
 ];
 
@@ -48,3 +49,4 @@ const BottomNavBar: React.FC<BottomNavBarProps> = ({ navigateTo, activePage }) =
 };
 
 export default BottomNavBar;
+

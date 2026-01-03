@@ -12,16 +12,16 @@ const QualificationSection: React.FC = () => {
                     I work with specific types of businesses. Here's how to know if we're a good fit.
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-[var(--space-xl)]">
                     {/* This IS For You */}
-                    <div className="holographic-panel rounded-xl p-8 border-brand-accent">
+                    <div className="holographic-panel rounded-xl p-[var(--space-lg)] border-brand-accent bg-brand-accent/[0.02]">
                         <div className="flex items-center gap-3 mb-6">
                             <div className="w-12 h-12 rounded-full bg-brand-accent/20 flex items-center justify-center">
                                 <CheckIcon className="w-6 h-6 text-brand-accent" />
                             </div>
                             <h3 className="text-h3 font-poppins text-brand-accent">This Is For You If...</h3>
                         </div>
-                        
+
                         <ul className="space-y-4">
                             {[
                                 "You're an SMB owner or operations manager (5-50 employees)",
@@ -39,7 +39,7 @@ const QualificationSection: React.FC = () => {
                     </div>
 
                     {/* This is NOT For You */}
-                    <div className="holographic-panel rounded-xl p-8 border-brand-chaos">
+                    <div className="holographic-panel rounded-xl p-[var(--space-lg)] border-brand-chaos bg-brand-chaos/[0.02]">
                         <div className="flex items-center gap-3 mb-6">
                             <div className="w-12 h-12 rounded-full bg-brand-chaos/20 flex items-center justify-center">
                                 <svg className="w-6 h-6 text-brand-chaos" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -48,7 +48,7 @@ const QualificationSection: React.FC = () => {
                             </div>
                             <h3 className="text-h3 font-poppins text-brand-chaos">This Is NOT For You If...</h3>
                         </div>
-                        
+
                         <ul className="space-y-4">
                             {[
                                 "You need a full-stack developer or IT support",
@@ -79,3 +79,4 @@ const QualificationSection: React.FC = () => {
 };
 
 export default QualificationSection;
+
