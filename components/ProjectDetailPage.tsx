@@ -246,7 +246,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     {project.id === 'manufacturing-qc-dashboard' && (
                         <section>
                             <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
-                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">These artifacts show how operational decisions became data-driven and repeatable.</p>
 
                             <div className="space-y-8">
                                 <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
@@ -309,54 +309,76 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     {project.id === 'otp-facilities-report' && (
                         <section>
                             <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
-                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">These artifacts demonstrate how visibility replaced manual intervention.</p>
 
                             <div className="space-y-8">
                                 <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
-                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Global OTP Trend Dashboard</h4>
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Global OTP Dashboard Overview</h4>
                                     <p className="text-brand-text-secondary mb-4">
-                                        Real-time dashboard showing OTP progression from below-threshold to stable above 50%, with facility-level performance comparison and alert indicators.
+                                        High-level executive view showing global on-time performance trends, threshold tracking, and aggregate status across all regions.
                                     </p>
                                     <p className="text-sm text-brand-text-secondary mb-4">
-                                        <strong>What it proves:</strong> Dashboard enabled real-time visibility and immediate response to OTP drops, preventing contract breach and stabilizing performance.
+                                        <strong>What it proves:</strong> Immediate visibility into global health against the 50% SLA threshold, enabling rapid executive reaction.
                                     </p>
-                                    <a href="/artifacts/otp-facilities/global-otp-dashboard.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
-                                        🖼️ View Dashboard (PNG)
-                                    </a>
+                                    <div className="mb-4 overflow-hidden rounded-lg border border-brand-border/50 shadow-lg">
+                                        <img
+                                            src="/artifacts/kline/ots-kpi-overview.jpg"
+                                            alt="Global OTP Dashboard Overview"
+                                            className="w-full h-auto transform hover:scale-[1.02] transition-transform duration-500"
+                                        />
+                                    </div>
                                     <p className="text-xs text-brand-text-secondary mt-3">
-                                        ✓ Anonymized (facility names generalized)
+                                        ✓ Anonymized (client data protected)
                                     </p>
                                 </div>
 
                                 <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
-                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Facility Performance Analysis</h4>
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Distributor Performance View</h4>
                                     <p className="text-brand-text-secondary mb-4">
-                                        Deep dive analysis showing how dashboard data revealed facility-specific OTP drivers and enabled targeted improvement initiatives.
+                                        Comparative performance breakdown by distributor/facility, highlighting specific underperformers dragging down the global average.
                                     </p>
                                     <p className="text-sm text-brand-text-secondary mb-4">
-                                        <strong>What it proves:</strong> Dashboard insights led to specific, measurable facility improvements and overall OTP stabilization above critical threshold.
+                                        <strong>What it proves:</strong> Pinpointed accountability by showing exactly which facilities were meeting targets and which needed support.
                                     </p>
-                                    <a href="/artifacts/otp-facilities/facility-otp-analysis-sample.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
-                                        📄 View Analysis (PDF)
-                                    </a>
-                                    <p className="text-xs text-brand-text-secondary mt-3">
-                                        ✓ Anonymized (facility names generalized)
-                                    </p>
+                                    <div className="mb-4 overflow-hidden rounded-lg border border-brand-border/50 shadow-lg">
+                                        <img
+                                            src="/artifacts/kline/ots-distributor-performance.jpg"
+                                            alt="Distributor Performance Breakdown"
+                                            className="w-full h-auto transform hover:scale-[1.02] transition-transform duration-500"
+                                        />
+                                    </div>
                                 </div>
 
                                 <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
-                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Weekly OTP Performance Tracking</h4>
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Case-Level Drilldown</h4>
                                     <p className="text-brand-text-secondary mb-4">
-                                        12-week dataset showing OTP progression by facility, demonstrating sustained improvement and prevention of contract breach risk.
+                                        Granular table view allowing teams to drill down from aggregate metrics to individual delayed cases to investigate root causes.
                                     </p>
                                     <p className="text-sm text-brand-text-secondary mb-4">
-                                        <strong>What it proves:</strong> OTP improvement was measured weekly across all facilities, showing consistent, data-driven progress toward contractual targets.
+                                        <strong>What it proves:</strong> Transparency down to the unit level, removing "data black boxes" and enabling specific root-cause diagnosis.
                                     </p>
-                                    <a href="/artifacts/otp-facilities/weekly-otp-tracking.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
-                                        📥 Download Data (CSV)
+                                    <div className="mb-4 overflow-hidden rounded-lg border border-brand-border/50 shadow-lg">
+                                        <img
+                                            src="/artifacts/kline/ots-case-level-analysis.jpg"
+                                            alt="Case Level Analysis Table"
+                                            className="w-full h-auto transform hover:scale-[1.02] transition-transform duration-500"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">4. Analysis Summary Report</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        Periodic PDF summary report generated for leadership, synthesizing trends, risks, and recommended actions based on dashboard data.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                        <strong>What it proves:</strong> The system didn't just display data; it drove a regular rhythm of analysis and decision-making meetings.
+                                    </p>
+                                    <a href="/artifacts/kline/ots-portfolio-anonymized.pdf" download="OTS_Portfolio_Anonymized.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
+                                        📥 Download Report (PDF)
                                     </a>
                                     <p className="text-xs text-brand-text-secondary mt-3">
-                                        ✓ Anonymized (facility names generalized)
+                                        ✓ Anonymized (strategic data generalized)
                                     </p>
                                 </div>
                             </div>
@@ -498,7 +520,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     {project.id === 'team-performance-dashboard' && (
                         <section>
                             <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-8 text-center">Evidence & Artifacts</h3>
-                            <p className="text-brand-text-secondary text-center mb-8 italic">Below are anonymized proof artifacts demonstrating the methodology and results described above.</p>
+                            <p className="text-brand-text-secondary text-center mb-8 italic">These artifacts demonstrate how objective metrics replaced subjective management decisions.</p>
 
                             <div className="space-y-8">
                                 <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">

@@ -21,9 +21,9 @@ import ProcessPage from './components/pages/ProcessPage';
 import ContactPage from './components/pages/ContactPage';
 
 
-export type Page = 'home' | 'work' | 'about' | 'services' | 'process' | 'contact' | 'projectDetail' | 'serviceDetail' | 'experienceDetail';
+export type Page = 'home' | 'work' | 'about' | 'services' | 'process' | 'contact' | 'toolkit' | 'projectDetail' | 'serviceDetail' | 'experienceDetail';
 
-const pageOrder: Page[] = ['home', 'work', 'about', 'services', 'process', 'contact'];
+const pageOrder: Page[] = ['home', 'work', 'toolkit', 'about', 'services', 'process', 'contact'];
 
 const App: React.FC = () => {
     // Initialize state from hash or default to 'home'

@@ -142,24 +142,24 @@ export const caseStudies: CaseStudy[] = [
         // Executive Story Format
         theMoment: "Quality issues were a black box. We knew defects were happening: costly remakes, frustrated clients, damaged reputation. But without data, every problem was treated as a one-off incident. The QC team was firefighting, not preventing. Management was making decisions based on gut feel, not facts. We were bleeding money on remakes and losing client trust, but we couldn't pinpoint why or where.",
         whatWasAtRisk: "At 1.68% external defect rate, we were hemorrhaging money. Every defective case meant a $200-500 remake, expedited shipping, and an apology call to an angry client. But the real risk was systematic: if we couldn't identify the root causes, we'd keep making the same mistakes. Clients were starting to ask questions. Competitors were winning bids because of our quality reputation. If we didn't fix this, we'd either lose major accounts or have to hire an army of QC inspectors. Neither was sustainable.",
-        whatChanged: "QC managers went from guessing to knowing. Before: Reactive firefighting, no visibility into patterns, treating every defect as isolated, facility managers defensive without data, monthly meetings full of finger-pointing. After: Real-time dashboard showing defect rates by facility/product/month, data-driven root cause analysis, targeted process improvements, facility accountability with objective metrics, proactive prevention instead of reactive fixes. The culture shifted from blame to continuous improvement.",
+        whatChanged: "QC managers went from guessing to knowing. Before: Reactive firefighting, no visibility into patterns, treating every defect as isolated, facility managers defensive without data, monthly meetings full of finger-pointing. After: Real-time dashboard showing defect rates by facility/product/month, data-driven root cause analysis, targeted process improvements, facility accountability with objective metrics, proactive prevention instead of reactive fixes. Quality control became systematic and data-driven.",
         problem: "High external case defect rates were resulting in costly remakes and client dissatisfaction, but management lacked the real-time visibility to pinpoint the root causes or responsible facilities.",
         solution: "Designed a comprehensive Looker dashboard for QC and production managers, visualizing defect rates by case, aligner, month, and facility.",
         impact: "Enabled QC teams to restructure assignments and implement targeted process changes, driving the external case defect rate down from 1.68% to 0.99% and significantly reducing remake costs.",
-        story: "I built a 'single source of truth' that illuminated the entire quality control process. By consolidating production logs and customer feedback into Looker, I created a dashboard that let managers drill down from high-level overview to the specific case or facility causing issues. The data revealed that one facility had a significantly higher defect rate on a specific product. It was a pattern that was invisible before. That insight led to a targeted investigation, a process fix, and a 41% reduction in defects.",
+        story: "I built a system that made quality failures visible before they reached customers. By consolidating production logs and customer feedback into Looker, I created a dashboard that let managers drill down from high-level overview to the specific case or facility causing issues. The data revealed that one facility had a significantly higher defect rate on a specific product—a pattern that was invisible before. That insight led to a targeted investigation, a process fix, and stabilized defect performance below threshold. I owned the end-to-end definition, data model, and dashboard design used by leadership and operations daily.",
         process: [
-            { title: "Data Source Consolidation", description: "I worked with IT to connect disparate data sources, including production logs and customer feedback systems, into a centralized model." },
-            { title: "KPI Definition with QC Team", description: "I held workshops with QC managers to define the most critical metrics and dimensions for tracking, such as 'defect rate by facility'." },
-            { title: "Interactive Dashboard Build", description: "Using Looker, I built a dynamic dashboard that allowed managers to drill down from a high-level overview to the specific case or facility causing issues." },
-            { title: "Root Cause Analysis", description: "By analyzing the dashboard, we identified that one facility had a significantly higher defect rate on a specific product, leading to a targeted investigation and process fix." }
+            { title: "Consolidate Defect Data Sources", description: "Connected production logs and customer feedback systems into a centralized data model to enable cross-facility defect tracking." },
+            { title: "Define QC Metrics with Managers", description: "Held workshops with QC leadership to agree on critical metrics and dimensions, such as defect rate by facility and product type." },
+            { title: "Build Root-Cause Analysis Dashboard", description: "Designed a drill-down dashboard in Looker that surfaced defect patterns by facility, product, and time, enabling targeted investigation." },
+            { title: "Enable Facility Accountability", description: "Used the dashboard to identify facility-specific defect drivers, replacing finger-pointing with objective process correction." }
         ],
         achievements: [
-            "Reduced external defect rate by 41% (from 1.68% to 0.99%).",
-            "Provided clear, real-time visibility into facility-level performance.",
+            "Stabilized defect rates below threshold through systematic root-cause visibility.",
+            "Replaced reactive defect response with proactive facility-level accountability.",
             "Enabled data-driven process improvements that reduced costly remakes.",
-            "Fostered a culture of data-driven quality control."
+            "Shifted quality culture from blame to continuous, objective improvement."
         ],
-        technologies: ["Looker", "BI Dashboards", "Quality Control", "Data Analysis"],
+        technologies: ["Looker", "Operational Intelligence", "Quality Control", "Data Analysis"],
         deliverables: [
             "Live Looker dashboard for defect tracking",
             "Automated email alerts for defect spikes",
@@ -177,24 +177,24 @@ export const caseStudies: CaseStudy[] = [
         oneLineResult: "Stabilized OTP above 50% threshold and prevented contract breach by providing real-time facility performance data",
         theMoment: "The phone call came on a Friday. A major client was threatening to breach the contract. Our global on-time performance had dipped below the 50% threshold we'd committed to, and they wanted an explanation. The problem was, we didn't have one. We were flying blind, unable to answer basic questions: which facilities were failing? Which routes? Which customers were impacted? We had data scattered across spreadsheets and systems, but no visibility into what was actually happening. The contract was at risk, and our reputation with it.",
         whatWasAtRisk: "Missing the 50% OTP threshold by even one week meant contract penalties. But the real risk was deeper: a major client relationship hanging by a thread. If we couldn't explain the failures or fix them quickly, we'd lose the account. Worse, competitors were circling, and any sign of operational instability would give them an opening. We had one week to turn this around or face significant financial and reputational damage.",
-        whatChanged: "The logistics team went from guessing to knowing. Before: No visibility into facility performance, anecdotal complaints from clients, no data to back up improvement claims, leadership making decisions blind, constant firefighting and excuses. After: Real-time dashboard showing OTP by facility/route/customer, instant identification of underperforming locations, data-driven prioritization of fixes, transparent reporting to clients, proactive alerts before issues escalate.",
+        whatChanged: "The logistics team went from guessing to knowing. Before: No visibility into facility performance, anecdotal complaints from clients, no data to back up improvement claims, leadership making decisions blind, constant firefighting and excuses. After: Real-time dashboard showing OTP by facility/route/customer, instant identification of underperforming locations, data-driven prioritization of fixes, transparent reporting to clients, proactive alerts before threshold breaches.",
         problem: "Inconsistent On-Time Performance (OTP) across global facilities created a risk of contract breach with major clients and led to dissatisfaction due to missed delivery deadlines.",
         solution: "Implemented a real-time Looker OTP dashboard that tracked and compared performance across all facilities, providing immediate data on logistics gaps.",
         impact: "The dashboard enabled data-driven prioritization and resource shifts, successfully stabilizing the global OTP rate above the critical 50% threshold and proactively preventing contract breach risks.",
-        story: "I built a system that turned invisible problems into visible ones. By consolidating shipping data from every facility into a single Looker dashboard, I created a tool that showed exactly where the delays were happening. The dashboard didn't just show numbers. it highlighted the specific routes, customer categories, and facilities that were dragging down performance. Within days, leadership could see that facility C was underperforming on overnight routes, and facility A had a specific customer segment driving their numbers down. Armed with this visibility, they made targeted improvements and brought the OTP from 40% up to 55% within the first month.",
+        story: "I built a system that turned invisible problems into visible ones. By consolidating shipping data from every facility into a single Looker dashboard, I created a tool that showed exactly where the delays were happening. The dashboard didn't just show numbers—it highlighted the specific routes, customer categories, and facilities that were dragging down performance. Within days, leadership could see that facility C was underperforming on overnight routes, and facility A had a specific customer segment driving their numbers down. Armed with this visibility, they stabilized performance above the contractual threshold and prevented escalation. I owned the end-to-end definition, data model, dashboard design, and alerting logic for this system.",
         process: [
-            { title: "Urgent KPI Definition", description: "I worked with logistics and account management to precisely define the 'On-Time Performance' metric according to the client's contract." },
-            { title: "Integrate Logistics Data", description: "I fast-tracked the integration of shipping and fulfillment data from our global facilities into a unified data model in Looker." },
-            { title: "Build Comparative Dashboard", description: "I designed a high-visibility dashboard that compared facility performance side-by-side, instantly highlighting the underperforming locations." },
-            { title: "Implement Alerting System", description: "I set up automated alerts to notify leadership the moment any facility's OTP dropped below a warning threshold, enabling proactive intervention." }
+            { title: "Define Contractual KPI", description: "Worked with logistics and account management to align the dashboard metric with the client's contractual definition of on-time performance." },
+            { title: "Consolidate Multi-Facility Data", description: "Integrated shipping and fulfillment data from global facilities into a unified Looker data model to enable cross-facility comparison." },
+            { title: "Build Performance Comparison View", description: "Designed a comparative dashboard that surfaced underperforming facilities and routes, enabling leadership to prioritize interventions by contract risk." },
+            { title: "Deploy Threshold Alerts", description: "Configured automated alerts to trigger when any facility approached threshold violation, shifting the team from reactive to preventative." }
         ],
         achievements: [
-            "Stabilized global OTP rate above the 50% contractual threshold.",
-            "Prevented potential contract breaches and penalties with key accounts.",
-            "Enabled leadership to make informed resource allocation decisions to support struggling facilities.",
-            "Provided objective data for performance discussions with facility managers."
+            "Stabilized global OTP above the 50% contractual threshold, preventing breach.",
+            "Enabled data-driven resource allocation to struggling facilities.",
+            "Replaced anecdotal client complaints with objective facility performance data.",
+            "Shifted operational culture from reactive firefighting to proactive threshold management."
         ],
-        technologies: ["Looker", "Logistics", "Performance Metrics", "BI Dashboards"],
+        technologies: ["Looker", "Logistics", "Performance Metrics", "Operational Intelligence"],
         deliverables: [
             "Multi-facility OTP Looker Dashboard",
             "Real-time performance tracking against contractual SLAs",
@@ -286,24 +286,24 @@ export const caseStudies: CaseStudy[] = [
         oneLineResult: "Reduced team rework rate by 10% by providing managers with objective, real-time performance metrics",
         theMoment: "Managing the team felt like guesswork. Some members seemed overloaded while others were underutilized, and performance conversations were purely subjective. You'd ask a manager 'Who's underperforming?' and get opinions, not facts. This led to inconsistent output, slowed down the entire production line, and bred resentment when people felt their efforts weren't being recognized fairly.",
         whatWasAtRisk: "Without objective metrics, management decisions were based on perception, not data. The best performers might be overlooked while struggling team members weren't getting the support they needed. High performers got burnt out carrying the load. The overall rework rate stayed stubbornly high because nobody knew which specific processes or team members were driving the errors. Morale suffered, and it was only a matter of time before top talent left.",
-        whatChanged: "Managers went from guessing to knowing. Before: Subjective performance assessments, no visibility into who's struggling, inconsistent workload distribution, no data to back up feedback, team frustration about fairness. After: Real-time individual performance visibility, clear metrics for rework and utilization, fair workload distribution based on data, constructive coaching conversations backed by evidence, targeted training on specific weak areas. Performance became transparent and fair.",
+        whatChanged: "Managers went from guessing to knowing. Before: Subjective performance assessments, no visibility into who's struggling, inconsistent workload distribution, no data to back up feedback, team frustration about fairness. After: Real-time individual performance visibility, clear metrics for rework and utilization, fair workload distribution based on data, constructive coaching conversations backed by evidence, targeted training on specific weak areas. Management decisions became objective and transparent.",
         problem: "A lack of precise metrics for individual Rework and Utilization led to inconsistent workloads and high variability in team member output, slowing overall production time.",
         solution: "Created a Looker performance dashboard to track individual and team Rework percentage and Utilization metrics in real-time.",
         impact: "Management used the data to restructure team assignments and provide targeted training, driving a significant 10% reduction in the overall team Rework rate and increasing operational efficiency.",
-        story: "Managing the team felt like guesswork. Some members seemed overloaded while others were underutilized, and performance conversations were purely subjective. This led to inconsistent output and slowed down our entire production line. I was tasked with creating a system of objective measurement that would empower managers to become better coaches, balance workloads fairly, and make data-driven decisions about training and resource allocation.",
+        story: "I built a system that made individual contribution visible and fair. By joining production data with employee assignment data in Looker, I created a dashboard that showed exactly who was overloaded, who was struggling, and where coaching was needed. The dashboard didn't just track performance—it enabled managers to balance workloads fairly and have constructive conversations backed by evidence instead of perception. Performance reviews stopped being subjective and started being data-driven. I owned the end-to-end definition, data model, and dashboard design used by leadership and operations daily.",
         process: [
-            { title: "Metric & SLA Workshop", description: "I facilitated sessions with managers to define and agree upon the exact calculations for 'Rework %' and 'Utilization'." },
-            { title: "Data Modeling", description: "I built a new data model in Looker that joined production data with employee assignment data to enable individual-level tracking." },
-            { title: "Dashboard Development", description: "I designed a two-tiered dashboard: a high-level team overview for senior management and a detailed drill-down for individual team leads." },
-            { title: "Management Training", description: "I conducted training sessions to ensure managers not only understood the data but were comfortable using it for constructive feedback and team planning." }
+            { title: "Define Fair Performance Metrics", description: "Facilitated sessions with managers to define precise calculations for 'Rework %' and 'Utilization' that the team would trust as fair." },
+            { title: "Build Individual-Level Data Model", description: "Created a Looker data model that joined production data with employee assignments to enable transparent individual tracking." },
+            { title: "Design Two-Tier Dashboard", description: "Built a high-level team overview for senior management and a detailed drill-down for team leads to support coaching conversations." },
+            { title: "Train Managers on Coaching Use", description: "Conducted training to ensure managers used the data for constructive feedback and workload balancing, not punitive action." }
         ],
         achievements: [
-            "Achieved a targeted 10% reduction in the team's overall rework rate.",
-            "Provided managers with objective, real-time data for performance reviews and coaching.",
-            "Enabled fair and balanced workload distribution across the team.",
-            "Identified top performers and highlighted opportunities for focused training."
+            "Stabilized team rework rates through objective workload balancing.",
+            "Replaced subjective performance reviews with transparent, data-backed feedback.",
+            "Enabled fair workload distribution that reduced burnout and improved morale.",
+            "Identified top performers and coached struggling team members with targeted support."
         ],
-        technologies: ["Looker", "Performance Metrics", "SLA Tracking", "BI Dashboards"],
+        technologies: ["Looker", "Performance Metrics", "SLA Tracking", "Operational Intelligence"],
         deliverables: [
             "Individual & Team Performance Looker Dashboard",
             "A clear data model for Rework & Utilization tracking",
@@ -986,6 +986,23 @@ export const projectsData: Project[] = [
     }
 ];
 
+export interface ContributionCategory {
+    id: string;
+    title: string;
+    description: string;
+    items: {
+        title: string;
+        description: string;
+        caseStudyId?: string;
+    }[];
+    subSection?: {
+        title: string;
+        description: string;
+        items: { title: string; description: string }[];
+        footer?: string;
+    };
+}
+
 export interface WorkExperience {
     id: string;
     company: string;
@@ -997,6 +1014,7 @@ export interface WorkExperience {
     projects: { title: string; caseStudyId?: string; }[];
     tools: { category: string; items: string[] }[];
     zohoExpertise?: { product: string; usage: string; }[];
+    contributionCategories?: ContributionCategory[];
 }
 
 export const experienceData: WorkExperience[] = [
@@ -1005,20 +1023,13 @@ export const experienceData: WorkExperience[] = [
         company: "K Line Europe",
         role: "Operational Data Systems Lead",
         dates: "2023 - Present",
-        summary: "As the sole owner of data and automation systems, I manage the complete data lifecycle—from raw data preparation to executive-level dashboards. I lead cross-functional workflow redesigns and build automation tools that eliminate manual work. Currently leading development of a new Manufacturing Execution System (MES) using Tulip, and driving company-wide integration of AI agents into core operational workflows.",
-        contributions: [
-            "Leading the development of a new Manufacturing Execution System (MES) using the Tulip platform, having successfully built and demonstrated the initial prototype.",
-            "Spearheading a company-wide initiative to integrate AI and AI agents into departmental workflows, designing systems to offload heavy manual work.",
-            "Owned the development of all operational dashboards using Looker Studio, providing real-time visibility into production, QC, and logistics.",
-            "Designed and implemented custom workflows and automation solutions using the full Zoho suite (Projects, CRM, Desk, Inventory) to streamline inter-departmental processes.",
-            "Served as the primary point of contact for all data-related inquiries, translating business needs into technical requirements and actionable insights.",
-            "Led training sessions to foster a data-driven culture, empowering team members to use new dashboards and tools effectively."
-        ],
+        summary: "End-to-end ownership of the organization’s operational data infrastructure, from system architecture and workflow design to executive intelligence and automation.",
+        contributions: [], // Deprecated in favor of contributionCategories
         achievements: [
-            "Reduced external case defect rate by 41% by building a QC dashboard that identified root causes.",
-            "Stabilized global On-Time Performance (OTP) above critical thresholds by implementing a real-time logistics dashboard.",
-            "Saved up to 128 hours of manual work per week for the deals desk by creating an automated pricing and reporting system.",
-            "Reduced team rework rate by 10% through a new performance and SLA tracking dashboard."
+            "Unified fragmented operational data into a single, automated source of truth.",
+            "Shifted management culture from reactive firefighting to data-driven prevention.",
+            "Institutionalized system ownership, reducing dependency on external vendors.",
+            "Stabilized core operational metrics by enforcing process compliance through system design."
         ],
         projects: [
             { title: "Automated Deals Reporting System", caseStudyId: "automated-deals-reporting" },
@@ -1031,12 +1042,122 @@ export const experienceData: WorkExperience[] = [
             { category: "Automation & Data", items: ["Google Sheets", "Google Apps Script", "Tulip", "SQL (Learning)", "Python (Learning)", "n8n"] },
             { category: "Core Skills", items: ["Process Optimization", "Workflow Design", "AI Workflow Design", "Systems Thinking"] }
         ],
-        zohoExpertise: [
-            { product: "Zoho Projects", usage: "Own configuration and optimization of project management system. Defined workflows, resource allocation rules, and task dependencies for all data-centric initiatives. System owner responsible for ongoing maintenance and team training." },
-            { product: "Zoho Analytics", usage: "System owner and primary developer for all BI dashboards. Architect data connections across multiple sources, build executive KPI reports, and maintain data pipeline integrity organization-wide." },
-            { product: "Zoho CRM", usage: "Own CRM data architecture and automation workflows. Designed and maintain automated data flows that provide sales team with real-time, accurate single source of truth for client interactions and performance." },
-            { product: "Zoho Desk", usage: "System owner responsible for support desk infrastructure. Built and maintain integrations between support system and production databases, enabling direct linkage between customer tickets and operational data." },
-            { product: "Zoho Inventory", usage: "Own Zoho Inventory configuration and custom automation. Built stock tracking optimizations and automated reorder point notifications. System owner responsible for ongoing optimization and error prevention." }
+        zohoExpertise: [],
+        contributionCategories: [
+            {
+                id: "operational-intelligence",
+                title: "Operational Intelligence & Dashboards",
+                description: "Operational control systems used daily to manage throughput, SLAs, and decision-making.",
+                items: [
+                    {
+                        title: "Global On-Time Performance Dashboard",
+                        description: "Unified fragmented logistics data into a real-time performance view, stabilizing service levels and preventing contract risk.",
+                        caseStudyId: "otp-facilities-report"
+                    },
+                    {
+                        title: "Manufacturing Defect Reduction Dashboard",
+                        description: "Replaced reactive defect tracking with facility-level visibility, enabling root-cause analysis and preventative process correction.",
+                        caseStudyId: "manufacturing-qc-dashboard"
+                    },
+                    {
+                        title: "Team Performance & SLA Dashboard",
+                        description: "Standardized productivity metrics across the planning team, replacing subjective reviews with objective workload balancing.",
+                        caseStudyId: "team-performance-dashboard"
+                    }
+                ],
+                subSection: {
+                    title: "Operational Analysis Modules",
+                    description: "Supporting analytical modules used to diagnose bottlenecks, distributor behavior, and workload patterns within the operational spine.",
+                    items: [
+                        {
+                            title: "Incoming Aligners per Distributor",
+                            description: "Used to analyze intake volume patterns and inform staffing allocation for peak arrival days."
+                        },
+                        {
+                            title: "Full-Service Cases Analysis by Distributor",
+                            description: "Used to analyze high-value account behavior and inform priority support tiering."
+                        },
+                        {
+                            title: "Treatment Plans Throughput & Load Analysis",
+                            description: "Used to analyze team capacity limits and inform daily assignment distribution logic."
+                        },
+                        {
+                            title: "Client Performance Board",
+                            description: "Used to analyze individual client turnaround times and inform account management intervention strategies."
+                        }
+                    ],
+                    footer: "These modules do not operate independently; they feed decisions into the primary operational dashboards and workflows."
+                }
+            },
+            {
+                id: "workflow-automation",
+                title: "Workflow Automation",
+                description: "Automation embedded directly into operational workflows to eliminate manual coordination and reduce decision latency.",
+                items: [
+                    {
+                        title: "Automated Deals Reporting System",
+                        description: "Automated complex pricing logic within the sales workflow, eliminating manual calculation bottlenecks and ensuring quote accuracy.",
+                        caseStudyId: "automated-deals-reporting"
+                    }
+                ]
+            },
+            {
+                id: "internal-tools",
+                title: "Internal Tools & Web Apps",
+                description: "Purpose-built internal tools created to support specific operational constraints where existing platforms fell short.",
+                items: [
+                    {
+                        title: "Production Planning Utility",
+                        description: "Replaced manual shift assignment with a constraint-based interface, aligning staff allocation with real-time production needs."
+                    },
+                    {
+                        title: "Material Request Tracker",
+                        description: "Digitized the raw material request process, reducing floor downtime by connecting requests directly to inventory."
+                    }
+                ]
+            },
+            {
+                id: "ai-prototypes",
+                title: "AI & Experimental Prototypes",
+                description: "Exploratory systems used to test automation and decision support before formal integration into the operational spine.",
+                items: [
+                    {
+                        title: "Manufacturing Execution System (MES) Prototype",
+                        description: "Modeled production workflows on the Tulip platform to test real-time tracking capabilities prior to full-scale MES investment."
+                    },
+                    {
+                        title: "AI Agent Integration Initiatives",
+                        description: "Piloted autonomous agents for departmental tasks to validate feasibility of reducing manual administrative load."
+                    }
+                ]
+            },
+            {
+                id: "enterprise-systems",
+                title: "Enterprise Systems Ownership",
+                description: "System ownership and configuration of core enterprise tools, ensuring they aligned with real operational workflows instead of tool defaults.",
+                items: [
+                    {
+                        title: "Zoho Analytics",
+                        description: "Established the organization’s central reporting infrastructure, aggregating disconnected data sources into a single executive truth."
+                    },
+                    {
+                        title: "Zoho CRM",
+                        description: "Structured sales data architecture to enforce process compliance and provide accurate pipeline visibility."
+                    },
+                    {
+                        title: "Zoho Projects",
+                        description: "Configured project lifecycles to mirror operational reality, ensuring accurate capacity planning and resource tracking."
+                    },
+                    {
+                        title: "Zoho Desk",
+                        description: "Integrated support workflows with production data, linking customer issues directly to operational root causes."
+                    },
+                    {
+                        title: "Zoho Inventory",
+                        description: "Automated stock monitoring logic to trigger reordering based on consumption rates rather than manual checks."
+                    }
+                ]
+            }
         ],
     },
     {
