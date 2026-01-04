@@ -945,8 +945,8 @@ export const projectsData: Project[] = [
         caseStudyId: "team-performance-dashboard"
     },
     {
-        title: "Global OTP Dashboard",
-        image: "https://storage.googleapis.com/generative-ai-protoast-demos/portfolio/logistics_dashboard.mp4",
+        title: "Global On-Time Performance Dashboard",
+        image: "/artifacts/kline/ots-kpi-overview.jpg",
         description: "A multi-facility Looker dashboard that stabilized global On-Time Performance, preventing contract breaches with major clients.",
         tags: ["Looker", "Logistics", "SLA Tracking"],
         url: "#",

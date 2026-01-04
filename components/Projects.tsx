@@ -54,7 +54,7 @@ const Projects: React.FC<ProjectsProps> = ({ showAllProjects }) => {
                                 <p className="text-brand-text-secondary mb-6 flex-grow text-base leading-relaxed">{project.description}</p>
                                 <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-brand-border/50">
                                     {project.tags.map(tag => (
-                                        <span key={tag} className="px-2 py-1 bg-brand-border/30 border border-brand-border/50 text-xs rounded-full font-medium text-brand-text-secondary">{tag}</span>
+                                        <span key={tag} className="px-2 py-1 bg-brand-bg/80 border border-brand-text-secondary/20 text-xs rounded-full font-medium text-brand-text-secondary">{tag}</span>
                                     ))}
                                 </div>
                             </div>
