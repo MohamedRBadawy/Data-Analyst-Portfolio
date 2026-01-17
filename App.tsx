@@ -180,7 +180,7 @@ const App: React.FC = () => {
             <KeyboardShortcuts isOpen={showKeyboardShortcuts} onClose={() => setShowKeyboardShortcuts(false)} />
 
             <ProgressBar progress={progress} />
-            <GenerativeBackground />
+            {/* <GenerativeBackground /> */}
 
             <div className="relative z-10 flex min-h-screen">
                 <Sidebar navigateTo={navigateTo} activePage={currentPage} />

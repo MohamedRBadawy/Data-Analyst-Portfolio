@@ -18,7 +18,7 @@ const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
             <Hero navigateTo={navigateTo} />
             <TrustedBy />
 
-            <section className="py-12 px-6 lg:px-12">
+            <section className="py-8 px-6 lg:px-12">
                 <Testimonial
                     variant="hero"
                     quote="Mohamed transformed our deals desk from a 128-hour weekly nightmare into a one-click system. Our team finally has time to think strategically instead of drowning in spreadsheets."

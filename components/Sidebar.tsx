@@ -48,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({ navigateTo, activePage }) => {
     };
 
     return (
-        <aside className="hidden lg:block w-[var(--sidebar-width)] fixed top-4 left-4 h-[calc(100vh-2rem)] p-8 border-0 bg-transparent backdrop-blur-0 z-50 transition-all duration-300">
+        <aside className="hidden lg:block w-[var(--sidebar-width)] fixed top-0 left-4 h-screen p-8 border border-gray-200/50 bg-white backdrop-blur-md shadow-lg dark:border-transparent dark:bg-transparent dark:backdrop-blur-0 dark:shadow-none z-50 transition-all duration-300">
             <div className="flex flex-col h-full">
                 {/* Header Section */}
                 <div className="mb-12">

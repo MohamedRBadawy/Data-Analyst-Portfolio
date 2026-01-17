@@ -13,7 +13,7 @@ const NextPageButton: React.FC<NextPageButtonProps> = ({ navigateTo, nextPage, l
     const { setIsHovering } = useInteraction();
 
     return (
-        <div className="text-center py-16 mt-16 border-t border-brand-border">
+        <div className="text-center py-12 mt-8 border-t border-brand-border">
             <button
                 onClick={() => navigateTo(nextPage)}
                 onMouseEnter={() => setIsHovering(true)}
