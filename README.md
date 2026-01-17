@@ -1,20 +1,39 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Clarity Dash | Mohamed Badawy
 
-# Run and deploy your AI Studio app
+**Operational Clarity Portfolio**
 
-This contains everything you need to run your app locally.
+This project is a React-based portfolio website designed to demonstrate operational capability through concrete case studies. It is built with Vite, TypeScript, and TailwindCSS.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1XeaLqCthIZT2lARi85ROC8BuUOHFod-C
+## Core Principles
+- **No Marketing Fluff**: Focus on metrics, constraints, and outcomes.
+- **Proof over Claims**: Artifacts and execution logs validate the narrative.
+- **Systematic Structure**: Consistent case study format (Context → Intervention → Result).
 
-## Run Locally
+## Architecture
+- **Tech Stack**: React 18, TypeScript, TailwindCSS, Framer Motion (animations).
+- **Styling**: `index.css` (global variables) + Tailwind utility classes.
+- **Components**: Functional components in `/components`.
+- **Content**: Data-driven architecture; all content lives in `/data/content.ts`.
 
-**Prerequisites:**  Node.js
+## Development
 
+### Prerequisites
+- Node.js (v16+)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Setup
+```bash
+npm install
+# Set GEMINI_API_KEY in .env.local if working on AI features
+```
+
+### Run Locally
+```bash
+npm run dev
+```
+
+### Deployment
+Deploys to Firebase Hosting.
+```bash
+npm run build
+firebase deploy
+```

@@ -1,0 +1,135 @@
+<!-- 
+THEME TOGGLE DEBUGGING GUIDE
+
+The theme system works like this:
+1. Default: Dark mode (no class on <html>)
+2. Light mode: .light-mode class added to <html>
+3. CSS uses :root and :root.light-mode selectors to switch colors
+
+TESTING STEPS:
+-->
+
+<html>
+<head>
+    <title>Theme Debug Helper</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #02040A;
+            color: #E6F1FF;
+        }
+        .test-box {
+            border: 2px solid #00F5FF;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 15px;
+            background: #FFC700;
+            color: #02040A;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .status {
+            padding: 10px;
+            background: rgba(255, 199, 0, 0.2);
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 Theme System Debug</h1>
+    
+    <div class="test-box">
+        <h3>Current State</h3>
+        <div id="status" class="status">Checking...</div>
+        <pre id="output" style="background: rgba(0,0,0,0.5); padding: 10px; border-radius: 4px; overflow-x: auto;"></pre>
+    </div>
+
+    <div class="test-box">
+        <h3>Controls</h3>
+        <button onclick="testDarkMode()">Force Dark Mode</button>
+        <button onclick="testLightMode()">Force Light Mode</button>
+        <button onclick="clearTheme()">Clear LocalStorage</button>
+        <button onclick="reloadAndCheck()">Reload Page</button>
+    </div>
+
+    <div class="test-box">
+        <h3>What to look for:</h3>
+        <ul>
+            <li>Root has 'light-mode' class when light mode is active</li>
+            <li>localStorage has key 'theme' with value 'light' or 'dark'</li>
+            <li>--brand-bg CSS variable shows correct color (#02040A for dark, #F8FAFC for light)</li>
+            <li>Theme toggle button should show ☀️ in dark mode, 🌙 in light mode</li>
+        </ul>
+    </div>
+
+    <script>
+        function checkTheme() {
+            const html = document.documentElement;
+            const isDark = !html.classList.contains('light-mode');
+            const savedTheme = localStorage.getItem('theme');
+            const styles = getComputedStyle(html);
+            const brandBg = styles.getPropertyValue('--brand-bg').trim();
+            
+            const output = `Root Classes: ${html.className || '(none)'}
+Light Mode Class Present: ${html.classList.contains('light-mode')}
+Is Dark Mode: ${isDark}
+Saved Theme in localStorage: ${savedTheme || '(not set)'}
+--brand-bg CSS Variable: ${brandBg}
+--brand-text-primary: ${styles.getPropertyValue('--brand-text-primary').trim()}
+
+Expected in Dark Mode:
+- No 'light-mode' class
+- --brand-bg should be #02040A
+- localStorage 'theme' should be 'dark' or not set
+
+Expected in Light Mode:
+- Has 'light-mode' class
+- --brand-bg should be #F8FAFC
+- localStorage 'theme' should be 'light'`;
+
+            document.getElementById('output').textContent = output;
+            
+            const status = document.getElementById('status');
+            if (isDark) {
+                status.innerHTML = '✅ Dark Mode Detected';
+                status.style.borderColor = '#00F5FF';
+            } else {
+                status.innerHTML = '✅ Light Mode Detected';
+                status.style.borderColor = '#0369A1';
+            }
+        }
+
+        function testDarkMode() {
+            document.documentElement.classList.remove('light-mode');
+            localStorage.setItem('theme', 'dark');
+            checkTheme();
+        }
+
+        function testLightMode() {
+            document.documentElement.classList.add('light-mode');
+            localStorage.setItem('theme', 'light');
+            checkTheme();
+        }
+
+        function clearTheme() {
+            localStorage.removeItem('theme');
+            document.documentElement.classList.remove('light-mode');
+            checkTheme();
+        }
+
+        function reloadAndCheck() {
+            location.reload();
+        }
+
+        // Check on load
+        checkTheme();
+    </script>
+</body>
+</html>

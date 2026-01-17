@@ -81,9 +81,9 @@ const Toolkit: React.FC<ToolkitProps> = ({ showProjectDetailPage }) => {
     return (
         <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
             <div className="content-container">
-                <div className="text-center mb-16">
+                <div className="text-center mb-20">
                     <ScramblingHeading text="My Toolkit" />
-                    <p className="text-xl text-brand-text-secondary mt-4 max-w-4xl mx-auto">
+                    <p className="text-xl text-ops-text-secondary mt-6 max-w-4xl mx-auto leading-relaxed">
                         Here's a look at the dashboards I build, the process I follow, and the code I write. This section provides a practical overview of my capabilities and how I approach solving complex data challenges.
                     </p>
                 </div>
@@ -91,17 +91,17 @@ const Toolkit: React.FC<ToolkitProps> = ({ showProjectDetailPage }) => {
 
                 <div className="max-w-6xl mx-auto">
                     {/* Tab Navigation */}
-                    <div className="flex justify-center border-b border-brand-border mb-12">
+                    <div className="flex justify-center border-b border-ops-border mb-16">
                         {(['dashboards', 'process', 'code'] as Tab[]).map(tab => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`px-4 sm:px-6 py-3 font-poppins font-bold text-md sm:text-lg capitalize transition-colors duration-300 relative ${activeTab === tab ? 'text-brand-accent' : 'text-brand-text-secondary hover:text-white'}`}
+                                className={`px-4 sm:px-6 py-4 font-poppins font-bold text-md sm:text-lg capitalize transition-colors duration-300 relative ${activeTab === tab ? 'text-signal-info' : 'text-ops-text-secondary hover:text-ops-text-primary'}`}
                             >
                                 {tab}
                                 {activeTab === tab && (
                                     <div
-                                        className="absolute bottom-0 left-0 w-full h-1 bg-brand-accent transition-all duration-300"
+                                        className="absolute bottom-0 left-0 w-full h-1 bg-signal-info transition-all duration-300"
                                         style={{ transformOrigin: 'left' }}
                                     />
                                 )}
@@ -113,13 +113,13 @@ const Toolkit: React.FC<ToolkitProps> = ({ showProjectDetailPage }) => {
                     <div className="min-h-[500px]">
                         {activeTab === 'dashboards' && (
                             <div className="animate-reveal-in">
-                                <div className="flex flex-col lg:flex-row gap-[var(--space-xl)] items-center holographic-panel p-6 sm:p-8 rounded-xl">
+                                <div className="flex flex-col lg:flex-row gap-[var(--space-xl)] items-center holographic-panel p-8 rounded-xl">
                                     <div className="lg:w-3/5 w-full">
                                         <div
                                             onClick={handleViewDetails}
                                             onMouseEnter={() => setIsHovering(true)}
                                             onMouseLeave={() => setIsHovering(false)}
-                                            className="cursor-pointer group relative overflow-hidden rounded-lg border-2 border-brand-border hover:border-brand-accent transition-all duration-300"
+                                            className="cursor-pointer group relative overflow-hidden rounded-lg border-2 border-ops-border hover:border-signal-info transition-all duration-300"
                                         >
                                             <video
                                                 key={activeDashboard.image}
@@ -130,31 +130,31 @@ const Toolkit: React.FC<ToolkitProps> = ({ showProjectDetailPage }) => {
                                                 playsInline
                                                 className="rounded-lg shadow-2xl w-full h-auto object-cover transition-transform duration-300 group-hover:scale-102"
                                             />
-                                            <div className="absolute inset-0 bg-brand-bg/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <span className="text-white font-bold font-roboto-mono text-[10px] uppercase tracking-[0.15em] py-2 px-4 rounded-full border border-white/40 bg-white/10 backdrop-blur-sm">
+                                            <div className="absolute inset-0 bg-ops-bg/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <span className="text-white font-bold font-roboto-mono text-sm uppercase tracking-[0.12em] py-2 px-4 rounded-full border border-white/40 bg-white/10 backdrop-blur-sm">
                                                     View Project Details
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="lg:w-2/5 w-full">
-                                        <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-4">{activeDashboard.title}</h3>
-                                        <p className="text-brand-text-secondary mb-4">{activeDashboard.description}</p>
-                                        <div className="flex flex-wrap gap-2 mb-6">
+                                        <h3 className="font-poppins text-h3 text-signal-info text-glow-accent mb-6">{activeDashboard.title}</h3>
+                                        <p className="text-ops-text-secondary mb-6 leading-relaxed text-base">{activeDashboard.description}</p>
+                                        <div className="flex flex-wrap gap-2 mb-8">
                                             {activeDashboard.tags.map(tag => (
-                                                <span key={tag} className="px-3 py-1 bg-brand-border text-sm rounded-full font-medium text-brand-text-secondary">{tag}</span>
+                                                <span key={tag} className="px-3 py-1 bg-ops-border text-sm rounded-full font-medium text-ops-text-secondary">{tag}</span>
                                             ))}
                                         </div>
                                         <div className="flex items-center gap-4">
-                                            <button onClick={handlePrevDashboard} className="px-4 py-2 rounded-lg bg-brand-surface hover:bg-brand-border transition-colors" aria-label="Previous dashboard">‹ Prev</button>
+                                            <button onClick={handlePrevDashboard} className="px-4 py-2 rounded-lg bg-ops-surface hover:bg-ops-border transition-colors" aria-label="Previous dashboard">‹ Prev</button>
                                             <span className="font-roboto-mono text-sm">{currentDashboard + 1} / {toolkitData.dashboards.length}</span>
-                                            <button onClick={handleNextDashboard} className="px-4 py-2 rounded-lg bg-brand-surface hover:bg-brand-border transition-colors" aria-label="Next dashboard">Next ›</button>
+                                            <button onClick={handleNextDashboard} className="px-4 py-2 rounded-lg bg-ops-surface hover:bg-ops-border transition-colors" aria-label="Next dashboard">Next ›</button>
                                         </div>
                                         <button
                                             onClick={handleViewDetails}
                                             onMouseEnter={() => setIsHovering(true)}
                                             onMouseLeave={() => setIsHovering(false)}
-                                            className="inline-flex items-center justify-center px-6 py-3 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-[10px] sm:text-xs font-roboto-mono font-bold uppercase tracking-[0.15em] text-brand-text-secondary hover:text-brand-text-primary hover:bg-brand-accent/10 hover:border-brand-accent/40 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mt-6 w-full group"
+                                            className="inline-flex items-center justify-center px-6 py-3 bg-ops-bg/60 backdrop-blur-xl border border-signal-info/20 rounded-full text-sm font-roboto-mono font-bold uppercase tracking-[0.12em] text-ops-text-secondary hover:text-ops-text-primary hover:bg-signal-info/10 hover:border-signal-info/40 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mt-6 w-full group"
                                         >
                                             View Project Details
                                             <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
@@ -167,15 +167,15 @@ const Toolkit: React.FC<ToolkitProps> = ({ showProjectDetailPage }) => {
                         {activeTab === 'process' && (
                             <div className="animate-reveal-in">
                                 <div className="relative pl-12">
-                                    <div className="absolute top-0 left-4 w-1 h-full bg-brand-border rounded-full" />
+                                    <div className="absolute top-0 left-4 w-1 h-full bg-ops-border rounded-full" />
                                     {toolkitData.process.map((item) => (
                                         <div key={item.step} className="mb-12 relative">
-                                            <div className="absolute -left-8 top-1.5 w-8 h-8 bg-brand-accent text-brand-bg rounded-full flex items-center justify-center ring-8 ring-brand-bg">
+                                            <div className="absolute -left-8 top-1.5 w-8 h-8 bg-signal-info text-ops-bg rounded-full flex items-center justify-center ring-8 ring-ops-bg">
                                                 {item.icon}
                                             </div>
                                             <div className="p-6 holographic-panel rounded-xl ml-6">
-                                                <h4 className="font-poppins text-xl font-bold text-brand-clarity mb-2 text-glow-accent">{item.step}. {item.title}</h4>
-                                                <p className="text-brand-text-secondary">{item.description}</p>
+                                                <h4 className="font-poppins text-xl font-bold text-signal-success mb-2 text-glow-accent">{item.step}. {item.title}</h4>
+                                                <p className="text-ops-text-secondary">{item.description}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -185,15 +185,15 @@ const Toolkit: React.FC<ToolkitProps> = ({ showProjectDetailPage }) => {
 
                         {activeTab === 'code' && (
                             <div className="animate-reveal-in">
-                                <p className="text-center text-brand-text-secondary mb-12 max-w-4xl mx-auto">Code is only valuable if its impact is understood. When you click 'Explain this Code,' the portfolio uses an integrated AI engine to provide an instant, non-technical executive summary of the script's bottom-line value. This built-in governance layer accelerates decision-making and ensures non-technical leaders immediately grasp the solution's business impact.</p>
+                                <p className="text-center text-ops-text-secondary mb-12 max-w-4xl mx-auto">Code is only valuable if its impact is understood. When you click 'Explain this Code,' the portfolio uses an integrated AI engine to provide an instant, non-technical executive summary of the script's bottom-line value. This built-in governance layer accelerates decision-making and ensures non-technical leaders immediately grasp the solution's business impact.</p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-xl)]">
                                     {toolkitData.codeProjects.map(project => (
                                         <div key={project.title} className="holographic-panel p-6 rounded-xl flex flex-col">
                                             <div className="flex items-center mb-3">
-                                                <CodeIcon className="w-6 h-6 text-brand-cta mr-3" size={24} />
+                                                <CodeIcon className="w-6 h-6 text-signal-success mr-3" size={24} />
                                                 <h4 className="font-poppins text-xl font-bold">{project.title}</h4>
                                             </div>
-                                            <p className="text-brand-text-secondary mb-4 flex-grow">{project.description}</p>
+                                            <p className="text-ops-text-secondary mb-4 flex-grow">{project.description}</p>
                                             <button
                                                 onClick={() => handleViewCode(project)}
                                                 onMouseEnter={() => setIsHovering(true)}
@@ -212,7 +212,7 @@ const Toolkit: React.FC<ToolkitProps> = ({ showProjectDetailPage }) => {
                 {selectedCode && (
                     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title={selectedCode.title}>
                         <CodeHighlight code={selectedCode.code} />
-                        <div className="mt-6 text-center border-t border-brand-border pt-6">
+                        <div className="mt-6 text-center border-t border-ops-border pt-6">
                             <button
                                 onClick={handleExplainCode}
                                 disabled={isExplaining}
@@ -227,14 +227,14 @@ const Toolkit: React.FC<ToolkitProps> = ({ showProjectDetailPage }) => {
 
                         {isExplaining && (
                             <div className="text-center p-4 mt-4">
-                                <div className="animate-spin-slow mx-auto w-8 h-8 border-2 border-brand-accent border-t-transparent rounded-full" />
+                                <div className="animate-spin-slow mx-auto w-8 h-8 border-2 border-signal-info border-t-transparent rounded-full" />
                             </div>
                         )}
-                        {explanationError && <p className="text-center text-brand-chaos mt-4">{explanationError}</p>}
+                        {explanationError && <p className="text-center text-signal-critical mt-4">{explanationError}</p>}
                         {explanation && (
-                            <div className="mt-6 p-4 bg-brand-bg border border-brand-border rounded-lg animate-fade-in-up">
-                                <h4 className="font-poppins font-bold text-brand-clarity mb-2">In Plain English:</h4>
-                                <p className="text-brand-text-secondary whitespace-pre-wrap">{explanation}</p>
+                            <div className="mt-6 p-4 bg-ops-bg border border-ops-border rounded-lg animate-fade-in-up">
+                                <h4 className="font-poppins font-bold text-signal-success mb-2">In Plain English:</h4>
+                                <p className="text-ops-text-secondary whitespace-pre-wrap">{explanation}</p>
                             </div>
                         )}
                     </Modal>

@@ -21,7 +21,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
     const { setIsHovering } = useInteraction();
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-        // Trigger on Enter or Space key
         if ((e.key === 'Enter' || e.key === ' ') && onViewDetails) {
             e.preventDefault();
             onViewDetails();
@@ -34,10 +33,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
             onKeyDown={handleKeyDown}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className="group holographic-panel rounded-xl overflow-hidden flex flex-col cursor-pointer h-full w-full text-left focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-bg transition-all"
+            className="group holographic-panel rounded-lg overflow-hidden flex flex-col cursor-pointer h-full w-full text-left focus:outline-none focus:ring-2 focus:ring-signal-info focus:ring-offset-2 focus:ring-offset-ops-bg transition-all shadow-md hover:shadow-lg hover:-translate-y-1"
             aria-label={`View details for ${project.title}`}
         >
-            <div className="overflow-hidden h-48 bg-brand-bg">
+            <div className="overflow-hidden h-48 bg-ops-surface">
                 {project.image.endsWith('.mp4') ? (
                     <video
                         src={project.image}
@@ -52,11 +51,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
                 )}
             </div>
             <div className="p-6 flex flex-col flex-grow">
-                <h3 className="font-poppins text-xl font-bold mb-2 group-hover:text-brand-accent transition-colors">{project.title}</h3>
-                <p className="text-brand-text-secondary mb-4 flex-grow text-sm">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-brand-border/50">
+                <h3 className="font-sans text-lg font-bold mb-2 group-hover:text-signal-info transition-colors">{project.title}</h3>
+                <p className="text-ops-text-secondary mb-4 flex-grow text-sm">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-ops-border/50">
                     {project.tags.map(tag => (
-                        <span key={tag} className="px-2 py-1 bg-brand-bg/80 border border-brand-text-secondary/20 text-xs rounded-full font-medium text-brand-text-secondary">{tag}</span>
+                        <span key={tag} className="px-3 py-1.5 bg-ops-surface border border-ops-border/50 text-xs rounded-full font-medium text-ops-text-secondary">{tag}</span>
                     ))}
                 </div>
             </div>
@@ -80,7 +79,6 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
     }, [searchTerm, selectedTag]);
 
     const handleArchiveClick = () => {
-        // Scroll to the archive section smoothly
         const archiveElement = document.getElementById('archive');
         if (archiveElement) {
             archiveElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -98,68 +96,68 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
                     <div className="text-center mb-12">
                         <button
                             onClick={handleArchiveClick}
-                            className="cursor-pointer hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-bg rounded-lg p-2"
+                            className="cursor-pointer hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-signal-info focus:ring-offset-2 focus:ring-offset-ops-bg rounded-lg p-2"
                             aria-label="Full Project Archive"
                         >
                             <ScramblingHeading text="Full Project Archive" />
                         </button>
-                        <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">A complete collection of dashboards, automations, and tools I've built. Use the filters to explore my work.</p>
+                        <p className="text-sm text-ops-text-secondary mt-4 max-w-3xl mx-auto leading-relaxed">A complete collection of dashboards, automations, and tools I've built. Use the filters to explore my work.</p>
                     </div>
 
-                    {/* Filters */}
-                    <div className="mb-12 p-6 holographic-panel rounded-lg">
-                        <div className="relative flex-grow mb-4">
-                            <input
-                                type="text"
-                                placeholder="Search projects by title or description..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full p-4 pl-12 bg-brand-bg border border-brand-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-accent text-brand-text-primary"
-                            />
-                            <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-brand-text-secondary" size={24} />
-                        </div>
-                        <div className="flex flex-wrap gap-2">
+                </div>
+
+                <div className="mb-12 p-6 holographic-panel rounded-lg">
+                    <div className="relative flex-grow mb-4">
+                        <input
+                            type="text"
+                            placeholder="Search projects by title or description..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full p-4 pl-12 bg-ops-bg border border-ops-border rounded-lg focus:outline-none focus:ring-2 focus:ring-signal-info text-ops-text-primary"
+                        />
+                        <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-ops-text-secondary" size={24} />
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                        <button
+                            onClick={() => setSelectedTag(null)}
+                            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === null ? 'bg-signal-info text-ops-bg' : 'bg-ops-surface hover:bg-ops-border text-ops-text-primary'}`}
+                        >
+                            All Projects
+                        </button>
+                        {allTags.map(tag => (
                             <button
-                                onClick={() => setSelectedTag(null)}
-                                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === null ? 'bg-brand-accent text-brand-bg' : 'bg-brand-border/50 hover:bg-brand-border text-brand-text-primary'}`}
+                                key={tag}
+                                onClick={() => setSelectedTag(tag)}
+                                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === tag ? 'bg-signal-info text-ops-bg' : 'bg-ops-surface hover:bg-ops-border text-ops-text-primary'}`}
                             >
-                                All Projects
+                                {tag}
                             </button>
-                            {allTags.map(tag => (
-                                <button
-                                    key={tag}
-                                    onClick={() => setSelectedTag(tag)}
-                                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === tag ? 'bg-brand-accent text-brand-bg' : 'bg-brand-border/50 hover:bg-brand-border text-brand-text-primary'}`}
-                                >
-                                    {tag}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-
-                    {/* Project Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-xl)]">
-                        {filteredProjects.length > 0 ? filteredProjects.map(project => {
-                            const caseStudy = project.caseStudyId
-                                ? caseStudies.find(cs => cs.id === project.caseStudyId)
-                                : null;
-                            return (
-                                <ProjectCard
-                                    key={project.title}
-                                    project={project}
-                                    onViewDetails={caseStudy ? () => showProjectDetailPage(caseStudy) : undefined}
-                                />
-                            );
-                        }) : (
-                            <div className="md:col-span-2 lg:col-span-3 text-center py-16 holographic-panel rounded-lg">
-                                <p className="text-xl text-brand-text-secondary">No projects found for this query.</p>
-                                <p className="text-sm text-brand-text-secondary/70 mt-2">Try a different search or filter.</p>
-                            </div>
-                        )}
+                        ))}
                     </div>
                 </div>
 
+
+            </div>
+
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-xl)]">
+                {filteredProjects.length > 0 ? filteredProjects.map(project => {
+                    const caseStudy = project.caseStudyId
+                        ? caseStudies.find(cs => cs.id === project.caseStudyId)
+                        : null;
+                    return (
+                        <ProjectCard
+                            key={project.title}
+                            project={project}
+                            onViewDetails={caseStudy ? () => showProjectDetailPage(caseStudy) : undefined}
+                        />
+                    );
+                }) : (
+                    <div className="md:col-span-2 lg:col-span-3 text-center py-16 holographic-panel rounded-lg">
+                        <p className="text-xl text-ops-text-secondary">No projects found for this query.</p>
+                        <p className="text-sm text-ops-text-secondary/70 mt-2">Try a different search or filter.</p>
+                    </div>
+                )}
             </div>
         </section>
     );

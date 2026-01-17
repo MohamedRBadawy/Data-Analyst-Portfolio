@@ -25,6 +25,7 @@ const SectionNav: React.FC<SectionNavProps> = ({ sectionIds }) => {
     if (sections.length < 2) return null;
 
     return (
+        // GLOBAL Page-Level Navigation - Larger, more prominent for main section switching
         <nav className="sticky top-0 z-40 w-full py-4 pointer-events-none">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-center sm:justify-start">
@@ -43,9 +44,9 @@ const SectionNav: React.FC<SectionNavProps> = ({ sectionIds }) => {
                                     onClick={() => handleSectionClick(section.id)}
                                     aria-current={isActive ? 'page' : undefined}
                                     className={`
-                                        relative flex-shrink-0 px-5 py-2 rounded-full text-[10px] sm:text-xs font-roboto-mono font-bold uppercase tracking-[0.15em] transition-all duration-300 whitespace-nowrap
+                                        relative flex-shrink-0 px-6 py-3 rounded-md text-xs font-mono font-bold uppercase tracking-[0.12em] transition-all duration-300 whitespace-nowrap
                                         ${isActive
-                                            ? 'bg-brand-accent text-brand-bg shadow-[0_0_15px_rgba(0,245,255,0.4)]'
+                                            ? 'nav-item-active'
                                             : 'text-brand-text-secondary hover:text-brand-text-primary hover:bg-brand-accent/10'
                                         }
                                     `}

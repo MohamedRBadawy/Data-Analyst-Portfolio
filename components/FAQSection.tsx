@@ -43,10 +43,10 @@ const FAQSection: React.FC = () => {
         <section id="faq" className="py-20 px-6 lg:px-12 relative">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-h2 font-poppins text-brand-text-primary mb-4">
+                    <h2 className="text-2xl font-sans font-bold text-brand-text-primary mb-4">
                         Common Questions
                     </h2>
-                    <p className="text-xl text-brand-text-secondary">
+                    <p className="text-base text-brand-text-secondary">
                         Everything you need to know before we talk
                     </p>
                 </div>
@@ -55,13 +55,13 @@ const FAQSection: React.FC = () => {
                     {faqs.map((faq, index) => (
                         <div
                             key={index}
-                            className="holographic-panel rounded-xl overflow-hidden transition-all duration-300"
+                            className="holographic-panel rounded-lg overflow-hidden smooth-transition border border-brand-border shadow-md hover:shadow-lg hover:-translate-y-1 group relative"
                         >
                             <button
                                 onClick={() => toggleFAQ(index)}
                                 className="w-full text-left p-6 flex items-center justify-between hover:bg-brand-surface/30 transition-colors duration-200"
                             >
-                                <h3 className="text-lg font-poppins font-semibold text-brand-text-primary pr-4">
+                                <h3 className="text-base font-sans font-semibold text-brand-text-primary pr-4">
                                     {faq.question}
                                 </h3>
                                 <svg
@@ -79,22 +79,23 @@ const FAQSection: React.FC = () => {
                                 className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96' : 'max-h-0'
                                     }`}
                             >
-                                <div className="px-6 pb-6 text-brand-text-secondary leading-relaxed">
+                                <div className="px-6 pb-6 text-brand-text-secondary leading-relaxed text-sm">
                                     {faq.answer}
                                 </div>
                             </div>
+
                         </div>
                     ))}
                 </div>
 
-                <div className="mt-12 text-center holographic-panel rounded-2xl p-8 border-brand-accent">
-                    <p className="text-brand-text-secondary mb-4">
+                <div className="mt-12 text-center holographic-panel rounded-lg p-8 border border-brand-border shadow-md">
+                    <p className="text-brand-text-secondary mb-4 text-sm">
                         Still have questions?
                     </p>
                     <button className="btn btn-primary">
                         Book a Free Clarity Audit
                     </button>
-                    <p className="text-sm text-brand-text-secondary mt-3">
+                    <p className="text-xs text-brand-text-secondary mt-3">
                         We'll answer everything in 30 minutes
                     </p>
                 </div>

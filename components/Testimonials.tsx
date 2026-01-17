@@ -41,29 +41,29 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, title, quote, i
             onClick={isClickable ? onViewDetails : undefined}
             onMouseEnter={isClickable ? () => setIsHovering(true) : undefined}
             onMouseLeave={isClickable ? () => setIsHovering(false) : undefined}
-            className={`interactive-glow holographic-panel rounded-xl p-8 flex flex-col border border-brand-border/20 ${isClickable ? 'cursor-pointer' : ''}`}
+            className={`interactive-glow holographic-panel rounded-lg p-8 flex flex-col border border-brand-border/30 smooth-transition shadow-md hover:shadow-[0_20px_40px_rgba(3,105,161,0.25)] group relative overflow-hidden ${isClickable ? 'cursor-pointer hover:-translate-y-2 card-hover' : ''}`}
         >
-            <p className="text-brand-text-primary flex-grow z-10 text-lg leading-relaxed">"{quote}"</p>
+            <p className="text-brand-text-primary flex-grow z-10 text-base leading-relaxed">"{quote}"</p>
             {caseStudyId && (
-                <div className="z-10 mt-4 text-left font-poppins font-bold text-sm text-brand-accent self-start">
+                <div className="z-10 mt-4 text-left font-sans font-bold text-xs text-brand-text-primary self-start uppercase tracking-wide group-hover:underline">
                     Read the Full Case Study &rarr;
                 </div>
             )}
             <div className="mt-6 flex items-center justify-between z-10 border-t border-brand-border/50 pt-6">
                 <div className="flex items-center">
                     {isInitials ? (
-                        <div className="w-12 h-12 rounded-full mr-4 border-2 border-brand-accent flex items-center justify-center bg-brand-border text-brand-text-primary font-bold text-sm">
+                        <div className="w-12 h-12 rounded-full mr-4 border-2 border-brand-border flex items-center justify-center bg-brand-border text-brand-text-primary font-bold text-xs">
                             {image}
                         </div>
                     ) : (
-                        <img src={image} alt={name} className="w-12 h-12 rounded-full mr-4 border-2 border-brand-accent" />
+                        <img src={image} alt={name} className="w-12 h-12 rounded-full mr-4 border-2 border-brand-border" />
                     )}
                     <div>
-                        <h4 className="font-poppins font-bold text-brand-text-primary">{name}</h4>
-                        <p className="text-sm text-brand-text-secondary">{title}</p>
+                        <h4 className="font-sans font-bold text-sm text-brand-text-primary">{name}</h4>
+                        <p className="text-xs text-brand-text-secondary">{title}</p>
                     </div>
                 </div>
-                <div className="font-roboto-mono text-sm text-brand-clarity bg-brand-clarity/10 px-3 py-1 rounded-md">
+                <div className="font-mono text-xs text-brand-clarity bg-brand-clarity/10 px-3 py-1.5 rounded-md">
                     {roi}
                 </div>
             </div>

@@ -1,89 +1,207 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.7.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.7.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarity Dash | Mohamed Badawy</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F8FAFC'/><text x='50' y='55' dominant-baseline='middle' font-family='Poppins, sans-serif' font-size='50' font-weight='bold' fill='%230369A1' text-anchor='middle'>MB</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: 'var(--brand-bg)',
+                            surface: 'var(--brand-surface)',
+                            border: 'var(--brand-border)',
+                            'text-primary': 'var(--brand-text-primary)',
+                            'text-secondary': 'var(--brand-text-secondary)',
+                            chaos: 'var(--brand-chaos)',
+                            process: 'var(--brand-process)',
+                            accent: 'var(--brand-accent)',
+                            clarity: 'var(--brand-clarity)',
+                            cta: 'var(--brand-cta)',
+                        },
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                        'roboto-mono': ['Roboto Mono', 'monospace'],
+                    },
+                }
+            }
         }
-      });
     </script>
-  </body>
+    <style>
+        /* LIGHT THEME - Updated Jan 17 2026 */
+        /* --- The Neon Blueprint Design System --- Light Theme (Default) --- */
+        :root {
+            --brand-bg: #F8FAFC;
+            --brand-surface: rgba(255, 255, 255, 0.98);
+            --brand-border: #CBD5E1;
+            --brand-text-primary: #0F172A;
+            --brand-text-secondary: #334155;
+            --brand-chaos: #DC2626;
+            --brand-accent: #0369A1;
+            --brand-clarity: #0EA5E9;
+            --brand-cta: #10B981;
+            --brand-process: #334155;
+
+            --space-xs: clamp(0.5rem, 1vw, 0.75rem);
+            --space-sm: clamp(0.75rem, 1.5vw, 1rem);
+            --space-md: clamp(1rem, 2vw, 1.5rem);
+            --space-lg: clamp(1.5rem, 3vw, 2.5rem);
+            --space-xl: clamp(2rem, 4vw, 3rem);
+            --space-2xl: clamp(3rem, 6vw, 4rem);
+            --space-3xl: clamp(4rem, 8vw, 5rem);
+        }
+
+        /* Dark Mode Theme - Same accent colors as light mode, enhanced text contrast */
+        :root.dark-mode {
+            --brand-bg: #0F1419;
+            --brand-surface: rgba(25, 32, 50, 0.7);
+            --brand-border: #3A4A6B;
+            --brand-text-primary: #F5F7FA;
+            --brand-text-secondary: #D0D8E8;
+            --brand-chaos: #FF5252;
+            --brand-accent: #0369A1;
+            --brand-clarity: #0EA5E9;
+            --brand-cta: #10B981;
+            --brand-process: #D0D8E8;
+        }
+
+        body {
+            background-color: var(--brand-bg);
+            color: var(--brand-text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+            line-height: clamp(1.5, 1.4 + 0.2vw, 1.8);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Enhanced Button Styles */
+        button, .btn {
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-primary, button[class*="primary"] {
+            background-color: var(--brand-cta);
+            color: white;
+            font-weight: 600;
+            padding: 12px 32px;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+        }
+
+        .btn-primary:hover, button[class*="primary"]:hover {
+            background-color: #D35806;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(234, 88, 12, 0.35);
+        }
+
+        .btn-secondary, button[class*="secondary"] {
+            background-color: transparent;
+            color: var(--brand-accent);
+            border: 2px solid var(--brand-accent);
+            padding: 10px 28px;
+            font-size: 0.95rem;
+        }
+
+        .btn-secondary:hover, button[class*="secondary"]:hover {
+            background-color: rgba(3, 105, 161, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(3, 105, 161, 0.2);
+        }
+
+        /* Navigation Styles */
+        nav {
+            text-align: center;
+        }
+
+        nav a, nav button {
+            color: var(--brand-text-secondary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        nav a:hover, nav button:hover {
+            color: var(--brand-accent);
+            background-color: rgba(3, 105, 161, 0.08);
+        }
+
+        /* Text Centering */
+        section {
+            text-align: center;
+        }
+
+        section > * {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p {
+            max-width: 70ch;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        /* Text Glow Effects */
+        .text-glow-accent {
+            text-shadow: 0 0 8px rgba(3, 105, 161, 0.3);
+        }
+
+        .text-glow-cta {
+            text-shadow: 0 0 8px rgba(234, 88, 12, 0.2);
+        }
+
+        /* Holographic Panel */
+        .holographic-panel {
+            background-color: var(--brand-surface);
+            border: 1px solid var(--brand-border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .holographic-panel:hover {
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.15);
+            border-color: var(--brand-accent);
+        }
+
+        /* Headings */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--brand-text-primary);
+            font-weight: 700;
+        }
+
+        /* Links */
+        a {
+            color: var(--brand-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0EA5E9;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
 </html>

@@ -3,8 +3,11 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, Rectan
 import { CaseStudy } from '../data/content';
 import { useMatrixCountUp } from '../hooks/useMatrixCountUp';
 import { useInteraction } from '../context/InteractionContext';
+import HolographicBar from './charts/HolographicBar';
+import CollapsibleSection from './ui/CollapsibleSection';
 import ScramblingHeading from './ScramblingHeading';
 import SectionIndex from './SectionIndex';
+import Breadcrumb from './Breadcrumb';
 import { CheckIcon, ClipboardListIcon, CodeIcon } from '../constants';
 
 interface ProjectDetailPageProps {
@@ -12,82 +15,150 @@ interface ProjectDetailPageProps {
     onBack: () => void;
 }
 
-const HolographicBar: React.FC<any> = (props) => {
-    const { fill, x, y, width, height, isHovered, payload } = props;
-    const isBefore = payload.name === 'Before';
-    const color = payload.color;
 
-    const barStyle = {
-        filter: isHovered ? `drop-shadow(0 0 8px ${color})` : 'none',
-        transition: 'filter 0.3s ease-in-out',
-    };
 
-    if (isBefore) {
-        return (
-            <rect
-                x={x}
-                y={y}
-                width={width}
-                height={height}
-                stroke={color}
-                strokeWidth={2}
-                fill="transparent"
-                style={barStyle}
-            />
-        );
-    }
-
-    return (
-        <Rectangle
-            {...props}
-            fill={color}
-            style={barStyle}
-        />
-    );
+const cleanText = (text: string | undefined) => {
+    if (!text) return text;
+    return text.replace(/\*\*/g, '');
 };
 
 const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }) => {
     const { setIsHovering } = useInteraction();
     const { val: afterCount, ref } = useMatrixCountUp(project.after);
+    const [isDetailsOpen, setIsDetailsOpen] = React.useState(false);
+    const [isGapsOpen, setIsGapsOpen] = React.useState(false);
 
     const data = [
-        { name: 'Before', value: project.before, color: 'var(--brand-chaos)' },
-        { name: 'After', value: project.after, color: 'var(--brand-clarity)' },
+        { name: 'Before', value: project.before, color: 'var(--signal-critical)' },
+        { name: 'After', value: project.after, color: 'var(--signal-success)' },
     ];
+
+    // Dynamic section IDs based on content structure
+    // Grouped for cleaner navigation in SectionIndex
+    const getSectionIds = () => {
+        if (project.tierAStructure) {
+            // Impact > Context > Risk > Outcome > Details > Gaps
+            return ['why-it-matters', 'context', 'problem-risk', 'outcome', 'system-details', 'gaps'];
+        }
+        return ['the-moment', 'what-was-at-risk', 'what-changed', 'how-it-worked', 'my-process', 'the-results', 'how-impact-measured'];
+    };
 
     return (
         <div className="min-h-screen py-0 px-4 sm:px-8 lg:px-16 animate-reveal-in">
-            <SectionIndex sectionIds={['the-moment', 'what-was-at-risk', 'what-changed', 'how-it-worked', 'my-process', 'the-results', 'how-impact-measured']} />
-
-            <div className="max-w-4xl mx-auto pt-8 sm:pt-12">
+            <SectionIndex sectionIds={getSectionIds()} />
+            <div className="max-w-4xl mx-auto pt-16 sm:pt-20">
+                <Breadcrumb
+                    items={[
+                        { label: 'Work', onClick: onBack },
+                        { label: 'Projects' },
+                        { label: project.name },
+                    ]}
+                />
                 <button
                     onClick={onBack}
                     onMouseEnter={() => setIsHovering(true)}
                     onMouseLeave={() => setIsHovering(false)}
-                    className="inline-flex items-center px-4 py-2 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-[10px] sm:text-xs font-roboto-mono font-bold uppercase tracking-[0.15em] text-brand-text-secondary hover:text-brand-text-primary hover:bg-brand-accent/10 hover:border-brand-accent/40 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mb-8 group"
+                    className="inline-flex items-center px-4 py-2 bg-ops-bg/60 backdrop-blur-xl border border-signal-info/20 rounded-full text-sm font-roboto-mono font-bold uppercase tracking-[0.1em] text-ops-text-secondary hover:text-ops-text-primary hover:bg-signal-info/10 hover:border-signal-info/40 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mb-8 group"
                 >
                     <span className="mr-2 transition-transform duration-300 group-hover:-translate-x-1">&larr;</span>
                     Back to Work
                 </button>
 
-                <header className="text-center my-12">
+                <header className="text-center my-16">
                     <ScramblingHeading text={project.title} />
-                    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-brand-text-secondary font-roboto-mono mt-6">
-                        <span><strong className="font-poppins text-brand-text-primary">Client:</strong> {project.client}</span>
+                    <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-ops-text-secondary font-roboto-mono mt-8 text-sm leading-relaxed">
+                        <span><strong className="font-poppins text-ops-text-primary">Client:</strong> {project.client}</span>
                         <div className="flex items-center gap-2">
-                            <CodeIcon className="w-5 h-5 text-brand-cta" />
+                            <CodeIcon className="w-5 h-5 text-signal-success" />
                             <span>{project.technologies.join(', ')}</span>
                         </div>
                     </div>
                 </header>
 
-                <article className="space-y-16">
-                    {/* Executive Story Format - Show if available */}
+                <article className="space-y-12">
+                    {/* Tier A Canonical Structure - Progressive Disclosure */}
+                    {project.tierAStructure && (
+                        <>
+                            {/* Layer 1: Executive Summary (Always Visible) */}
+                            <div id="summary" className="space-y-12">
+                                <section id="why-it-matters" data-title="Impact">
+                                    <h3 className="font-poppins text-h3 text-signal-info text-glow-accent mb-8">Why This Mattered</h3>
+                                    <div className="text-lg md:text-xl text-ops-text-primary leading-relaxed border-l-4 border-signal-info pl-6 sm:pl-8 font-medium">
+                                        {cleanText(project.tierAStructure.whyItMatters)}
+                                    </div>
+                                </section>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                                    <section id="context" data-title="Context">
+                                        <h4 className="font-poppins text-xl font-bold text-ops-text-secondary mb-5 uppercase tracking-wider">Context</h4>
+                                        <div className="text-ops-text-primary leading-relaxed whitespace-pre-wrap border-l-2 border-ops-border pl-4 text-base">
+                                            {cleanText(project.tierAStructure.context)}
+                                        </div>
+                                    </section>
+
+                                    <section id="problem-risk" data-title="Risk">
+                                        <h4 className="font-poppins text-xl font-bold text-ops-text-secondary mb-5 uppercase tracking-wider">Problem & Risk</h4>
+                                        <div className="text-ops-text-primary leading-relaxed whitespace-pre-wrap border-l-2 border-signal-critical pl-4">
+                                            {cleanText(project.tierAStructure.problemRisk)}
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <section id="outcome" data-title="Outcome">
+                                    <h3 className="font-poppins text-h3 text-signal-success text-glow-clarity mb-6">Outcome / Value Delta</h3>
+                                    <div className="text-ops-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-signal-success pl-6 sm:pl-8">
+                                        {cleanText(project.tierAStructure.outcome)}
+                                    </div>
+                                </section>
+                            </div>
+
+                            {/* Layer 2: System Details (Collapsible) */}
+                            <CollapsibleSection
+                                id="system-details"
+                                dataTitle="System"
+                                title="System Architecture & Implementation Details"
+                                isOpen={isDetailsOpen}
+                                onToggle={() => setIsDetailsOpen(!isDetailsOpen)}
+                            >
+                                <div className="space-y-12">
+                                    <section>
+                                        <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6">System Design</h3>
+                                        <div className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-accent pl-6 sm:pl-8">
+                                            {cleanText(project.tierAStructure.systemDesign)}
+                                        </div>
+                                    </section>
+
+                                    <section>
+                                        <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-6">My Responsibility</h3>
+                                        <div className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-clarity pl-6 sm:pl-8">
+                                            {cleanText(project.tierAStructure.responsibility)}
+                                        </div>
+                                    </section>
+                                </div>
+                            </CollapsibleSection>
+
+                            {/* Layer 3: Gaps & Assumptions (Collapsible) */}
+                            <CollapsibleSection
+                                id="gaps"
+                                dataTitle="Gaps"
+                                title="Explicit Limitations & Missing Information"
+                                isOpen={isGapsOpen}
+                                onToggle={() => setIsGapsOpen(!isGapsOpen)}
+                                variant="gaps"
+                            >
+                                <div className="text-brand-text-secondary leading-relaxed whitespace-pre-wrap">
+                                    {cleanText(project.tierAStructure.gaps)}
+                                </div>
+                            </CollapsibleSection>
+                        </>
+                    )}
+
+                    {/* Executive Story Format - Show if available (Legacy/Fallback) */}
                     {project.theMoment && (
                         <section id="the-moment" data-title="Moment">
                             <h3 className="font-poppins text-h3 text-brand-chaos text-glow-chaos mb-6">The Moment</h3>
                             <p className="text-lg text-brand-text-primary leading-relaxed border-l-4 border-brand-chaos pl-6 sm:pl-8">
-                                {project.theMoment}
+                                {cleanText(project.theMoment)}
                             </p>
                         </section>
                     )}
@@ -96,7 +167,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                         <section id="what-was-at-risk" data-title="Risk">
                             <h3 className="font-poppins text-h3 text-brand-chaos text-glow-chaos mb-6">What Was at Risk</h3>
                             <p className="text-lg text-brand-text-primary leading-relaxed border-l-4 border-brand-chaos pl-6 sm:pl-8">
-                                {project.whatWasAtRisk}
+                                {cleanText(project.whatWasAtRisk)}
                             </p>
                         </section>
                     )}
@@ -105,7 +176,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                         <section id="what-changed" data-title="The Pivot">
                             <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6">What Changed</h3>
                             <p className="text-lg text-brand-text-primary leading-relaxed border-l-4 border-brand-accent pl-6 sm:pl-8">
-                                {project.whatChanged}
+                                {cleanText(project.whatChanged)}
                             </p>
                         </section>
                     )}
@@ -113,7 +184,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     {/* How It Worked - Original story field */}
                     <section id="how-it-worked" data-title="Logic">
                         <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-6">{project.theMoment ? 'How It Worked' : 'The Story'}</h3>
-                        <p className="text-xl text-brand-text-primary leading-relaxed border-l-4 border-brand-accent pl-6 sm:pl-8">{project.story}</p>
+                        <p className="text-xl text-brand-text-primary leading-relaxed border-l-4 border-brand-accent pl-6 sm:pl-8">{cleanText(project.story)}</p>
                     </section>
 
                     <section id="my-process" data-title="Process">
@@ -122,7 +193,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                             {project.process.map((step, index) => (
                                 <div key={index} className="holographic-panel p-6 rounded-lg">
                                     <h4 className="font-bold font-poppins text-xl text-brand-text-primary mb-2">{index + 1}. {step.title}</h4>
-                                    <p className="text-brand-text-secondary">{step.description}</p>
+                                    <p className="text-brand-text-secondary">{cleanText(step.description)}</p>
                                 </div>
                             ))}
                         </div>
@@ -140,7 +211,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                     {project.achievements.map((item, index) => (
                                         <li key={index} className="flex items-start">
                                             <CheckIcon className="w-5 h-5 text-brand-clarity mr-3 mt-1 flex-shrink-0" />
-                                            <span className="text-brand-text-primary">{item}</span>
+                                            <span className="text-brand-text-primary">{cleanText(item)}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -171,7 +242,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                         <section id="how-impact-measured" data-title="Audit">
                             <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6">How the Impact Was Measured</h3>
                             <p className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-border/50 pl-6 sm:pl-8">
-                                {project.howMeasured}
+                                {cleanText(project.howMeasured)}
                             </p>
                         </section>
                     )}
@@ -189,7 +260,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                     <p className="text-brand-text-secondary mb-4">
                                         Shows real-time execution data from actual batch processing runs. Each entry displays timestamp, processing duration in milliseconds, record count, and success status.
                                     </p>
-                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                    <p className="text-brand-text-secondary mb-4">
                                         <strong>What it proves:</strong> System processes 200+ deal records consistently in under 1 second per batch, with 100% success rate (zero failures).
                                     </p>
                                     <a href="/artifacts/deals-reporting/execution-log.pdf" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
@@ -206,7 +277,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                     <p className="text-brand-text-secondary mb-4">
                                         Visual comparison of manual workflow (6-8 steps, 16-25 hours) versus automated system (4 steps, 0.3 seconds).
                                     </p>
-                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                    <p className="text-brand-text-secondary mb-4">
                                         <strong>What it proves:</strong> System eliminates human error points and consolidates complex logic into single automated pipeline. Manual steps that took hours complete in milliseconds.
                                     </p>
                                     <a href="/artifacts/deals-reporting/process-flow.png" className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
@@ -223,7 +294,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                     <p className="text-brand-text-secondary mb-4">
                                         Real CSV export format showing actual output structure: consistent columns, accurate calculations, zero manual corrections needed.
                                     </p>
-                                    <p className="text-sm text-brand-text-secondary mb-4">
+                                    <p className="text-brand-text-secondary mb-4">
                                         <strong>What it proves:</strong> System produces perfectly formatted, CRM-ready output with no manual intervention. Data is consistent, accurate, and ready for one-click import.
                                     </p>
                                     <a href="/artifacts/deals-reporting/output-sample.csv" download className="inline-block px-4 py-2 bg-brand-clarity text-brand-bg rounded font-poppins font-bold hover:opacity-80 transition-opacity">
@@ -313,7 +384,28 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
 
                             <div className="space-y-8">
                                 <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
-                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. Global OTP Dashboard Overview</h4>
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">1. System Walkthrough: OTP Stabilization</h4>
+                                    <p className="text-brand-text-secondary mb-4">
+                                        A detailed walkthrough of the Global On-Time Performance Dashboard, demonstrating how we track facility performance against the 50% threshold and identify root causes for delays.
+                                    </p>
+                                    <p className="text-sm text-brand-text-secondary mb-6">
+                                        <strong>What it proves:</strong> See the actual dashboard in action, including drill-down capabilities and the real-time data flow that saved the client relationship.
+                                    </p>
+                                    <div className="rounded-lg overflow-hidden border border-brand-border/50 shadow-2xl bg-black">
+                                        <iframe
+                                            src="https://drive.google.com/file/d/1fx5B8YBlSe82SvD7T7V2Pljs7yGn7U6p/preview"
+                                            className="w-full aspect-video border-0"
+                                            allow="autoplay"
+                                            title="System Walkthrough: OTP Stabilization"
+                                        ></iframe>
+                                    </div>
+                                    <p className="text-xs text-brand-text-secondary mt-3">
+                                        ✓ Anonymized Walkthrough
+                                    </p>
+                                </div>
+
+                                <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Global OTP Dashboard Overview</h4>
                                     <p className="text-brand-text-secondary mb-4">
                                         High-level executive view showing global on-time performance trends, threshold tracking, and aggregate status across all regions.
                                     </p>
@@ -333,7 +425,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                 </div>
 
                                 <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
-                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">2. Distributor Performance View</h4>
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Distributor Performance View</h4>
                                     <p className="text-brand-text-secondary mb-4">
                                         Comparative performance breakdown by distributor/facility, highlighting specific underperformers dragging down the global average.
                                     </p>
@@ -350,7 +442,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                 </div>
 
                                 <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
-                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">3. Case-Level Drilldown</h4>
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">4. Case-Level Drilldown</h4>
                                     <p className="text-brand-text-secondary mb-4">
                                         Granular table view allowing teams to drill down from aggregate metrics to individual delayed cases to investigate root causes.
                                     </p>
@@ -367,7 +459,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                 </div>
 
                                 <div className="holographic-panel p-6 sm:p-8 rounded-lg border border-brand-border">
-                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">4. Analysis Summary Report</h4>
+                                    <h4 className="font-poppins font-bold text-xl text-brand-text-primary mb-2">5. Analysis Summary Report</h4>
                                     <p className="text-brand-text-secondary mb-4">
                                         Periodic PDF summary report generated for leadership, synthesizing trends, risks, and recommended actions based on dashboard data.
                                     </p>
@@ -737,7 +829,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     </section>
                 </article>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -43,7 +43,7 @@ const ProblemSolution: React.FC<ProblemSolutionProps> = ({ navigateTo }) => {
                                     onClick={() => navigateTo(item.targetPage)}
                                     onMouseEnter={() => setIsHovering(true)}
                                     onMouseLeave={() => setIsHovering(false)}
-                                    className="inline-flex items-center justify-center px-6 py-3 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-[10px] sm:text-xs font-roboto-mono font-bold uppercase tracking-[0.15em] text-brand-text-secondary hover:text-brand-text-primary hover:bg-brand-accent/10 hover:border-brand-accent/40 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] w-full group"
+                                    className="inline-flex items-center justify-center px-6 py-3 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-xs sm:text-sm font-roboto-mono font-bold uppercase tracking-[0.12em] text-brand-text-secondary hover:text-brand-text-primary hover:bg-brand-accent/10 hover:border-brand-accent/40 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] w-full group"
                                 >
                                     {item.ctaText}
                                     <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>

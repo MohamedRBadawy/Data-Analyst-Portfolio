@@ -10,6 +10,7 @@ import ServiceDetailPage from './components/ServiceDetailPage';
 import ExperienceDetailPage from './components/ExperienceDetailPage';
 import ProgressBar from './components/ProgressBar';
 import BottomNavBar from './components/BottomNavBar';
+import KeyboardShortcuts from './components/KeyboardShortcuts';
 
 // New Page Components
 import HomePage from './components/pages/HomePage';
@@ -36,6 +37,7 @@ const App: React.FC = () => {
     const [selectedProject, setSelectedProject] = useState<CaseStudy | null>(null);
     const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
     const [selectedExperience, setSelectedExperience] = useState<WorkExperience | null>(null);
+    const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false);
 
     // Sync state with URL hash on mount and hash change
     useEffect(() => {
@@ -54,6 +56,42 @@ const App: React.FC = () => {
         window.addEventListener('hashchange', handleHashChange);
         return () => window.removeEventListener('hashchange', handleHashChange);
     }, []);
+
+    // Keyboard shortcuts handler
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            // Don't trigger on input/textarea
+            if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+                return;
+            }
+
+            // ? for help
+            if (e.key === '?' && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                setShowKeyboardShortcuts(!showKeyboardShortcuts);
+                return;
+            }
+
+            // Esc to close shortcuts
+            if (e.key === 'Escape') {
+                setShowKeyboardShortcuts(false);
+                return;
+            }
+
+            // 1-6 for navigation
+            if (e.key >= '1' && e.key <= '6' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                const pageIndex = parseInt(e.key) - 1;
+                if (pageIndex < pageOrder.length) {
+                    e.preventDefault();
+                    navigateTo(pageOrder[pageIndex]);
+                }
+                return;
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [showKeyboardShortcuts]);
 
     const navigateTo = (page: Page) => {
         setCurrentPage(page);
@@ -130,16 +168,39 @@ const App: React.FC = () => {
     const progress = getProgress();
 
     return (
-        <div className="bg-brand-bg text-brand-text-primary pb-20 lg:pb-0">
+        <div className="bg-ops-bg text-ops-text-primary pb-20 lg:pb-0 min-h-screen font-sans">
+            {/* Skip to Content - Accessibility */}
+            <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-6 focus:py-3 focus:bg-brand-accent focus:text-brand-bg focus:font-bold focus:font-poppins focus:rounded-lg focus:shadow-[0_0_20px_rgba(0,245,255,0.6)] focus:outline-none"
+            >
+                Skip to main content
+            </a>
+
+            <KeyboardShortcuts isOpen={showKeyboardShortcuts} onClose={() => setShowKeyboardShortcuts(false)} />
+
             <ProgressBar progress={progress} />
             <GenerativeBackground />
 
-            <div className="relative z-10 flex">
+            <div className="relative z-10 flex min-h-screen">
                 <Sidebar navigateTo={navigateTo} activePage={currentPage} />
-                <main className="flex-grow lg:ml-64">
-                    {renderPage()}
+
+                {/* Asymmetric Layout: Work Surface */}
+                <main id="main-content" className="flex-grow lg:ml-72 bg-ops-bg transition-colors duration-300 relative">
+                    {/* Data Decorators: Corner Reticles */}
+                    <div className="absolute top-6 left-6 w-3 h-3 border-l border-t border-signal-info/30 pointer-events-none hidden lg:block"></div>
+                    <div className="absolute top-6 right-6 w-3 h-3 border-r border-t border-signal-info/30 pointer-events-none hidden lg:block"></div>
+                    <div className="absolute bottom-6 left-6 w-3 h-3 border-l border-b border-signal-info/30 pointer-events-none hidden lg:block"></div>
+                    <div className="absolute bottom-6 right-6 w-3 h-3 border-r border-b border-signal-info/30 pointer-events-none hidden lg:block"></div>
+
+                    <div className="max-w-[1600px] mx-auto w-full">
+                        {renderPage()}
+                    </div>
                     {!isDetailPage && <Footer />}
                 </main>
+
+                {/* Future Context Column (Reserved) - Hidden for now */}
+                {/* <aside className="hidden 2xl:block w-72 fixed right-0 h-screen border-l border-ops-border bg-ops-panel"></aside> */}
             </div>
 
             <BottomNavBar navigateTo={navigateTo} activePage={currentPage} />

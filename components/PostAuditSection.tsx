@@ -67,8 +67,8 @@ const PostAuditSection: React.FC = () => {
                 </div>
 
                 {/* What You'll Walk Away With */}
-                <div className="holographic-panel rounded-2xl p-8 lg:p-10 border-brand-accent mb-12">
-                    <h3 className="text-h3 font-poppins text-brand-accent mb-4">
+                <div className="holographic-panel rounded-2xl p-8 lg:p-10 border-brand-accent/30 mb-12">
+                    <h3 className="text-h3 font-poppins text-brand-text-primary mb-4">
                         What You'll Walk Away With (No Matter What)
                     </h3>
                     <p className="text-brand-text-secondary mb-4">

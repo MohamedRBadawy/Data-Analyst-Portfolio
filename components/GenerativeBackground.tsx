@@ -16,7 +16,7 @@ const hexToRgb = (hex: string) => {
 
 const COLORS = {
     red: hexToRgb('#F43F5E'),
-    blue: hexToRgb('#60A5FA'),
+    blue: hexToRgb('#0369A1'),
     purple: hexToRgb('#818CF8'),
     green: hexToRgb('#34D399'),
 };

@@ -23,7 +23,7 @@ const ExperienceCard: React.FC<{ experience: WorkExperience; onViewDetails: () =
                 <p className="font-roboto-mono text-sm text-brand-text-secondary/70 mb-4">{experience.dates}</p>
                 <p className="text-brand-text-secondary">{experience.summary}</p>
             </div>
-            <div className="inline-flex items-center px-4 py-2 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-[10px] uppercase font-roboto-mono font-bold tracking-[0.15em] text-brand-text-secondary group-hover:text-brand-text-primary group-hover:bg-brand-accent/10 transition-all duration-300 mt-8 self-start">
+            <div className="inline-flex items-center px-4 py-2 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-xs sm:text-sm uppercase font-roboto-mono font-bold tracking-[0.12em] text-brand-text-secondary group-hover:text-brand-text-primary group-hover:bg-brand-accent/10 transition-all duration-300 mt-8 self-start">
                 View Details &rarr;
             </div>
         </div>
@@ -34,14 +34,14 @@ const ExperiencePage: React.FC<ExperiencePageProps> = ({ showDetailPage }) => {
     return (
         <section className="min-h-screen">
             <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-12">
+                <div className="text-center mb-16">
                     <ScramblingHeading text="Work Experience" />
-                    <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">
+                    <p className="text-xl text-brand-text-secondary mt-6 max-w-3xl mx-auto leading-relaxed">
                         A detailed look at my professional journey, key responsibilities, and the impact I've made in each role.
                     </p>
                 </div>
 
-                <div className="space-y-12">
+                <div className="space-y-16">
                     {experienceData.map(exp => (
                         <ExperienceCard key={exp.id} experience={exp} onViewDetails={() => showDetailPage(exp)} />
                     ))}

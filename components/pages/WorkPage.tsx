@@ -20,7 +20,7 @@ const WorkPage: React.FC<WorkPageProps> = ({ showProjectDetailPage, showExperien
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <ScramblingHeading text="My Work" />
-                    <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">
+                    <p className="text-base text-brand-text-secondary mt-4 max-w-3xl mx-auto leading-relaxed">
                         This is a collection of my professional experience and a deep dive into the projects I've delivered. Explore how I've transformed complex challenges into clear, data-driven solutions.
                     </p>
                 </div>
