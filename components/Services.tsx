@@ -21,7 +21,7 @@ const Services: React.FC<ServicesProps> = ({ onViewDetails }) => {
             <div className="content-container">
                 <div className="text-center mb-16">
                     <ScramblingHeading text="My Services" />
-                    <p className="text-base text-brand-text-secondary mt-4 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-2xl text-brand-text-primary/80 font-medium mt-6 max-w-4xl mx-auto leading-relaxed">
                         I offer a focused suite of services designed to deliver measurable business outcomes, from clarifying data to automating entire workflows.
                     </p>
                 </div>
@@ -34,7 +34,7 @@ const Services: React.FC<ServicesProps> = ({ onViewDetails }) => {
                                 <button
                                     key={service.category}
                                     onClick={() => setActiveCategory(service.category)}
-                                    className={`px-6 py-4 font-sans font-bold text-base capitalize transition-colors duration-300 relative w-full md:w-auto text-center ${activeCategory === service.category ? 'text-brand-accent' : 'text-brand-text-secondary hover:text-brand-text-primary'}`}
+                                    className={`px-8 py-5 font-sans font-bold text-lg capitalize transition-colors duration-300 relative w-full md:w-auto text-center ${activeCategory === service.category ? 'text-brand-accent' : 'text-brand-text-secondary hover:text-brand-text-primary'}`}
                                 >
                                     <div className="flex items-center justify-center">
                                         <span className="mr-3">{service.icon}</span>
@@ -55,7 +55,7 @@ const Services: React.FC<ServicesProps> = ({ onViewDetails }) => {
                     <div className="min-h-[400px] animate-construct-in">
                         {currentService && (
                             <div>
-                                <p className="text-center text-brand-text-secondary text-sm mb-12 leading-relaxed">{currentService.description}</p>
+                                <p className="text-center text-brand-text-primary/80 font-medium text-xl mb-12 leading-relaxed max-w-4xl mx-auto">{currentService.description}</p>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--space-xl)]">
                                     {currentService.items.map((item, index) => (
                                         <RevealOnScroll key={item.title} direction="up" delay={index * 100} className="h-full">
@@ -65,23 +65,23 @@ const Services: React.FC<ServicesProps> = ({ onViewDetails }) => {
                                                 onMouseLeave={() => setIsHovering(false)}
                                                 className="holographic-panel rounded-lg p-7 flex flex-col cursor-pointer border border-brand-border/50 smooth-transition shadow-md hover:shadow-xl hover:-translate-y-2 h-full card-hover group relative overflow-hidden"
                                             >
-                                                <h3 className="font-sans text-lg font-bold text-brand-text-primary mb-3">{item.title}</h3>
-                                                <div className="flex items-center text-brand-text-secondary text-xs mb-4 font-medium">
-                                                    <UserIcon className="w-4 h-4 mr-2" />
+                                                <h3 className="font-sans text-2xl font-bold text-brand-text-primary mb-4">{item.title}</h3>
+                                                <div className="flex items-center text-brand-text-primary/80 font-medium text-base mb-6">
+                                                    <UserIcon className="w-5 h-5 mr-2" />
                                                     <span>Best for: {item.bestFor}</span>
                                                 </div>
-                                                <p className="text-brand-text-secondary flex-grow mb-6 text-sm leading-relaxed">{item.description}</p>
-                                                <div className="mt-auto pt-6 border-t border-brand-border/50">
-                                                    <p className="text-xs text-ops-text-primary mb-3 font-bold uppercase tracking-wide">Why You Need This:</p>
-                                                    <div className="flex items-start mb-6 align-top">
-                                                        <CheckIcon className="w-5 h-5 text-brand-clarity mr-3 mt-0.5 flex-shrink-0" />
-                                                        <p className="text-brand-clarity font-medium text-sm">{item.value}</p>
+                                                <p className="text-brand-text-primary/80 font-medium flex-grow mb-8 text-lg leading-relaxed">{item.description}</p>
+                                                <div className="mt-auto pt-8 border-t border-brand-border/50">
+                                                    <p className="text-sm text-ops-text-primary mb-3 font-bold uppercase tracking-wide">Why You Need This:</p>
+                                                    <div className="flex items-start mb-8 align-top">
+                                                        <CheckIcon className="w-6 h-6 text-brand-clarity mr-3 mt-0.5 flex-shrink-0" />
+                                                        <p className="text-brand-clarity font-medium text-lg">{item.value}</p>
                                                     </div>
                                                     <div className="flex justify-between items-center">
-                                                        <p className="font-mono text-base text-brand-cta bg-brand-surface border border-brand-cta/30 px-4 py-2 rounded-md inline-block shadow-lg shadow-brand-cta/20">
+                                                        <p className="font-mono text-xl text-brand-cta bg-brand-surface border border-brand-cta/30 px-5 py-2.5 rounded-md inline-block shadow-lg shadow-brand-cta/20">
                                                             {item.price}
                                                         </p>
-                                                        <div className="font-poppins font-bold text-sm text-brand-accent group-hover:translate-x-1 transition-transform">
+                                                        <div className="font-poppins font-bold text-base text-brand-accent group-hover:translate-x-1 transition-transform">
                                                             View Details &rarr;
                                                         </div>
                                                     </div>

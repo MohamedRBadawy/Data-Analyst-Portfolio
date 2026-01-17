@@ -46,7 +46,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
     return (
         <div className="min-h-screen py-0 px-4 sm:px-8 lg:px-16 animate-reveal-in">
             <SectionIndex sectionIds={getSectionIds()} />
-            <div className="max-w-4xl mx-auto pt-16 sm:pt-20">
+            <div className="max-w-5xl mx-auto pt-16 sm:pt-20">
                 <Breadcrumb
                     items={[
                         { label: 'Work', onClick: onBack },
@@ -83,7 +83,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                             <div id="summary" className="space-y-12">
                                 <section id="why-it-matters" data-title="Impact">
                                     <h3 className="font-poppins text-h3 text-signal-info text-glow-accent mb-8">Why This Mattered</h3>
-                                    <div className="text-lg md:text-xl text-ops-text-primary leading-relaxed border-l-4 border-signal-info pl-6 sm:pl-8 font-medium">
+                                    <div className="text-xl md:text-2xl text-ops-text-primary leading-relaxed border-l-4 border-signal-info pl-6 sm:pl-8 font-medium">
                                         {cleanText(project.tierAStructure.whyItMatters)}
                                     </div>
                                 </section>
@@ -91,14 +91,14 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                                     <section id="context" data-title="Context">
                                         <h4 className="font-poppins text-xl font-bold text-ops-text-secondary mb-5 uppercase tracking-wider">Context</h4>
-                                        <div className="text-ops-text-primary leading-relaxed whitespace-pre-wrap border-l-2 border-ops-border pl-4 text-base">
+                                        <div className="text-ops-text-primary leading-relaxed whitespace-pre-wrap border-l-2 border-ops-border pl-4 text-lg">
                                             {cleanText(project.tierAStructure.context)}
                                         </div>
                                     </section>
 
                                     <section id="problem-risk" data-title="Risk">
-                                        <h4 className="font-poppins text-xl font-bold text-ops-text-secondary mb-5 uppercase tracking-wider">Problem & Risk</h4>
-                                        <div className="text-ops-text-primary leading-relaxed whitespace-pre-wrap border-l-2 border-signal-critical pl-4">
+                                        <h4 className="font-poppins text-xl font-bold text-brand-chaos mb-5 uppercase tracking-wider">Problem & Risk</h4>
+                                        <div className="text-ops-text-primary leading-relaxed whitespace-pre-wrap border-l-2 border-signal-critical pl-4 text-lg">
                                             {cleanText(project.tierAStructure.problemRisk)}
                                         </div>
                                     </section>
@@ -106,7 +106,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
 
                                 <section id="outcome" data-title="Outcome">
                                     <h3 className="font-poppins text-h3 text-signal-success text-glow-clarity mb-6">Outcome / Value Delta</h3>
-                                    <div className="text-ops-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-signal-success pl-6 sm:pl-8">
+                                    <div className="text-ops-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-signal-success pl-6 sm:pl-8 text-xl">
                                         {cleanText(project.tierAStructure.outcome)}
                                     </div>
                                 </section>
@@ -123,14 +123,14 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                 <div className="space-y-12">
                                     <section>
                                         <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6">System Design</h3>
-                                        <div className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-accent pl-6 sm:pl-8">
+                                        <div className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-accent pl-6 sm:pl-8 text-lg">
                                             {cleanText(project.tierAStructure.systemDesign)}
                                         </div>
                                     </section>
 
                                     <section>
                                         <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-6">My Responsibility</h3>
-                                        <div className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-clarity pl-6 sm:pl-8">
+                                        <div className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-clarity pl-6 sm:pl-8 text-lg">
                                             {cleanText(project.tierAStructure.responsibility)}
                                         </div>
                                     </section>
@@ -146,7 +146,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                 onToggle={() => setIsGapsOpen(!isGapsOpen)}
                                 variant="gaps"
                             >
-                                <div className="text-brand-text-secondary leading-relaxed whitespace-pre-wrap">
+                                <div className="text-brand-text-secondary leading-relaxed whitespace-pre-wrap text-lg">
                                     {cleanText(project.tierAStructure.gaps)}
                                 </div>
                             </CollapsibleSection>
@@ -157,7 +157,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     {project.theMoment && (
                         <section id="the-moment" data-title="Moment">
                             <h3 className="font-poppins text-h3 text-brand-chaos text-glow-chaos mb-6">The Moment</h3>
-                            <p className="text-lg text-brand-text-primary leading-relaxed border-l-4 border-brand-chaos pl-6 sm:pl-8">
+                            <p className="text-2xl text-brand-text-primary leading-relaxed border-l-4 border-brand-chaos pl-6 sm:pl-8">
                                 {cleanText(project.theMoment)}
                             </p>
                         </section>
@@ -166,7 +166,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     {project.whatWasAtRisk && (
                         <section id="what-was-at-risk" data-title="Risk">
                             <h3 className="font-poppins text-h3 text-brand-chaos text-glow-chaos mb-6">What Was at Risk</h3>
-                            <p className="text-lg text-brand-text-primary leading-relaxed border-l-4 border-brand-chaos pl-6 sm:pl-8">
+                            <p className="text-xl text-brand-text-primary leading-relaxed border-l-4 border-brand-chaos pl-6 sm:pl-8">
                                 {cleanText(project.whatWasAtRisk)}
                             </p>
                         </section>
@@ -175,7 +175,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     {project.whatChanged && (
                         <section id="what-changed" data-title="The Pivot">
                             <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6">What Changed</h3>
-                            <p className="text-lg text-brand-text-primary leading-relaxed border-l-4 border-brand-accent pl-6 sm:pl-8">
+                            <p className="text-xl text-brand-text-primary leading-relaxed border-l-4 border-brand-accent pl-6 sm:pl-8">
                                 {cleanText(project.whatChanged)}
                             </p>
                         </section>
@@ -184,7 +184,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     {/* How It Worked - Original story field */}
                     <section id="how-it-worked" data-title="Logic">
                         <h3 className="font-poppins text-h3 text-brand-clarity text-glow-clarity mb-6">{project.theMoment ? 'How It Worked' : 'The Story'}</h3>
-                        <p className="text-xl text-brand-text-primary leading-relaxed border-l-4 border-brand-accent pl-6 sm:pl-8">{cleanText(project.story)}</p>
+                        <p className="text-2xl text-brand-text-primary leading-relaxed border-l-4 border-brand-accent pl-6 sm:pl-8">{cleanText(project.story)}</p>
                     </section>
 
                     <section id="my-process" data-title="Process">
@@ -192,8 +192,8 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {project.process.map((step, index) => (
                                 <div key={index} className="holographic-panel p-6 rounded-lg">
-                                    <h4 className="font-bold font-poppins text-xl text-brand-text-primary mb-2">{index + 1}. {step.title}</h4>
-                                    <p className="text-brand-text-secondary">{cleanText(step.description)}</p>
+                                    <h4 className="font-bold font-poppins text-2xl text-brand-text-primary mb-2">{index + 1}. {step.title}</h4>
+                                    <p className="text-brand-text-secondary text-lg">{cleanText(step.description)}</p>
                                 </div>
                             ))}
                         </div>
@@ -210,8 +210,8 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                 <ul className="space-y-3">
                                     {project.achievements.map((item, index) => (
                                         <li key={index} className="flex items-start">
-                                            <CheckIcon className="w-5 h-5 text-brand-clarity mr-3 mt-1 flex-shrink-0" />
-                                            <span className="text-brand-text-primary">{cleanText(item)}</span>
+                                            <CheckIcon className="w-6 h-6 text-brand-clarity mr-3 mt-1 flex-shrink-0" />
+                                            <span className="text-brand-text-primary text-xl">{cleanText(item)}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -230,7 +230,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                                         </BarChart>
                                     </ResponsiveContainer>
                                 </div>
-                                <p className="font-roboto-mono text-3xl mt-4">
+                                <p className="font-roboto-mono text-4xl mt-4">
                                     From {project.before} to <span ref={ref} className="text-brand-clarity font-bold inline-block">{afterCount}</span>
                                 </p>
                             </div>
@@ -241,7 +241,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ project, onBack }
                     {project.howMeasured && (
                         <section id="how-impact-measured" data-title="Audit">
                             <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6">How the Impact Was Measured</h3>
-                            <p className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-border/50 pl-6 sm:pl-8">
+                            <p className="text-brand-text-primary leading-relaxed whitespace-pre-wrap border-l-4 border-brand-border/50 pl-6 sm:pl-8 text-lg">
                                 {cleanText(project.howMeasured)}
                             </p>
                         </section>

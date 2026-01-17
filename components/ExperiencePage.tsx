@@ -6,6 +6,7 @@ import ScramblingHeading from './ScramblingHeading';
 interface ExperiencePageProps {
     showMainPage: () => void;
     showDetailPage: (experience: WorkExperience) => void;
+    hideHero?: boolean;
 }
 
 const ExperienceCard: React.FC<{ experience: WorkExperience; onViewDetails: () => void; }> = ({ experience, onViewDetails }) => {
@@ -15,33 +16,42 @@ const ExperienceCard: React.FC<{ experience: WorkExperience; onViewDetails: () =
             onClick={onViewDetails}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className="holographic-panel rounded-xl p-[var(--space-lg)] flex flex-col cursor-pointer"
+            className="group holographic-panel rounded-lg p-6 flex flex-col cursor-pointer hover:bg-brand-surface/30 transition-all duration-300 relative border border-transparent hover:border-brand-accent/20"
         >
             <div className="flex-grow">
-                <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent">{experience.company}</h3>
-                <p className="font-roboto-mono text-brand-text-secondary mb-2">{experience.role}</p>
-                <p className="font-roboto-mono text-sm text-brand-text-secondary/70 mb-4">{experience.dates}</p>
-                <p className="text-brand-text-secondary">{experience.summary}</p>
+                {/* Visual Timeline Connector - Left Border or Dot logic could go here, keeping it clean for now */}
+
+                <h3 className="font-poppins text-3xl font-bold text-brand-text-primary mb-3 group-hover:text-brand-accent transition-colors">{experience.company}</h3>
+                <div className="flex flex-row items-baseline gap-2 mb-5">
+                    <p className="font-sans text-lg font-semibold text-brand-text-secondary uppercase tracking-widest">{experience.role}</p>
+                    <span className="text-brand-text-secondary/50 text-base">•</span>
+                    <p className="font-sans text-base font-medium text-brand-text-secondary/70 uppercase tracking-wide">{experience.dates}</p>
+                </div>
+
+                <p className="text-xl text-brand-text-primary leading-relaxed mb-8 w-full">{experience.summary}</p>
             </div>
-            <div className="inline-flex items-center px-4 py-2 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-xs sm:text-sm uppercase font-roboto-mono font-bold tracking-[0.12em] text-brand-text-secondary group-hover:text-brand-text-primary group-hover:bg-brand-accent/10 transition-all duration-300 mt-8 self-start">
-                View Details &rarr;
+
+            <div className="inline-flex items-center text-sm uppercase font-sans font-bold tracking-[0.15em] text-brand-text-secondary/60 group-hover:text-brand-accent transition-all duration-300 self-start mt-auto pt-5 border-t border-brand-border/20 w-full">
+                View Deep Dive <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
             </div>
         </div>
     );
 };
 
-const ExperiencePage: React.FC<ExperiencePageProps> = ({ showDetailPage }) => {
+const ExperiencePage: React.FC<ExperiencePageProps> = ({ showDetailPage, hideHero = false }) => {
     return (
-        <section className="min-h-screen">
-            <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-16">
-                    <ScramblingHeading text="Work Experience" />
-                    <p className="text-xl text-brand-text-secondary mt-6 max-w-3xl mx-auto leading-relaxed">
-                        A detailed look at my professional journey, key responsibilities, and the impact I've made in each role.
-                    </p>
-                </div>
+        <section className={`min-h-screen ${hideHero ? 'pt-0' : 'pt-16'}`}>
+            <div className="max-w-5xl mx-auto">
+                {!hideHero && (
+                    <div className="text-center mb-16">
+                        <ScramblingHeading text="Work Experience" />
+                        <p className="text-2xl text-brand-text-secondary mt-6 max-w-4xl mx-auto leading-relaxed">
+                            A detailed look at my professional journey, key responsibilities, and the impact I've made in each role.
+                        </p>
+                    </div>
+                )}
 
-                <div className="space-y-16">
+                <div className="space-y-3">
                     {experienceData.map(exp => (
                         <ExperienceCard key={exp.id} experience={exp} onViewDetails={() => showDetailPage(exp)} />
                     ))}

@@ -10,8 +10,8 @@
 
         /* LIGHT MODE: "Technical Documentation" */
         /* Surface: High contrast, sharp, paper-like */
-        --bg-main: #F8F9FA;
-        /* Warm Gray/Alabaster */
+        --bg-main: #F5F3EF;
+        /* Warm cream/linen - noticeably warmer and softer */
         --bg-panel: #FFFFFF;
         /* Pure White */
         --bg-surface: #FFFFFF;
@@ -69,46 +69,62 @@
         --brand-surface: var(--bg-panel);
         --brand-border: var(--border-main);
         --brand-cta: var(--signal-success);
+
+        /* Neon Glow Tokens - Light Mode */
+        --neon-primary: #0F172A;
+        --neon-accent: #0369A1;
+        --neon-glow-text: 0 0 10px rgba(3, 105, 161, 0.15);
+        /* Subtle glow for light mode */
+        --neon-glow-accent: 0 0 12px rgba(3, 105, 161, 0.25);
     }
 
     :root.dark-mode {
         /* DARK MODE: "Premium Ops Center" */
         /* Surface: Deeper, richer blacks/blues for premium feel */
-        --bg-main: #020617;
-        /* Slate 950 - Much deeper */
-        --bg-panel: #0F172A;
-        /* Slate 900 */
-        --bg-surface: rgba(15, 23, 42, 0.6);
-        /* Glassy Slate 900 */
+        --bg-main: #0F172A;
+        /* Slate 900 - Lighter base but still dark */
+        --bg-panel: #1E293B;
+        /* Slate 800 - Noticeably lighter for panels */
+        --bg-surface: rgba(30, 41, 59, 0.7);
+        /* Glassy slate 800 */
 
         /* Typography: High Contrast */
-        --text-primary: #F1F5F9;
-        /* Slate 100 - Brighter white */
-        --text-secondary: #94A3B8;
+        --text-primary: #F8FAFC;
+        /* Slate 50 - Off-white for premium feel */
+        --text-secondary: #CBD5E1;
+        /* Slate 300 - better readability */
+        --text-tertiary: #94A3B8;
         /* Slate 400 */
-        --text-tertiary: #475569;
-        /* Slate 600 */
 
-        /* Borders: Subtle but present */
-        --border-main: #1E293B;
-        /* Slate 800 */
-        --border-bolder: #334155;
-        /* Slate 700 */
+        /* Borders: Precise and subtle */
+        --border-main: rgba(51, 65, 85, 0.4);
+        /* Slate 700 with opacity */
+        --border-bolder: rgba(71, 85, 105, 0.6);
+        /* Slate 600 with opacity */
 
-        /* Signals: Enhanced vibrancy for dark mode */
+        /* Signals: Enhanced vibrancy with glow potential */
         --signal-success: #10B981;
-        /* Emerald 500 */
         --signal-warning: #F59E0B;
-        /* Amber 500 */
         --signal-critical: #EF4444;
-        /* Red 500 */
         --signal-info: #0369A1;
-        /* User Selected Blue - Forced for Dark Mode as well */
+
+        /* Glow Variables - Balanced & Consistent */
+        --accent-glow: 0 0 20px rgba(3, 105, 161, 0.3);
+        --accent-glow-strong: 0 0 40px rgba(3, 105, 161, 0.5);
+        --accent-glow-text: drop-shadow(0 0 8px rgba(3, 105, 161, 0.4));
+        --glow-depth: 0 0 15px rgba(3, 105, 161, 0.1);
+
+        /* Neon Glow Tokens - Dark Mode (Synced with Light Mode) */
+        --neon-primary: #F8FAFC;
+        --neon-accent: #0369A1;
+        --neon-glow-text: 0 0 15px rgba(3, 105, 161, 0.4);
+        --neon-glow-accent: 0 0 20px rgba(3, 105, 161, 0.5);
 
         /* Interaction */
-        --action-primary: #F8F9FA;
+        --action-primary: #F8FAFC;
         --action-hover: #FFFFFF;
         --focus-ring: #0369A1;
+        /* Slightly more vibrant focus */
         /* Sky 400 */
 
         /* Semantic Mappings */
@@ -125,14 +141,50 @@
 
     body {
         background-color: var(--brand-bg);
+        /* Fix mask on body potentially hiding content at edges (using pseudo-element instead if needed, but trying simpler mask first)
+           Actually, mask on body will hide scrollbars/edges. Better to use a pseudo-element for the pattern.
+        */
+        mask-image: none;
+        -webkit-mask-image: none;
+        background-image: none;
+        /* Resetting direct image to use pseudo */
+        position: relative;
+
         color: var(--brand-text-primary);
         font-family: 'Inter', sans-serif;
         /* Normalized Base Size - Preventing "Micro Text" */
-        font-size: 16px;
+        font-size: 18px;
         line-height: 1.6;
-        transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        transition:
+            background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+            color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+            border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+            fill 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+            stroke 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        min-height: 100vh;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        background-image: radial-gradient(circle at 1px 1px, var(--border-main) 1px, transparent 0);
+        background-size: 32px 32px;
+        opacity: 0.25;
+        mask-image: radial-gradient(circle at center, black 30%, transparent 90%);
+        -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 90%);
+    }
+
+    :root.dark-mode body::before {
+        background-image: radial-gradient(circle at 1px 1px, rgba(3, 105, 161, 0.15) 1px, transparent 0);
+        opacity: 0.6;
     }
 
     /* Headings */
@@ -148,28 +200,73 @@
     }
 
     h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        margin-bottom: 0.8em;
+        font-size: clamp(2.75rem, 6vw, 4.5rem);
+        margin-bottom: 0.4em;
         background: linear-gradient(135deg, var(--text-primary) 0%, var(--signal-info) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        line-height: 1.02;
+        letter-spacing: -0.02em;
     }
 
     h2 {
         font-size: clamp(2rem, 4vw, 3rem);
-        margin-bottom: 1em;
+        margin-bottom: 0.4em;
+        margin-top: 0.2em;
         background: linear-gradient(135deg, var(--text-primary) 0%, var(--signal-info) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
 
+    h1,
+    h2,
+    h3,
+    h4 {
+        text-shadow: var(--neon-glow-text);
+        transition: all 0.5s ease;
+    }
+
+    :root.dark-mode h1,
+    :root.dark-mode h2,
+    :root.dark-mode h3,
+    :root.dark-mode h4 {
+        filter: var(--accent-glow-text);
+        letter-spacing: normal;
+        text-shadow: none;
+    }
+
+    :root.dark-mode h3,
+    :root.dark-mode h4 {
+        color: #F8FAFC !important;
+    }
+
+    /* Brighter Gradients for Dark Mode Readability (Blue-centric) */
+    :root.dark-mode h1,
+    :root.dark-mode h2 {
+        background: linear-gradient(135deg, #FFFFFF 0%, #38BDF8 100%);
+        /* Blue Core */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text;
+    }
+
+    /* Specific Fix for Chart Titles and labels in Panels */
+    :root.dark-mode .holographic-panel h4 {
+        filter: none;
+        text-shadow: 0 0 8px rgba(3, 105, 161, 0.3);
+        opacity: 0.9;
+    }
+
+
     h3 {
         font-size: clamp(1.5rem, 3vw, 2.25rem);
-        margin-bottom: 0.8em;
+        margin-bottom: 0.35em;
+        margin-top: 0em;
         color: var(--text-primary);
         transition: color 0.3s ease;
+        font-weight: 700;
     }
 
     h4 {
@@ -191,8 +288,9 @@
     }
 
     :root.dark-mode .glass-panel {
-        background: rgba(15, 23, 42, 0.4);
-        border: 1px solid rgba(30, 41, 59, 0.5);
+        background: rgba(30, 41, 59, 0.5);
+        border: 1px solid rgba(3, 105, 161, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
     }
 
     /* Sidebar Light/Dark Mode Styles */
@@ -257,7 +355,11 @@
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4), 0 0 30px rgba(5, 150, 105, 0.2);
+    /* Layered shadow for smoother depth */
+    box-shadow:
+        0 4px 6px -1px rgba(5, 150, 105, 0.2),
+        0 10px 15px -3px rgba(5, 150, 105, 0.2),
+        0 0 20px rgba(5, 150, 105, 0.1);
 }
 
 .btn-primary:active {
@@ -277,26 +379,47 @@
     box-shadow: 0 0 25px rgba(3, 105, 161, 0.25);
 }
 
-/* Holographic Panel - Enhanced */
+/* Holographic Panel - Enhanced for Depth */
 .holographic-panel {
     background: var(--brand-surface);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--brand-border);
-    box-shadow: 
-        0 1px 3px rgba(0, 0, 0, 0.08),
-        0 4px 6px rgba(0, 0, 0, 0.06),
-        inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    /* Inset highlight for "etched" feel + soft drop shadow */
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* Specific Dark Mode Refinement for Panels */
+:root.dark-mode .holographic-panel {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border: 1px solid rgba(3, 105, 161, 0.25);
+    box-shadow:
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.08),
+        0 15px 35px -5px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(3, 105, 161, 0.08);
+    /* Slightly more prominent constant glow */
 }
 
 .holographic-panel:hover {
-    box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.12),
-        0 12px 24px rgba(0, 0, 0, 0.1),
-        0 0 30px rgba(3, 105, 161, 0.15),
-        inset 0 1px 1px rgba(255, 255, 255, 0.8);
-    border-color: rgba(3, 105, 161, 0.5);
-    transform: translateY(-4px);
+    box-shadow:
+        0 25px 35px -5px rgba(0, 0, 0, 0.2),
+        0 15px 15px -5px rgba(0, 0, 0, 0.1),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    border-color: rgba(3, 105, 161, 0.4);
+    transform: translateY(-6px);
+}
+
+:root.dark-mode .holographic-panel:hover {
+    box-shadow:
+        0 35px 60px -15px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(3, 105, 161, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    border-color: rgba(3, 105, 161, 0.8);
 }
 
 /* Enhanced Scrollbar */
@@ -326,21 +449,36 @@
    ======================================== */
 
 /* Stagger Animation for List Items */
-.stagger-children > * {
+.stagger-children>* {
     animation: fade-in-stagger 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children>*:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.stagger-children>*:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.stagger-children>*:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.stagger-children>*:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.stagger-children>*:nth-child(5) {
+    animation-delay: 0.5s;
+}
 
 @keyframes fade-in-stagger {
     0% {
         opacity: 0;
         transform: translateY(20px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -349,8 +487,13 @@
 
 /* Smooth Fade In */
 @keyframes fade-in-smooth {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .fade-in-smooth {
@@ -363,6 +506,7 @@
         opacity: 0;
         transform: translateX(-40px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -379,6 +523,7 @@
         opacity: 0;
         transform: translateX(40px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -391,8 +536,15 @@
 
 /* Subtle Bounce */
 @keyframes bounce-subtle {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 .bounce-subtle {
@@ -401,9 +553,12 @@
 
 /* Glow Pulse Effect */
 @keyframes glow-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 5px rgba(3, 105, 161, 0.3);
     }
+
     50% {
         box-shadow: 0 0 20px rgba(3, 105, 161, 0.6);
     }
@@ -418,19 +573,18 @@
     0% {
         background-position: -1000px 0;
     }
+
     100% {
         background-position: 1000px 0;
     }
 }
 
 .shimmer {
-    background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0,
-        rgba(255, 255, 255, 0.2) 20%,
-        rgba(255, 255, 255, 0.5) 60%,
-        rgba(255, 255, 255, 0)
-    );
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0.2) 20%,
+            rgba(255, 255, 255, 0.5) 60%,
+            rgba(255, 255, 255, 0));
     background-size: 1000px 100%;
     animation: shimmer 2s infinite;
 }
@@ -455,14 +609,22 @@
 }
 
 @keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Smooth Color Transition */
 .smooth-transition {
-    transition: 
+    transition:
         background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
         border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
         color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
@@ -470,10 +632,13 @@
         transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Interactive Element Focus Glow */
+/* Interactive Element Focus Glow with Ambient Spill */
 .focus-glow:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.1), 0 0 0 6px rgba(3, 105, 161, 0.3);
+    box-shadow:
+        0 0 0 2px var(--brand-bg),
+        0 0 0 4px rgba(3, 105, 161, 0.4),
+        0 0 15px rgba(3, 105, 161, 0.2);
 }
 
 /* Card Hover Effects */
@@ -482,8 +647,18 @@
 }
 
 .card-hover:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    /* Premium layered shadow: tight umbra + soft penumbra */
+    box-shadow:
+        0 10px 30px -5px rgba(0, 0, 0, 0.1),
+        0 4px 10px -2px rgba(0, 0, 0, 0.05);
+}
+
+:root.dark-mode .card-hover:hover {
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(3, 105, 161, 0.2);
+    /* Enhanced blue ambient glow */
 }
 
 /* Smooth Text Reveal */
@@ -492,6 +667,7 @@
         opacity: 0;
         clip-path: inset(0 100% 0 0);
     }
+
     100% {
         opacity: 1;
         clip-path: inset(0 0 0 0);
@@ -503,6 +679,24 @@
 }
 
 /* Beautiful Underline Animation */
+/* Neon & Glow Utilities */
+.text-neon {
+    color: var(--neon-accent);
+    text-shadow: var(--neon-glow-accent);
+}
+
+.text-glow-accent {
+    text-shadow: 0 0 8px rgba(0, 245, 255, 0.2);
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+:root.dark-mode .text-glow-accent {
+    text-shadow: 0 0 15px rgba(3, 105, 161, 0.5);
+}
+
 .underline-animated {
     position: relative;
     text-decoration: none;
@@ -525,8 +719,15 @@
 
 /* Floating Animation */
 @keyframes floating {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .floating {

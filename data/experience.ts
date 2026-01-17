@@ -28,6 +28,7 @@ export interface WorkExperience {
     tools: { category: string; items: string[] }[];
     zohoExpertise?: { product: string; usage: string; }[];
     contributionCategories?: ContributionCategory[];
+    operatingContext?: string;
 }
 
 export const milestones = [
@@ -46,68 +47,66 @@ export const experienceData: WorkExperience[] = [
         company: "K Line Europe",
         role: "Operational Data Systems Lead",
         dates: "2023 - Present",
-        summary: "End-to-end ownership of the organization’s operational data infrastructure, from system architecture and workflow design to executive intelligence and automation.",
+        summary: "Owned the architecture, implementation, and operational stability of data and workflow systems supporting large-scale European manufacturing operations for clear aligner production. Designed and deployed production-grade dashboards, automation, and analytical modules within live operational environments characterized by legacy processes, fragmented data, and active delivery and quality risk. Acted as the primary bridge between frontline operational teams and leadership, translating operational risk, inefficiencies, and performance gaps into measurable system interventions. Established internal ownership of operational intelligence systems, replacing reactive manual reporting with real-time visibility and enforcing process compliance directly through system design.",
         contributions: [], // Deprecated in favor of contributionCategories
         achievements: [
-            "Unified fragmented operational data into a single, automated source of truth.",
-            "Shifted management culture from reactive firefighting to data-driven prevention.",
-            "Institutionalized system ownership, reducing dependency on external vendors.",
-            "Stabilized core operational metrics by enforcing process compliance through system design."
+            "Unified fragmented operational data into a single automated source of truth supporting daily decision-making.",
+            "Stabilized service-level performance by replacing reactive reporting with real-time operational visibility.",
+            "Reduced dependency on external vendors by institutionalizing internal system ownership.",
+            "Enforced process compliance through system design, stabilizing core operational metrics."
         ],
         projects: [
-            { title: "Automated Deals Reporting System", caseStudyId: "automated-deals-reporting" },
-            { title: "Manufacturing Defect Reduction Dashboard", caseStudyId: "manufacturing-qc-dashboard" },
             { title: "Global On-Time Performance Dashboard", caseStudyId: "otp-facilities-report" },
-            { title: "Team Performance & SLA Dashboard", caseStudyId: "team-performance-dashboard" }
+            { title: "Manufacturing Defect Reduction Dashboard", caseStudyId: "manufacturing-qc-dashboard" },
+            { title: "Team Performance & SLA Dashboard", caseStudyId: "team-performance-dashboard" },
+            { title: "Automated Deals Reporting System", caseStudyId: "automated-deals-reporting" }
         ],
         tools: [
-            { category: "Business Intelligence", items: ["Looker Studio (Expert)", "Tableau (Learning)", "Power BI (Learning)"] },
-            { category: "Automation & Data", items: ["Google Sheets", "Google Apps Script", "Tulip", "SQL (Learning)", "Python (Learning)", "n8n"] },
+            { category: "Business Intelligence", items: ["Looker Studio", "Tableau", "Power BI"] },
+            { category: "Automation & Data", items: ["Google Sheets", "Google Apps Script", "Tulip", "SQL", "Python", "n8n"] },
             { category: "Core Skills", items: ["Process Optimization", "Workflow Design", "AI Workflow Design", "Systems Thinking"] }
         ],
-        zohoExpertise: [],
+        zohoExpertise: [
+            { product: "Zoho Analytics", usage: "Configured to aggregate disconnected data sources into a single executive truth." },
+            { product: "Zoho CRM", usage: "Structured data architecture to enforce process compliance and pipeline visibility." },
+            { product: "Zoho Projects", usage: "Configured lifecycles to mirror operational reality for accurate capacity planning." },
+            { product: "Zoho Desk", usage: "Integrated support workflows with production data to link issues to root causes." },
+            { product: "Zoho Inventory", usage: "Automated stock monitoring logic to trigger reordering based on consumption rates." }
+        ],
         contributionCategories: [
             {
-                id: "operational-intelligence",
-                title: "Operational Intelligence & Dashboards",
-                description: "Operational control systems used daily to manage throughput, SLAs, and decision-making.",
+                id: "systems-delivered",
+                title: "Systems Delivered at K Line",
+                description: "Production systems designed to address specific operational risks and inefficiencies.",
                 items: [
                     {
                         title: "Global On-Time Performance Dashboard",
-                        description: "Unified fragmented logistics data into a real-time performance view, stabilizing service levels and preventing contract risk.",
+                        description: "Real-time service-level visibility consolidating fragmented logistics data to prevent contract and delivery risk.",
                         caseStudyId: "otp-facilities-report"
                     },
                     {
                         title: "Manufacturing Defect Reduction Dashboard",
-                        description: "Replaced reactive defect tracking with facility-level visibility, enabling root-cause analysis and preventative process correction.",
+                        description: "Facility-level defect visibility enabling root-cause analysis and preventative correction.",
                         caseStudyId: "manufacturing-qc-dashboard"
                     },
                     {
                         title: "Team Performance & SLA Dashboard",
-                        description: "Standardized productivity metrics across the planning team, replacing subjective reviews with objective workload balancing.",
+                        description: "Standardized productivity metrics replacing subjective reviews with objective workload balancing.",
                         caseStudyId: "team-performance-dashboard"
+                    },
+                    {
+                        title: "Automated Deals Reporting System",
+                        description: "Embedded pricing logic into sales workflows to eliminate manual calculation bottlenecks.",
+                        caseStudyId: "automated-deals-reporting"
                     }
                 ],
                 subSection: {
-                    title: "Operational Analysis Modules",
-                    description: "Supporting analytical modules used to diagnose bottlenecks, distributor behavior, and workload patterns within the operational spine.",
+                    title: "Supporting Analytical Modules",
+                    description: "Diagnostic modules feeding primary dashboards to identify bottlenecks, workload imbalances, and distributor behavior.",
                     items: [
-                        {
-                            title: "Incoming Aligners per Distributor",
-                            description: "Used to analyze intake volume patterns and inform staffing allocation for peak arrival days."
-                        },
-                        {
-                            title: "Full-Service Cases Analysis by Distributor",
-                            description: "Used to analyze high-value account behavior and inform priority support tiering."
-                        },
-                        {
-                            title: "Treatment Plans Throughput & Load Analysis",
-                            description: "Used to analyze team capacity limits and inform daily assignment distribution logic."
-                        },
-                        {
-                            title: "Client Performance Board",
-                            description: "Used to analyze individual client turnaround times and inform account management intervention strategies."
-                        }
+                        { title: "Intake volume analysis by distributor", description: "Informed staffing allocation." },
+                        { title: "High-value account behavior analysis", description: "Informed support tiering." },
+                        { title: "Team throughput and capacity analysis", description: "Guided daily assignment logic." }
                     ],
                     footer: "These modules do not operate independently; they feed decisions into the primary operational dashboards and workflows."
                 }
@@ -115,73 +114,47 @@ export const experienceData: WorkExperience[] = [
             {
                 id: "workflow-automation",
                 title: "Workflow Automation",
-                description: "Automation embedded directly into operational workflows to eliminate manual coordination and reduce decision latency.",
-                items: [
-                    {
-                        title: "Automated Deals Reporting System",
-                        description: "Automated complex pricing logic within the sales workflow, eliminating manual calculation bottlenecks and ensuring quote accuracy.",
-                        caseStudyId: "automated-deals-reporting"
-                    }
-                ]
+                description: "Automation embedded directly into live operational workflows to remove manual coordination and reduce decision latency. (See 'Automated Deals Reporting System' above).",
+                items: []
             },
             {
                 id: "internal-tools",
                 title: "Internal Tools & Web Apps",
-                description: "Purpose-built internal tools created to support specific operational constraints where existing platforms fell short.",
+                description: "Purpose-built tools for specific operational constraints.",
                 items: [
                     {
                         title: "Production Planning Utility",
-                        description: "Replaced manual shift assignment with a constraint-based interface, aligning staff allocation with real-time production needs."
+                        description: "Replaced manual shift assignment with constraint-based staff allocation."
                     },
                     {
                         title: "Material Request Tracker",
-                        description: "Digitized the raw material request process, reducing floor downtime by connecting requests directly to inventory."
+                        description: "Digitized raw-material requests, reducing production floor downtime."
                     }
                 ]
             },
             {
-                id: "ai-prototypes",
-                title: "AI & Experimental Prototypes",
-                description: "Exploratory systems used to test automation and decision support before formal integration into the operational spine.",
+                id: "exploratory-prototypes",
+                title: "Exploratory & Validation Prototypes",
+                description: "Explicitly non-production systems used to test feasibility.",
                 items: [
                     {
-                        title: "Manufacturing Execution System (MES) Prototype",
-                        description: "Modeled production workflows on the Tulip platform to test real-time tracking capabilities prior to full-scale MES investment."
+                        title: "MES Prototype (Tulip)",
+                        description: "Modeled production workflows to validate real-time tracking prior to full MES investment."
                     },
                     {
                         title: "AI Agent Integration Initiatives",
-                        description: "Piloted autonomous agents for departmental tasks to validate feasibility of reducing manual administrative load."
+                        description: "Piloted autonomous agents to test feasibility of reducing administrative load."
                     }
                 ]
             },
             {
                 id: "enterprise-systems",
                 title: "Enterprise Systems Ownership",
-                description: "System ownership and configuration of core enterprise tools, ensuring they aligned with real operational workflows instead of tool defaults.",
-                items: [
-                    {
-                        title: "Zoho Analytics",
-                        description: "Established the organization’s central reporting infrastructure, aggregating disconnected data sources into a single executive truth."
-                    },
-                    {
-                        title: "Zoho CRM",
-                        description: "Structured sales data architecture to enforce process compliance and provide accurate pipeline visibility."
-                    },
-                    {
-                        title: "Zoho Projects",
-                        description: "Configured project lifecycles to mirror operational reality, ensuring accurate capacity planning and resource tracking."
-                    },
-                    {
-                        title: "Zoho Desk",
-                        description: "Integrated support workflows with production data, linking customer issues directly to operational root causes."
-                    },
-                    {
-                        title: "Zoho Inventory",
-                        description: "Automated stock monitoring logic to trigger reordering based on consumption rates rather than manual checks."
-                    }
-                ]
+                description: "Configured and governed core enterprise platforms to reflect real operational workflows rather than tool defaults.",
+                items: []
             }
         ],
+        operatingContext: "All systems were delivered within live operational environments with legacy processes, incomplete data, and active delivery risk. Systems were introduced incrementally to avoid disruption while maintaining operational continuity."
     },
     {
         id: "operations-support",

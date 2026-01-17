@@ -43,7 +43,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, title, quote, i
             onMouseLeave={isClickable ? () => setIsHovering(false) : undefined}
             className={`interactive-glow holographic-panel rounded-lg p-8 flex flex-col border border-brand-border/30 smooth-transition shadow-md hover:shadow-[0_20px_40px_rgba(3,105,161,0.25)] group relative overflow-hidden ${isClickable ? 'cursor-pointer hover:-translate-y-2 card-hover' : ''}`}
         >
-            <p className="text-brand-text-primary flex-grow z-10 text-base leading-relaxed">"{quote}"</p>
+            <p className="text-brand-text-primary flex-grow z-10 text-xl leading-relaxed">"{quote}"</p>
             {caseStudyId && (
                 <div className="z-10 mt-4 text-left font-sans font-bold text-xs text-brand-text-primary self-start uppercase tracking-wide group-hover:underline">
                     Read the Full Case Study &rarr;
@@ -59,8 +59,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, title, quote, i
                         <img src={image} alt={name} className="w-12 h-12 rounded-full mr-4 border-2 border-brand-border" />
                     )}
                     <div>
-                        <h4 className="font-sans font-bold text-sm text-brand-text-primary">{name}</h4>
-                        <p className="text-xs text-brand-text-secondary">{title}</p>
+                        <h4 className="font-sans font-bold text-lg text-brand-text-primary">{name}</h4>
+                        <p className="text-sm text-brand-text-primary/80 font-medium">{title}</p>
                     </div>
                 </div>
                 <div className="font-mono text-xs text-brand-clarity bg-brand-clarity/10 px-3 py-1.5 rounded-md">
@@ -90,7 +90,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ showProjectDetailPage }) =>
             <div className="content-container">
                 <div className="text-center mb-16">
                     <ScramblingHeading text="Don't Just Take My Word For It" />
-                    <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">See how my work has translated into real, measurable results for my clients and partners.</p>
+                    <p className="text-2xl text-brand-text-primary/80 font-medium mt-6 max-w-4xl mx-auto">See how my work has translated into real, measurable results for my clients and partners.</p>
                 </div>
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-xl)]">
                     {testimonials.map((t, i) => (

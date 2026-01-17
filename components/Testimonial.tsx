@@ -19,23 +19,23 @@ const Testimonial: React.FC<TestimonialProps> = ({
 }) => {
     if (variant === 'hero') {
         return (
-            <div className="holographic-panel rounded-lg p-6 max-w-2xl mx-auto border border-brand-accent/40 shadow-md">
-                <div className="flex items-start gap-4">
-                    <svg className="w-8 h-8 text-brand-accent flex-shrink-0 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+            <div className="holographic-panel rounded-lg p-4 w-full border border-brand-accent/40 shadow-md">
+                <div className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-brand-accent flex-shrink-0 opacity-50 mt-1" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
-                    <div>
-                        <p className="text-brand-text-primary italic mb-4 leading-relaxed text-sm">
+                    <div className="text-left">
+                        <p className="text-brand-text-primary italic mb-3 leading-relaxed text-lg sm:text-xl">
                             "{quote}"
                         </p>
                         {result && (
-                            <p className="text-brand-accent font-semibold mb-3 text-sm">
+                            <p className="text-brand-accent font-semibold mb-2 text-sm">
                                 {result}
                             </p>
                         )}
-                        <div className="text-xs">
+                        <div className="text-xs sm:text-sm">
                             <p className="text-brand-text-primary font-semibold">{name}</p>
-                            <p className="text-brand-text-secondary">{role}, {company}</p>
+                            <p className="text-brand-text-secondary mt-0.5">{role}, {company}</p>
                         </div>
                     </div>
                 </div>

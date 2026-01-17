@@ -8,6 +8,7 @@ import CaseStudies from './CaseStudies';
 interface ProjectsPageProps {
     showMainPage: () => void;
     showProjectDetailPage: (study: CaseStudy) => void;
+    hideHero?: boolean;
 }
 
 const allTags = Array.from(new Set(projectsData.flatMap(p => p.tags)));
@@ -50,12 +51,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
                     <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102" />
                 )}
             </div>
-            <div className="p-6 flex flex-col flex-grow">
-                <h3 className="font-sans text-lg font-bold mb-2 group-hover:text-signal-info transition-colors">{project.title}</h3>
-                <p className="text-ops-text-secondary mb-4 flex-grow text-sm">{project.description}</p>
+            <div className="p-8 flex flex-col flex-grow">
+                <h3 className="font-sans text-2xl font-bold mb-3 group-hover:text-signal-info transition-colors">{project.title}</h3>
+                <p className="text-ops-text-secondary mb-6 flex-grow text-lg leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-ops-border/50">
                     {project.tags.map(tag => (
-                        <span key={tag} className="px-3 py-1.5 bg-ops-surface border border-ops-border/50 text-xs rounded-full font-medium text-ops-text-secondary">{tag}</span>
+                        <span key={tag} className="px-3 py-1.5 bg-ops-surface border border-ops-border/50 text-sm rounded-full font-medium text-ops-text-secondary">{tag}</span>
                     ))}
                 </div>
             </div>
@@ -64,7 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails }) => 
 };
 
 
-const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) => {
+const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage, hideHero = false }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
@@ -89,7 +90,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
         <section className="min-h-screen">
             <div className="max-w-7xl mx-auto">
                 <div id="featured">
-                    <CaseStudies showProjectDetailPage={showProjectDetailPage} />
+                    <CaseStudies showProjectDetailPage={showProjectDetailPage} hideHero={hideHero} />
                 </div>
 
                 <div id="archive" className="pt-16">
@@ -101,7 +102,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
                         >
                             <ScramblingHeading text="Full Project Archive" />
                         </button>
-                        <p className="text-sm text-ops-text-secondary mt-4 max-w-3xl mx-auto leading-relaxed">A complete collection of dashboards, automations, and tools I've built. Use the filters to explore my work.</p>
+                        <p className="text-lg text-ops-text-secondary mt-4 max-w-3xl mx-auto leading-relaxed">A complete collection of dashboards, automations, and tools I've built. Use the filters to explore my work.</p>
                     </div>
 
                 </div>
@@ -120,7 +121,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
                     <div className="flex flex-wrap gap-2">
                         <button
                             onClick={() => setSelectedTag(null)}
-                            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === null ? 'bg-signal-info text-ops-bg' : 'bg-ops-surface hover:bg-ops-border text-ops-text-primary'}`}
+                            className={`px-4 py-2 rounded-full text-base font-medium transition-colors ${selectedTag === null ? 'bg-signal-info text-ops-bg' : 'bg-ops-surface hover:bg-ops-border text-ops-text-primary'}`}
                         >
                             All Projects
                         </button>
@@ -128,7 +129,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ showProjectDetailPage }) =>
                             <button
                                 key={tag}
                                 onClick={() => setSelectedTag(tag)}
-                                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${selectedTag === tag ? 'bg-signal-info text-ops-bg' : 'bg-ops-surface hover:bg-ops-border text-ops-text-primary'}`}
+                                className={`px-4 py-2 rounded-full text-base font-medium transition-colors ${selectedTag === tag ? 'bg-signal-info text-ops-bg' : 'bg-ops-surface hover:bg-ops-border text-ops-text-primary'}`}
                             >
                                 {tag}
                             </button>

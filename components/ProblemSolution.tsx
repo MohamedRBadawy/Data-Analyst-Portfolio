@@ -17,7 +17,7 @@ const ProblemSolution: React.FC<ProblemSolutionProps> = ({ navigateTo }) => {
                     <h2 className="font-poppins text-h2 font-bold text-brand-text-primary">
                         Are You Facing These Common Bottlenecks?
                     </h2>
-                    <p className="text-xl text-brand-text-secondary mt-4">If so, you're not alone. I specialize in solving these exact problems.</p>
+                    <p className="text-2xl text-brand-text-secondary mt-6">If so, you're not alone. I specialize in solving these exact problems.</p>
                 </div>
                 <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-[var(--space-xl)]">
                     {problems.map(item => (
@@ -25,7 +25,7 @@ const ProblemSolution: React.FC<ProblemSolutionProps> = ({ navigateTo }) => {
                             <div className="flex-grow">
                                 {/* Problem Section */}
                                 <h3 className="font-poppins text-h3 font-bold text-brand-chaos text-glow-chaos mb-6">{item.problem}</h3>
-                                <p className="text-brand-text-secondary mb-10 text-base leading-relaxed">{item.problemDesc}</p>
+                                <p className="text-brand-text-secondary mb-10 text-lg leading-relaxed">{item.problemDesc}</p>
 
                                 {/* Transformation Arrow */}
                                 <div className="my-10">
@@ -36,7 +36,7 @@ const ProblemSolution: React.FC<ProblemSolutionProps> = ({ navigateTo }) => {
 
                                 {/* Solution Section */}
                                 <h3 className="font-poppins text-h3 font-bold text-brand-clarity text-glow-accent mb-6">{item.solution}</h3>
-                                <p className="text-brand-text-secondary text-base leading-relaxed">{item.solutionDesc}</p>
+                                <p className="text-brand-text-secondary text-lg leading-relaxed">{item.solutionDesc}</p>
                             </div>
                             <div className="mt-8">
                                 <button

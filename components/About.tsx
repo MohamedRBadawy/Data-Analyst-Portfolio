@@ -20,10 +20,10 @@ const About: React.FC = () => {
     return (
         <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
             <div className="content-container">
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <div
-                            className="relative w-32 h-32 mx-auto mb-6 group"
+                            className="relative w-40 h-40 mx-auto mb-8 group"
                             onMouseEnter={() => setIsHovering(true)}
                             onMouseLeave={() => setIsHovering(false)}
                         >
@@ -34,36 +34,36 @@ const About: React.FC = () => {
                             />
                         </div>
                         <ScramblingHeading text={`About ${aboutData.name}`} />
-                        <p className="font-mono text-brand-text-secondary mt-4 animate-glow-clarity text-sm">{aboutData.tagline}</p>
-                        <p className="text-base text-brand-text-secondary mt-6 max-w-3xl mx-auto leading-relaxed">{aboutData.summary}</p>
+                        <p className="font-mono text-brand-text-secondary mt-6 animate-glow-clarity text-lg">{aboutData.tagline}</p>
+                        <p className="text-2xl text-brand-text-primary/80 font-medium mt-8 max-w-4xl mx-auto leading-relaxed">{aboutData.summary}</p>
                     </div>
 
                     <div className="mb-20">
                         {/* Authority Statement - NEW */}
-                        <div className="holographic-panel p-7 rounded-lg border border-brand-accent/40 mb-16 bg-brand-surface/50 smooth-transition shadow-md hover:shadow-lg hover:-translate-y-1 group relative overflow-hidden">
-                            <h3 className="font-sans text-xl font-bold text-brand-text-primary mb-4">Why I'm Uniquely Qualified</h3>
-                            <p className="text-sm text-brand-text-primary leading-relaxed mb-6">
+                        <div className="holographic-panel p-10 rounded-lg border border-brand-accent/40 mb-16 bg-brand-surface/50 smooth-transition shadow-md hover:shadow-lg hover:-translate-y-1 group relative overflow-hidden">
+                            <h3 className="font-sans text-2xl font-bold text-brand-text-primary mb-6">Why I'm Uniquely Qualified</h3>
+                            <p className="text-xl text-brand-text-primary leading-relaxed mb-8">
                                 I'm not just a developer—I'm a former logistics founder who lived the chaos. I built Expack Shipping from the ground up, scaling it to 94% on-time delivery by automating the very problems you're facing today.
                             </p>
-                            <p className="text-brand-text-secondary leading-relaxed text-xs">
+                            <p className="text-brand-text-primary/80 font-medium leading-relaxed text-lg">
                                 Most consultants know the tools but don't understand the business stakes. I know exactly what it costs when a shipment is lost, a quote is late, or a report is wrong. I build systems that solve business problems, not just technical ones.
                             </p>
                         </div>
 
                         <h3 className="text-center font-sans text-xl font-bold mb-8 text-brand-text-primary">My Clarity Philosophy</h3>
                         <div className="holographic-panel p-7 rounded-lg smooth-transition shadow-md border border-brand-border hover:shadow-lg hover:-translate-y-1 group relative overflow-hidden">
-                            <ul className="space-y-4 text-left max-w-3xl mx-auto">
+                            <ul className="space-y-6 text-left max-w-4xl mx-auto">
                                 <li className="flex items-start">
-                                    <span className="text-brand-text-primary font-bold mr-3 mt-1 text-lg">01.</span>
-                                    <p className="text-brand-text-primary text-sm"><strong>Clarity First, Code Second.</strong> I never build a dashboard until I understand the decision it needs to drive.</p>
+                                    <span className="text-brand-text-primary font-bold mr-4 mt-1 text-2xl">01.</span>
+                                    <p className="text-brand-text-primary text-xl leading-relaxed"><strong>Clarity First, Code Second.</strong> I never build a dashboard until I understand the decision it needs to drive.</p>
                                 </li>
                                 <li className="flex items-start">
-                                    <span className="text-brand-text-primary font-bold mr-3 mt-1 text-lg">02.</span>
-                                    <p className="text-brand-text-primary text-sm"><strong>Automation Should Be Invisible.</strong> The best systems work in the background, letting your team focus on high-value work.</p>
+                                    <span className="text-brand-text-primary font-bold mr-4 mt-1 text-2xl">02.</span>
+                                    <p className="text-brand-text-primary text-xl leading-relaxed"><strong>Automation Should Be Invisible.</strong> The best systems work in the background, letting your team focus on high-value work.</p>
                                 </li>
                                 <li className="flex items-start">
-                                    <span className="text-brand-text-primary font-bold mr-3 mt-1 text-lg">03.</span>
-                                    <p className="text-brand-text-primary text-sm"><strong>Data Must Be Actionable.</strong> If a report doesn't change what you do next, it's noise. I delete noise.</p>
+                                    <span className="text-brand-text-primary font-bold mr-4 mt-1 text-2xl">03.</span>
+                                    <p className="text-brand-text-primary text-xl leading-relaxed"><strong>Data Must Be Actionable.</strong> If a report doesn't change what you do next, it's noise. I delete noise.</p>
                                 </li>
                             </ul>
                         </div>
@@ -72,44 +72,44 @@ const About: React.FC = () => {
                     <div className="mb-20">
                         <h3 className="text-center font-sans text-xl font-bold mb-8 text-brand-text-primary">How I Think About Systems</h3>
                         <div className="holographic-panel p-8 rounded-lg smooth-transition shadow-md border border-brand-border hover:shadow-lg hover:-translate-y-1 group relative overflow-hidden">
-                            <RevealOnScroll direction="up" delay={0} className="max-w-3xl mx-auto space-y-6">
-                                <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center">
-                                        <span className="text-brand-accent font-bold text-lg">1</span>
+                            <RevealOnScroll direction="up" delay={0} className="max-w-4xl mx-auto space-y-8">
+                                <div className="flex items-start gap-6">
+                                    <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand-accent/10 flex items-center justify-center">
+                                        <span className="text-brand-accent font-bold text-2xl">1</span>
                                     </div>
-                                    <div>
-                                        <h4 className="font-sans font-bold text-brand-text-primary text-base mb-2">Systems Before Software</h4>
-                                        <p className="text-brand-text-secondary text-sm">Bad process automated is bad process faster. I never build a tool until the process is clear.</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center">
-                                        <span className="text-brand-accent font-bold text-lg">2</span>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-sans font-bold text-brand-text-primary text-base mb-2">Visibility Before Optimization</h4>
-                                        <p className="text-brand-text-secondary text-sm">You can't fix what you can't see. Dashboards come first, then process improvements.</p>
+                                    <div className="pt-2">
+                                        <h4 className="font-sans font-bold text-brand-text-primary text-xl mb-2">Systems Before Software</h4>
+                                        <p className="text-brand-text-primary/80 font-medium text-lg leading-relaxed">Bad process automated is bad process faster. I never build a tool until the process is clear.</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center">
-                                        <span className="text-brand-accent font-bold text-lg">3</span>
+                                <div className="flex items-start gap-6">
+                                    <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand-accent/10 flex items-center justify-center">
+                                        <span className="text-brand-accent font-bold text-2xl">2</span>
                                     </div>
-                                    <div>
-                                        <h4 className="font-sans font-bold text-brand-text-primary text-base mb-2">Control Before Scale</h4>
-                                        <p className="text-brand-text-secondary text-sm">Manual chaos doesn't become automated clarity. Fix the workflow, then scale it.</p>
+                                    <div className="pt-2">
+                                        <h4 className="font-sans font-bold text-brand-text-primary text-xl mb-2">Visibility Before Optimization</h4>
+                                        <p className="text-brand-text-primary/80 font-medium text-lg leading-relaxed">You can't fix what you can't see. Dashboards come first, then process improvements.</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center">
-                                        <span className="text-brand-accent font-bold text-lg">4</span>
+                                <div className="flex items-start gap-6">
+                                    <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand-accent/10 flex items-center justify-center">
+                                        <span className="text-brand-accent font-bold text-2xl">3</span>
                                     </div>
-                                    <div>
-                                        <h4 className="font-sans font-bold text-brand-text-primary text-base mb-2">Remove Humans from Unnecessary Decisions</h4>
-                                        <p className="text-brand-text-secondary">Automation should eliminate manual decision points, not just speed them up.</p>
+                                    <div className="pt-2">
+                                        <h4 className="font-sans font-bold text-brand-text-primary text-xl mb-2">Control Before Scale</h4>
+                                        <p className="text-brand-text-primary/80 font-medium text-lg leading-relaxed">Manual chaos doesn't become automated clarity. Fix the workflow, then scale it.</p>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start gap-6">
+                                    <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand-accent/10 flex items-center justify-center">
+                                        <span className="text-brand-accent font-bold text-2xl">4</span>
+                                    </div>
+                                    <div className="pt-2">
+                                        <h4 className="font-sans font-bold text-brand-text-primary text-xl mb-2">Remove Humans from Unnecessary Decisions</h4>
+                                        <p className="text-brand-text-primary/80 font-medium text-lg leading-relaxed">Automation should eliminate manual decision points, not just speed them up.</p>
                                     </div>
                                 </div>
                             </RevealOnScroll>
@@ -123,11 +123,11 @@ const About: React.FC = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {Object.entries(aboutData.skills).map(([category, skillsList]) => (
                                 <div key={category} className="bg-brand-bg/70 p-7 rounded-lg border border-brand-border/50 smooth-transition hover:border-brand-border hover:shadow-md hover:-translate-y-1 group relative overflow-hidden">
-                                    <h4 className="font-sans font-bold text-brand-text-primary mb-4 text-lg">{category}</h4>
-                                    <ul className="space-y-2.5">
+                                    <h4 className="font-sans font-bold text-brand-text-primary mb-4 text-xl">{category}</h4>
+                                    <ul className="space-y-4">
                                         {skillsList.map((skill, index) => (
-                                            <li key={index} className="text-brand-text-primary flex items-start text-sm">
-                                                <span className="text-brand-accent mr-3 mt-1 text-xs">◆</span>
+                                            <li key={index} className="text-brand-text-primary flex items-start text-base">
+                                                <span className="text-brand-accent mr-3 mt-1.5 text-sm">◆</span>
                                                 <span>{skill}</span>
                                             </li>
                                         ))}

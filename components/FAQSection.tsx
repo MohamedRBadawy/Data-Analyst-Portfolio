@@ -41,12 +41,12 @@ const FAQSection: React.FC = () => {
 
     return (
         <section id="faq" className="py-20 px-6 lg:px-12 relative">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-2xl font-sans font-bold text-brand-text-primary mb-4">
+                    <h2 className="text-3xl font-sans font-bold text-brand-text-primary mb-4">
                         Common Questions
                     </h2>
-                    <p className="text-base text-brand-text-secondary">
+                    <p className="text-xl text-brand-text-secondary">
                         Everything you need to know before we talk
                     </p>
                 </div>
@@ -61,7 +61,7 @@ const FAQSection: React.FC = () => {
                                 onClick={() => toggleFAQ(index)}
                                 className="w-full text-left p-6 flex items-center justify-between hover:bg-brand-surface/30 transition-colors duration-200"
                             >
-                                <h3 className="text-base font-sans font-semibold text-brand-text-primary pr-4">
+                                <h3 className="text-xl font-sans font-semibold text-brand-text-primary pr-4">
                                     {faq.question}
                                 </h3>
                                 <svg
@@ -79,7 +79,7 @@ const FAQSection: React.FC = () => {
                                 className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96' : 'max-h-0'
                                     }`}
                             >
-                                <div className="px-6 pb-6 text-brand-text-secondary leading-relaxed text-sm">
+                                <div className="px-6 pb-6 text-brand-text-secondary leading-relaxed text-lg">
                                     {faq.answer}
                                 </div>
                             </div>

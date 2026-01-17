@@ -53,8 +53,8 @@ const Sidebar: React.FC<SidebarProps> = ({ navigateTo, activePage }) => {
                 {/* Header Section */}
                 <div className="mb-12">
                     <h1 className="font-sans text-2xl font-bold text-ops-text-primary tracking-tight mb-2">Clarity Dash</h1>
-                    <p className="font-mono text-sm text-ops-text-tertiary font-medium uppercase tracking-wider">Mohamed Badawy</p>
-                    <div className="mt-4 h-px w-full bg-ops-border/20 dark-mode:bg-gradient-to-r dark-mode:from-ops-border dark-mode:via-ops-border/50 dark-mode:to-transparent"></div>
+                    <p className="font-mono text-base text-ops-text-tertiary font-medium uppercase tracking-wider">Mohamed Badawy</p>
+                    <div className="mt-4 h-px w-full bg-ops-border/20 dark:bg-gradient-to-r dark:from-ops-border dark:via-ops-border/50 dark:to-transparent"></div>
                 </div>
 
                 {/* Navigation Section */}
@@ -69,15 +69,15 @@ const Sidebar: React.FC<SidebarProps> = ({ navigateTo, activePage }) => {
                                         onMouseEnter={() => setIsHovering(true)}
                                         onMouseLeave={() => setIsHovering(false)}
                                         className={`w-full flex items-center px-4 py-3 rounded-lg border smooth-transition group relative overflow-hidden ${isActive
-                                            ? 'bg-gradient-to-r from-signal-info/15 to-signal-info/5 border-signal-info/40 text-ops-text-primary shadow-md glow-pulse dark-mode:from-signal-info/20 dark-mode:to-signal-info/10'
-                                            : 'border-ops-border/10 text-ops-text-secondary hover:bg-ops-border/5 hover:text-ops-text-primary hover:border-ops-border/30 dark-mode:border-ops-border/40 dark-mode:hover:bg-ops-surface/70 dark-mode:hover:border-ops-border/60'
+                                            ? 'bg-gradient-to-r from-signal-info/15 to-signal-info/5 border-signal-info/40 text-ops-text-primary shadow-md glow-pulse dark:from-signal-info/20 dark:to-signal-info/10'
+                                            : 'border-ops-border/10 text-ops-text-secondary hover:bg-ops-border/5 hover:text-ops-text-primary hover:border-ops-border/30 dark:border-ops-border/40 dark:hover:bg-ops-surface/70 dark:hover:border-ops-border/60'
                                             }`}
                                     >
                                         <span className={`w-5 h-5 flex items-center justify-center mr-3 transition-all duration-300 ${isActive ? 'text-signal-info scale-110' : 'text-ops-text-tertiary group-hover:text-signal-info group-hover:scale-110'
                                             }`}>
                                             {item.icon}
                                         </span>
-                                        <span className={`font-sans font-medium text-sm tracking-wide transition-all duration-300 ${isActive ? 'translate-x-1' : ''}`}>{item.text}</span>
+                                        <span className={`font-sans font-medium text-base tracking-wide transition-all duration-300 ${isActive ? 'translate-x-1' : ''}`}>{item.text}</span>
                                         {isActive && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-signal-info shadow-[0_0_8px_rgba(2,132,199,0.8)]"></div>}
                                     </button>
                                 </li>
@@ -87,7 +87,7 @@ const Sidebar: React.FC<SidebarProps> = ({ navigateTo, activePage }) => {
                 </nav>
 
                 {/* Footer Section */}
-                <div className="mt-auto pt-6 border-t border-ops-border/20 dark-mode:border-gradient-to-r dark-mode:from-ops-border dark-mode:via-ops-border/50 dark-mode:to-transparent dark-mode:border-opacity-40">
+                <div className="mt-auto pt-6 border-t border-ops-border/20 dark:border-gradient-to-r dark:from-ops-border dark:via-ops-border/50 dark:to-transparent dark:border-opacity-40">
                     {/* Theme Toggle Button */}
                     <button
                         onClick={toggleTheme}
@@ -97,12 +97,12 @@ const Sidebar: React.FC<SidebarProps> = ({ navigateTo, activePage }) => {
                         {isDarkMode ? (
                             <>
                                 <SunIcon className="w-4 h-4 " />
-                                <span className="text-xs font-mono">LIGHT MODE</span>
+                                <span className="text-sm font-mono">LIGHT MODE</span>
                             </>
                         ) : (
                             <>
                                 <MoonIcon className="w-4 h-4" />
-                                <span className="text-xs font-mono">DARK MODE</span>
+                                <span className="text-sm font-mono">DARK MODE</span>
                             </>
                         )}
                     </button>
@@ -110,9 +110,9 @@ const Sidebar: React.FC<SidebarProps> = ({ navigateTo, activePage }) => {
                     <div className="flex items-center justify-between px-2 mb-4">
                         <div className="flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-signal-success animate-pulse"></span>
-                            <span className="text-xs font-mono font-bold text-ops-text-secondary tracking-widest uppercase">SYSTEM ONLINE</span>
+                            <span className="text-sm font-mono font-bold text-ops-text-secondary tracking-widest uppercase">SYSTEM ONLINE</span>
                         </div>
-                        <span className="text-xs font-mono text-ops-text-tertiary font-medium">V2.6.0</span>
+                        <span className="text-sm font-mono text-ops-text-tertiary font-medium">V2.6.0</span>
                     </div>
                 </div>
             </div>

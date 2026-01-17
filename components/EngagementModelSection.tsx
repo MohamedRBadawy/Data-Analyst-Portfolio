@@ -66,7 +66,7 @@ const EngagementModelSection: React.FC = () => {
                     <h2 className="text-h2 font-poppins text-brand-text-primary mb-4">
                         How I Work: Predictable, Scoped, Built to Last
                     </h2>
-                    <p className="text-xl text-brand-text-secondary max-w-3xl mx-auto">
+                    <p className="text-2xl text-brand-text-primary/80 font-medium max-w-4xl mx-auto">
                         I don't believe in endless retainers or black-box development. Every engagement follows a clear, proven process designed to make me <span className="text-brand-accent font-semibold">replaceable</span>—not indispensable.
                     </p>
                 </div>
@@ -84,27 +84,27 @@ const EngagementModelSection: React.FC = () => {
 
                                 {/* Content */}
                                 <div className="flex-grow">
-                                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                                        <h3 className="text-2xl font-poppins font-bold text-brand-text-primary">
+                                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                                        <h3 className="text-3xl font-poppins font-bold text-brand-text-primary">
                                             Phase {phase.number}: {phase.title}
                                         </h3>
-                                        <span className="text-brand-accent font-roboto-mono text-sm mt-1 sm:mt-0">
+                                        <span className="text-brand-accent font-roboto-mono text-base mt-1 sm:mt-0">
                                             {phase.timeline}
                                         </span>
                                     </div>
 
-                                    <p className="text-brand-text-secondary mb-4 leading-relaxed">
+                                    <p className="text-brand-text-primary/80 font-medium mb-6 leading-relaxed text-xl">
                                         {phase.description}
                                     </p>
 
                                     <div className="grid sm:grid-cols-2 gap-4 mt-4">
                                         <div>
-                                            <p className="text-sm text-brand-accent font-semibold mb-1">Deliverable:</p>
-                                            <p className="text-sm text-brand-text-secondary">{phase.deliverable}</p>
+                                            <p className="text-base text-brand-accent font-semibold mb-1">Deliverable:</p>
+                                            <p className="text-base text-brand-text-primary/80 font-medium">{phase.deliverable}</p>
                                         </div>
                                         <div>
-                                            <p className="text-sm text-brand-accent font-semibold mb-1">Your Investment:</p>
-                                            <p className="text-sm text-brand-text-secondary">{phase.investment}</p>
+                                            <p className="text-base text-brand-accent font-semibold mb-1">Your Investment:</p>
+                                            <p className="text-base text-brand-text-secondary">{phase.investment}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -119,11 +119,11 @@ const EngagementModelSection: React.FC = () => {
                 </div>
 
                 <div className="mt-16 holographic-panel rounded-2xl p-8 lg:p-12 border-brand-cta text-center">
-                    <h3 className="text-h3 font-poppins text-brand-cta mb-4">Why This Matters</h3>
-                    <p className="text-xl text-brand-text-primary mb-6 max-w-3xl mx-auto">
+                    <h3 className="text-h3 font-poppins text-brand-cta mb-6">Why This Matters</h3>
+                    <p className="text-2xl text-brand-text-primary mb-8 max-w-4xl mx-auto">
                         You're not hiring a vendor. You're hiring a systems architect who aims to make themselves <span className="text-brand-accent font-bold">unnecessary</span>.
                     </p>
-                    <p className="text-brand-text-secondary max-w-2xl mx-auto">
+                    <p className="text-brand-text-primary/80 font-medium max-w-3xl mx-auto text-xl leading-relaxed">
                         Most consultants want you dependent. I want you empowered. The best outcome is when your team runs the system without me—and calls me back only when you're ready to optimize something new.
                     </p>
                 </div>

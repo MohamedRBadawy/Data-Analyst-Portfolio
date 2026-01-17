@@ -17,8 +17,8 @@ const Footer: React.FC = () => {
                     </path>
                 </svg>
             </div>
-            <p className="text-sm text-brand-text-secondary">From chaos to clarity - ready for your workflow?</p>
-            <p className="text-xs text-brand-text-secondary/70 mt-4">© {new Date().getFullYear()} Clarity Dash. All Rights Reserved.</p>
+            <p className="text-base text-brand-text-secondary">From chaos to clarity - ready for your workflow?</p>
+            <p className="text-sm text-brand-text-secondary/70 mt-4">© {new Date().getFullYear()} Clarity Dash. All Rights Reserved.</p>
         </footer>
     );
 };

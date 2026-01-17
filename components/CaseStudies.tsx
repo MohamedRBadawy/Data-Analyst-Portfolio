@@ -59,28 +59,30 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, reversed = false, 
             onClick={onViewDetails}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-[var(--space-xl)] items-center holographic-panel p-8 sm:p-9 rounded-xl cursor-pointer border border-brand-border/50 smooth-transition shadow-lg hover:shadow-2xl hover:-translate-y-2 card-hover`}
+            className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-[var(--space-xl)] items-center holographic-panel p-10 sm:p-12 rounded-xl cursor-pointer border border-brand-border/50 smooth-transition shadow-lg hover:shadow-2xl hover:-translate-y-2 card-hover`}
         >
             <div className="lg:w-1/2">
                 {/* One-Line Result - NEW */}
                 {study.oneLineResult && (
-                    <div className="mb-4 pb-4 border-b border-brand-accent/30">
-                        <p className="text-xs uppercase tracking-wider text-brand-accent font-mono mb-1">Result</p>
-                        <p className="text-brand-text-primary font-semibold leading-snug text-sm">
+                    <div className="mb-6 pb-5 border-b border-brand-accent/30">
+                        <p className="text-base uppercase tracking-wider text-brand-clarity font-sans font-bold mb-2">Result</p>
+                        <p className="text-brand-text-primary font-semibold leading-relaxed text-lg">
                             {study.oneLineResult}
                         </p>
                     </div>
                 )}
-                <h3 className="font-sans text-2xl font-bold text-brand-accent text-glow-accent mb-4">{study.title}</h3>
-                <p className="mb-2 text-sm"><strong className="text-brand-chaos text-glow-chaos">Problem:</strong> {study.problem}</p>
-                <p className="mb-4 text-sm"><strong className="text-brand-clarity text-glow-accent">Impact:</strong> {study.impact}</p>
-                <div className="inline-flex items-center px-4 py-2.5 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-md text-xs uppercase font-mono font-bold tracking-[0.1em] text-brand-text-secondary hover:text-brand-text-primary hover:bg-brand-accent/10 transition-all duration-300 mt-4">
-                    View Project Details &rarr;
+                <h3 className="font-poppins text-4xl font-bold text-brand-accent text-glow-accent mb-4">{study.title}</h3>
+                <div className="mb-8 space-y-4">
+                    <p className="text-xl text-brand-text-primary leading-relaxed"><strong className="font-bold text-brand-chaos">Problem:</strong> <span className="text-brand-text-primary/80 font-medium">{study.problem}</span></p>
+                    <p className="text-xl text-brand-text-primary leading-relaxed"><strong className="font-bold text-brand-clarity">Impact:</strong> <span className="text-brand-text-primary/80 font-medium">{study.impact}</span></p>
+                </div>
+                <div className="inline-flex items-center text-base uppercase font-sans font-bold tracking-[0.15em] text-brand-text-secondary group-hover:text-brand-accent transition-all duration-300 mt-4">
+                    View Project <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                 </div>
             </div>
             <div className="lg:w-1/2 w-full text-center">
-                <h4 className="font-sans text-lg font-bold mb-4">{study.metric}</h4>
-                <div className="h-64 w-full">
+                <h4 className="font-sans text-2xl font-bold mb-6 text-brand-text-primary">{study.metric}</h4>
+                <div className="h-80 w-full">
                     <ResponsiveContainer>
                         <BarChart
                             data={data}
@@ -102,8 +104,8 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, reversed = false, 
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
-                <p className="font-roboto-mono text-3xl mt-4">
-                    From {study.before} to <span ref={ref} className="text-brand-clarity font-bold inline-block" style={{ minWidth: '3ch' }}>{afterCount}</span>
+                <p className="font-sans text-5xl font-bold mt-6 text-brand-text-primary">
+                    From <span className="text-brand-chaos">{study.before}</span> to <span ref={ref} className="text-brand-clarity inline-block" style={{ minWidth: '3ch' }}>{afterCount}</span>
                 </p>
             </div>
         </div>
@@ -112,9 +114,10 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study, reversed = false, 
 
 interface CaseStudiesProps {
     showProjectDetailPage: (study: CaseStudy) => void;
+    hideHero?: boolean;
 }
 
-const CaseStudies: React.FC<CaseStudiesProps> = ({ showProjectDetailPage }) => {
+const CaseStudies: React.FC<CaseStudiesProps> = ({ showProjectDetailPage, hideHero = false }) => {
     // Sort projects: Tier A (with tierAStructure) first
     const sortedCaseStudies = [...caseStudies].sort((a, b) => {
         const aTierA = a.tierAStructure ? 1 : 0;
@@ -123,12 +126,14 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ showProjectDetailPage }) => {
     });
 
     return (
-        <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
+        <section className={`py-[var(--space-3xl)] px-[var(--space-lg)] ${hideHero ? 'pt-0' : ''}`}>
             <div className="content-container">
-                <div className="text-center mb-16">
-                    <ScramblingHeading text="Featured Projects" />
-                    <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">A selection of projects demonstrating real business impact.</p>
-                </div>
+                {!hideHero && (
+                    <div className="text-center mb-16">
+                        <ScramblingHeading text="Featured Projects" />
+                        <p className="text-xl text-brand-text-secondary mt-4 max-w-3xl mx-auto">A selection of projects demonstrating real business impact.</p>
+                    </div>
+                )}
                 <div className="max-w-6xl mx-auto space-y-12">
                     {sortedCaseStudies.map((study, index) => (
                         <CaseStudyCard

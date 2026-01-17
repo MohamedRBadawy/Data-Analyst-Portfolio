@@ -4,11 +4,11 @@ import { CheckIcon } from '../constants';
 const QualificationSection: React.FC = () => {
     return (
         <section className="py-20 px-6 lg:px-12 relative">
-            <div className="max-w-6xl mx-auto">
-                <h2 className="text-h2 font-poppins text-brand-text-primary mb-4 text-center">
+            <div className="max-w-7xl mx-auto">
+                <h2 className="text-h2 font-poppins text-brand-text-primary mb-6 text-center">
                     Is This For You?
                 </h2>
-                <p className="text-brand-text-secondary text-center mb-16 max-w-2xl mx-auto">
+                <p className="text-xl text-brand-text-secondary text-center mb-16 max-w-4xl mx-auto">
                     I work with specific types of businesses. Here's how to know if we're a good fit.
                 </p>
 
@@ -30,9 +30,9 @@ const QualificationSection: React.FC = () => {
                                 "You need clear metrics but can't afford a full-time analyst",
                                 "You're ready to invest in systems, not just more people"
                             ].map((item, index) => (
-                                <li key={index} className="flex items-start gap-3">
-                                    <CheckIcon className="w-5 h-5 text-brand-accent flex-shrink-0 mt-1" />
-                                    <span className="text-brand-text-primary">{item}</span>
+                                <li key={index} className="flex items-start gap-4">
+                                    <CheckIcon className="w-6 h-6 text-brand-accent flex-shrink-0 mt-1" />
+                                    <span className="text-brand-text-primary text-lg">{item}</span>
                                 </li>
                             ))}
                         </ul>
@@ -57,11 +57,11 @@ const QualificationSection: React.FC = () => {
                                 "Your team isn't ready to change how they work",
                                 "You need enterprise-scale solutions or custom software products"
                             ].map((item, index) => (
-                                <li key={index} className="flex items-start gap-3">
-                                    <svg className="w-5 h-5 text-brand-chaos flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <li key={index} className="flex items-start gap-4">
+                                    <svg className="w-6 h-6 text-brand-chaos flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
-                                    <span className="text-brand-text-primary">{item}</span>
+                                    <span className="text-brand-text-primary text-lg">{item}</span>
                                 </li>
                             ))}
                         </ul>

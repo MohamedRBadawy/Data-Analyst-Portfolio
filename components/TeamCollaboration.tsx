@@ -23,40 +23,40 @@ const TeamCollaboration: React.FC<TeamCollaborationProps> = ({ navigateToContact
     return (
         <section className="py-[var(--space-3xl)] px-[var(--space-lg)]">
             <div className="content-container">
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <ScramblingHeading text="Leadership & Collaborative Growth" />
-                        <p className="text-xl text-brand-text-secondary mt-6 max-w-3xl mx-auto">
+                        <p className="text-2xl text-brand-text-secondary mt-6 max-w-4xl mx-auto leading-relaxed">
                             True clarity is built together. My approach to leadership is centered on mentoring and empowering teams. We practice together, we build together, and we help each other grow, turning individual skills into collective strength.
                         </p>
-                </div>
+                    </div>
 
-                <div
-                    ref={panelRef}
-                    onMouseMove={handleMouseMove}
-                    className="holographic-panel rounded-xl p-[var(--space-lg)] flex flex-col md:flex-row items-center gap-[var(--space-xl)] relative overflow-hidden interactive-glow"
-                >
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent animate-gradient-pan" />
-                    <div className="text-brand-accent bg-brand-accent/10 p-4 rounded-full flex-shrink-0 z-10">
-                        <UsersIcon className="w-12 h-12" />
-                    </div>
-                    <div className="flex-grow text-center md:text-left z-10">
-                        <h3 className="font-poppins text-h3 text-glow-accent">The Query Initiative</h3>
-                        <p className="text-brand-text-secondary mt-1">
-                            "The Query" is our pro-bono initiative where my team and I help small to medium-sized businesses with small data tasks for free. It's our way of giving back, sharpening our skills, and making a tangible impact on emerging businesses.
-                        </p>
-                    </div>
-                     <button
-                        onClick={navigateToContact}
-                        onMouseEnter={() => setIsHovering(true)}
-                        onMouseLeave={() => setIsHovering(false)}
-                        className="btn btn-secondary !py-3 !px-6 whitespace-nowrap z-10"
+                    <div
+                        ref={panelRef}
+                        onMouseMove={handleMouseMove}
+                        className="holographic-panel rounded-xl p-[var(--space-lg)] flex flex-col md:flex-row items-center gap-[var(--space-xl)] relative overflow-hidden interactive-glow"
                     >
-                         <MailIcon className="w-5 h-5 mr-2" />
-                        Request Help
-                    </button>
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent animate-gradient-pan" />
+                        <div className="text-brand-accent bg-brand-accent/10 p-4 rounded-full flex-shrink-0 z-10">
+                            <UsersIcon className="w-12 h-12" />
+                        </div>
+                        <div className="flex-grow text-center md:text-left z-10">
+                            <h3 className="font-poppins text-h3 text-glow-accent mb-2">The Query Initiative</h3>
+                            <p className="text-brand-text-secondary text-lg leading-relaxed">
+                                "The Query" is our pro-bono initiative where my team and I help small to medium-sized businesses with small data tasks for free. It's our way of giving back, sharpening our skills, and making a tangible impact on emerging businesses.
+                            </p>
+                        </div>
+                        <button
+                            onClick={navigateToContact}
+                            onMouseEnter={() => setIsHovering(true)}
+                            onMouseLeave={() => setIsHovering(false)}
+                            className="btn btn-secondary !py-3 !px-6 whitespace-nowrap z-10"
+                        >
+                            <MailIcon className="w-5 h-5 mr-2" />
+                            Request Help
+                        </button>
+                    </div>
                 </div>
-            </div>
             </div>
         </section>
     );

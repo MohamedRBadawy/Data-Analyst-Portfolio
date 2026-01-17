@@ -21,30 +21,38 @@ import {
 } from '../constants';
 
 export interface Problem {
-    title: string;
-    description: string;
-    icon: React.ElementType;
+    problem: string;
+    problemDesc: string;
+    solution: string;
+    solutionDesc: string;
     targetPage: Page;
+    ctaText: string;
 }
 
 export const problems: Problem[] = [
     {
-        title: "Drowning in Data, Starving for Wisdom",
-        description: "You have spreadsheets, CRMs, and logs, but you still can't answer simple questions like \"Which product is causing the most defects?\" or \"Is our sales team actually efficient?\" without spending hours manually collating data.",
-        icon: DatabaseIcon,
-        targetPage: 'work'
+        problem: "Drowning in Data",
+        problemDesc: "You have spreadsheets, CRMs, and logs, but you still can't answer simple questions like \"Which product is causing the most defects?\" or \"Is our sales team actually efficient?\"",
+        solution: "Instant Clarity",
+        solutionDesc: "A single, automated dashboard that aggregates your scattered data into a real-time source of truth, answering your key questions instantly.",
+        targetPage: 'work',
+        ctaText: "See The Solution"
     },
     {
-        title: "The Manual Work Treadmill",
-        description: "Your best people are stuck doing low-value work—copy-pasting data, formatting reports, and chasing updates—instead of the strategic work you hired them for. You know it's inefficient, but you don't have the time to fix it.",
-        icon: PuzzleIcon,
-        targetPage: 'services'
+        problem: "The Manual Treadmill",
+        problemDesc: "Your best people are stuck doing low-value work—copy-pasting data, formatting reports, and chasing updates—instead of the strategic work you hired them for.",
+        solution: "Automated Scale",
+        solutionDesc: "Custom scripts and workflows that handle the repetitive tasks automatically, freeing your team to focus on growth and strategy.",
+        targetPage: 'services',
+        ctaText: "Automate Now"
     },
     {
-        title: "Systems That Don't Talk",
-        description: "Your finance tool doesn't talk to your sales tool. Your inventory is in one place, your orders in another. You're paying for five different SaaS subscriptions, but you're still running the business on a fragile web of Excel sheets.",
-        icon: TerminalIcon,
-        targetPage: 'services'
+        problem: "Disconnected Systems",
+        problemDesc: "Your finance tool doesn't talk to your sales tool. Your inventory is in one place, your orders in another. You're running the business on a fragile web of Excel sheets.",
+        solution: "Seamless Flow",
+        solutionDesc: "Robust integrations that connect your tools directly, ensuring data flows correctly from sales to finance to operations without human error.",
+        targetPage: 'services',
+        ctaText: "Connect Systems"
     }
 ];
 

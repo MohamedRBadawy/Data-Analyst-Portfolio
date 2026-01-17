@@ -15,7 +15,7 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
 
     return (
         <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-8 lg:px-16 animate-reveal-in">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-5xl mx-auto">
                 <button
                     onClick={onBack}
                     onMouseEnter={() => setIsHovering(true)}
@@ -28,7 +28,7 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
 
                 <header className="text-center my-12">
                     <ScramblingHeading text={service.title} />
-                    <p className="text-xl text-brand-text-secondary mt-6 max-w-3xl mx-auto">{service.description}</p>
+                    <p className="text-2xl text-brand-text-secondary mt-6 max-w-4xl mx-auto">{service.description}</p>
                 </header>
 
                 <article className="space-y-12">
@@ -37,11 +37,11 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
                         <div className="holographic-panel p-8 rounded-lg">
                             <div className="flex items-center mb-4">
                                 <CheckIcon className="w-6 h-6 text-brand-clarity mr-3" />
-                                <h3 className="font-poppins font-bold text-xl">Key Features</h3>
+                                <h3 className="font-poppins font-bold text-2xl">Key Features</h3>
                             </div>
                             <ul className="space-y-3">
                                 {service.keyFeatures.map((feature, index) => (
-                                    <li key={index} className="flex items-start text-brand-text-primary">
+                                    <li key={index} className="flex items-start text-brand-text-primary text-lg">
                                         <span className="text-brand-accent mr-3 mt-1.5 text-xs">◆</span>
                                         <span>{feature}</span>
                                     </li>
@@ -53,11 +53,11 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
                         <div className="holographic-panel p-8 rounded-lg">
                             <div className="flex items-center mb-4">
                                 <ClipboardListIcon className="w-6 h-6 text-brand-clarity mr-3" />
-                                <h3 className="font-poppins font-bold text-xl">What You Get</h3>
+                                <h3 className="font-poppins font-bold text-2xl">What You Get</h3>
                             </div>
                             <ul className="space-y-3">
                                 {service.deliverables.map((item, index) => (
-                                    <li key={index} className="flex items-start text-brand-text-primary">
+                                    <li key={index} className="flex items-start text-brand-text-primary text-lg">
                                         <span className="text-brand-accent mr-3 mt-1.5 text-xs">◆</span>
                                         <span>{item}</span>
                                     </li>
@@ -70,11 +70,11 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
                     <div className="holographic-panel p-8 rounded-lg">
                         <div className="flex items-center mb-4">
                             <LightBulbIcon className="w-6 h-6 text-brand-clarity mr-3" />
-                            <h3 className="font-poppins font-bold text-xl">This Service Is For You If...</h3>
+                            <h3 className="font-poppins font-bold text-2xl">This Service Is For You If...</h3>
                         </div>
                         <ul className="space-y-3">
                             {service.youAreAGreatFit.map((point, index) => (
-                                <li key={index} className="flex items-start text-brand-text-primary">
+                                <li key={index} className="flex items-start text-brand-text-primary text-lg">
                                     <span className="text-brand-accent mr-3 mt-1.5 text-xs">◆</span>
                                     <span>{point}</span>
                                 </li>
@@ -88,13 +88,13 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
                             <div className="flex-grow">
                                 <div className="flex items-center mb-3">
                                     <UserIcon className="w-6 h-6 text-brand-process mr-3" />
-                                    <h3 className="font-poppins font-bold text-xl text-brand-text-secondary">Ideal For...</h3>
+                                    <h3 className="font-poppins font-bold text-2xl text-brand-text-secondary">Ideal For...</h3>
                                 </div>
-                                <p className="text-brand-text-primary">{service.idealFor}</p>
+                                <p className="text-brand-text-primary text-lg">{service.idealFor}</p>
                             </div>
                             <div className="text-center flex-shrink-0">
                                 <p className="font-roboto-mono text-sm text-brand-text-secondary mb-1">Value-Based Price</p>
-                                <p className="font-roboto-mono text-3xl text-brand-cta bg-brand-cta/10 px-4 py-2 rounded-lg inline-block">
+                                <p className="font-roboto-mono text-4xl text-brand-cta bg-brand-cta/10 px-6 py-3 rounded-lg inline-block">
                                     {service.price}
                                 </p>
                             </div>
@@ -103,8 +103,8 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service, onBack, 
 
                     {/* CTA */}
                     <div className="text-center pt-8 border-t border-brand-border">
-                        <h3 className="font-poppins text-2xl font-bold mb-4 text-glow-accent">Ready to Optimize This Workflow?</h3>
-                        <p className="text-brand-text-secondary mb-6 max-w-2xl mx-auto">Let's discuss how this service can be tailored to your specific business needs.</p>
+                        <h3 className="font-poppins text-3xl font-bold mb-6 text-glow-accent">Ready to Optimize This Workflow?</h3>
+                        <p className="text-brand-text-secondary mb-8 max-w-3xl mx-auto text-xl">Let's discuss how this service can be tailored to your specific business needs.</p>
                         <button
                             onClick={navigateToContact}
                             onMouseEnter={() => setIsHovering(true)}

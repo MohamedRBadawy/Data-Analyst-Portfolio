@@ -19,14 +19,16 @@ const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
             <TrustedBy />
 
             <section className="py-8 px-6 lg:px-12">
-                <Testimonial
-                    variant="hero"
-                    quote="Mohamed transformed our deals desk from a 128-hour weekly nightmare into a one-click system. Our team finally has time to think strategically instead of drowning in spreadsheets."
-                    name="Sarah Chen"
-                    role="Deals Desk Manager"
-                    company="K Line Europe"
-                    result="128 hours saved per week"
-                />
+                <div className="max-w-4xl mx-auto">
+                    <Testimonial
+                        variant="hero"
+                        quote="Mohamed transformed our deals desk from a 128-hour weekly nightmare into a one-click system. Our team finally has time to think strategically instead of drowning in spreadsheets."
+                        name="Sarah Chen"
+                        role="Deals Desk Manager"
+                        company="K Line Europe"
+                        result="128 hours saved per week"
+                    />
+                </div>
             </section>
 
             <HowIHelp />

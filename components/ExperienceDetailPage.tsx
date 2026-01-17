@@ -24,7 +24,7 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
 
     const hasCategories = experience.contributionCategories && experience.contributionCategories.length > 0;
     const categorySectionIds = hasCategories
-        ? experience.contributionCategories!.filter(cat => cat.items.length > 0).map(cat => cat.id)
+        ? experience.contributionCategories!.map(cat => cat.id)
         : [];
     const sectionIds = hasCategories
         ? ['summary', 'measured-outcomes', ...categorySectionIds]
@@ -34,7 +34,7 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
         <div className="min-h-screen py-0 px-4 sm:px-8 lg:px-16 animate-reveal-in">
             <SectionIndex sectionIds={sectionIds} />
 
-            <div className="max-w-4xl mx-auto pt-8 sm:pt-12">
+            <div className="max-w-5xl mx-auto pt-8 sm:pt-12">
                 <button
                     onClick={onBack}
                     onMouseEnter={() => setIsHovering(true)}
@@ -47,7 +47,7 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
 
                 <header className="text-center my-16">
                     <ScramblingHeading text={experience.company} />
-                    <p className="font-poppins text-2xl text-brand-text-primary mt-6 font-semibold">{experience.role}</p>
+                    <p className="font-poppins text-3xl text-brand-text-primary mt-6 font-semibold">{experience.role}</p>
                     <p className="font-roboto-mono text-brand-text-secondary mt-2 text-sm">{experience.dates}</p>
                 </header>
 
@@ -59,18 +59,18 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
                     {hasCategories ? (
                         <>
                             <section id="measured-outcomes" data-title="Outcomes" className="holographic-panel p-8 rounded-lg border-l-4 border-brand-clarity">
-                                <h4 className="font-bold font-poppins text-xl text-brand-text-primary mb-6">Measured Outcomes</h4>
+                                <h4 className="font-bold font-poppins text-2xl text-brand-text-primary mb-6">Impact Summary</h4>
                                 <ul className="space-y-4">
                                     {experience.achievements.map((item, index) => (
                                         <li key={index} className="flex items-start">
-                                            <CheckIcon className="w-5 h-5 text-brand-clarity mr-3 mt-0.5 flex-shrink-0" />
-                                            <span className="text-brand-text-primary leading-relaxed">{item}</span>
+                                            <CheckIcon className="w-6 h-6 text-brand-clarity mr-3 mt-0.5 flex-shrink-0" />
+                                            <span className="text-brand-text-primary leading-relaxed text-lg">{item}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </section>
 
-                            {experience.contributionCategories!.filter(category => category.items.length > 0).map((category) => {
+                            {experience.contributionCategories!.map((category) => {
                                 const titleMap: { [key: string]: string } = {
                                     'operational-intelligence': 'Dashboards',
                                     'workflow-automation': 'Automation',
@@ -80,8 +80,8 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
                                 };
                                 return (
                                     <section key={category.id} id={category.id} data-title={titleMap[category.id] || category.title}>
-                                        <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-4 text-center">{category.title}</h3>
-                                        <p className="text-brand-text-secondary text-center mb-8 max-w-3xl mx-auto">{category.description}</p>
+                                        <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-6 text-center">{category.title}</h3>
+                                        <p className="text-brand-text-primary/80 font-medium text-center mb-8 max-w-3xl mx-auto text-lg">{category.description}</p>
                                         <div className="space-y-4">
                                             {category.items.map((item, index) => (
                                                 <div
@@ -93,8 +93,8 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
                                                 >
                                                     <div className="flex items-start justify-between gap-4">
                                                         <div className="flex-grow">
-                                                            <h4 className="font-bold font-poppins text-lg text-brand-text-primary mb-2">{item.title}</h4>
-                                                            <p className="text-brand-text-secondary">{item.description}</p>
+                                                            <h4 className="font-bold font-poppins text-xl text-brand-text-primary mb-2">{item.title}</h4>
+                                                            <p className="text-brand-text-primary/80 font-medium text-lg">{item.description}</p>
                                                         </div>
                                                         {item.caseStudyId && (
                                                             <button className="flex-shrink-0 px-4 py-2 bg-brand-bg/60 backdrop-blur-xl border border-brand-accent/20 rounded-full text-xs uppercase font-roboto-mono font-bold tracking-[0.1em] text-brand-text-secondary group-hover:text-brand-text-primary group-hover:bg-brand-accent/10 transition-all duration-300">
@@ -115,7 +115,6 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
                                                 <ul className="space-y-3 max-w-3xl mx-auto">
                                                     {category.subSection.items.map((subItem, idx) => (
                                                         <li key={idx} className="flex items-start">
-                                                            <span className="text-brand-accent/50 mr-3 mt-1.5 text-[0.6em]">●</span>
                                                             <span className="text-brand-text-secondary text-sm leading-relaxed">
                                                                 <strong className="text-brand-text-primary font-medium">{subItem.title}:</strong> {subItem.description}
                                                             </span>
@@ -139,23 +138,23 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
                                 <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-10 text-center">Key Contributions & Achievements</h3>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                     <div className="holographic-panel p-8 rounded-lg border-l-4 border-brand-clarity">
-                                        <h4 className="font-bold font-poppins text-xl text-brand-text-primary mb-6">Measured Outcomes</h4>
+                                        <h4 className="font-bold font-poppins text-2xl text-brand-text-primary mb-6">Measured Outcomes</h4>
                                         <ul className="space-y-4">
                                             {experience.achievements.map((item, index) => (
                                                 <li key={index} className="flex items-start">
-                                                    <CheckIcon className="w-5 h-5 text-brand-clarity mr-3 mt-0.5 flex-shrink-0" />
-                                                    <span className="text-brand-text-primary leading-relaxed">{item}</span>
+                                                    <CheckIcon className="w-6 h-6 text-brand-clarity mr-3 mt-0.5 flex-shrink-0" />
+                                                    <span className="text-brand-text-primary leading-relaxed text-lg">{item}</span>
                                                 </li>
                                             ))}
                                         </ul>
                                     </div>
                                     <div className="holographic-panel p-8 rounded-lg">
-                                        <h4 className="font-bold font-poppins text-xl text-brand-text-primary mb-6">Contributions</h4>
+                                        <h4 className="font-bold font-poppins text-2xl text-brand-text-primary mb-6">Contributions</h4>
                                         <ul className="space-y-4">
                                             {experience.contributions.map((item, index) => (
                                                 <li key={index} className="flex items-start">
                                                     <span className="text-brand-accent mr-3 mt-1.5 text-xs">◆</span>
-                                                    <span className="text-brand-text-secondary leading-relaxed">{item}</span>
+                                                    <span className="text-brand-text-primary/80 font-medium leading-relaxed text-lg">{item}</span>
                                                 </li>
                                             ))}
                                         </ul>
@@ -163,7 +162,7 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
                                 </div>
                             </section>
 
-                            {experience.zohoExpertise && (
+                            {experience.zohoExpertise && experience.zohoExpertise.length > 0 && (
                                 <section id="zoho-expertise" data-title="Zoho">
                                     <h3 className="font-poppins text-h3 text-brand-accent text-glow-accent mb-10 text-center">System Ownership: Zoho Infrastructure</h3>
                                     <div className="space-y-8">
@@ -173,8 +172,8 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
                                                     <WrenchIcon className="w-6 h-6 text-brand-cta" />
                                                 </div>
                                                 <div className="flex-grow">
-                                                    <h4 className="font-poppins font-bold text-lg text-brand-cta mb-2">{tool.product}</h4>
-                                                    <p className="text-brand-text-secondary leading-relaxed">{tool.usage}</p>
+                                                    <h4 className="font-poppins font-bold text-xl text-brand-cta mb-2">{tool.product}</h4>
+                                                    <p className="text-brand-text-primary/80 font-medium leading-relaxed text-lg">{tool.usage}</p>
                                                 </div>
                                             </div>
                                         ))}
@@ -228,21 +227,16 @@ const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({ experience,
                     )}
                 </article>
 
-                <section className="mt-20 py-16 border-t border-brand-border/20 text-center">
-                    <h3 className="font-poppins text-h3 text-brand-text-primary mb-4">Want to Work with Someone with This Expertise?</h3>
-                    <p className="text-brand-text-secondary mb-8 max-w-2xl mx-auto">
-                        With hands-on experience across the Zoho ecosystem and proven ability to deliver measurable results, I'm ready to help your organization streamline operations and scale.
-                    </p>
-                    <button
-                        onClick={onBack}
-                        onMouseEnter={() => setIsHovering(true)}
-                        onMouseLeave={() => setIsHovering(false)}
-                        className="inline-flex items-center px-8 py-4 bg-brand-cta text-brand-bg font-poppins font-bold rounded-lg hover:shadow-[0_8px_24px_rgba(255,199,0,0.3)] transition-all duration-300"
-                    >
-                        Back to Explore More
-                        <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-                    </button>
-                </section>
+                {experience.operatingContext && (
+                    <section className="mt-16 py-8 border-t border-brand-border/20">
+                        <h4 className="font-roboto-mono font-bold uppercase tracking-[0.05em] text-lg text-brand-text-primary mb-4 text-center">Operating Context</h4>
+                        <p className="text-brand-text-primary/80 font-medium text-center max-w-4xl mx-auto text-lg leading-relaxed">
+                            {experience.operatingContext}
+                        </p>
+                    </section>
+                )}
+
+
             </div>
         </div>
     );

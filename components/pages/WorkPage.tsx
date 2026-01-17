@@ -16,32 +16,38 @@ interface WorkPageProps {
 
 const WorkPage: React.FC<WorkPageProps> = ({ showProjectDetailPage, showExperienceDetailPage, navigateTo }) => {
     return (
-        <div className="animate-reveal-in py-16 sm:py-20 px-4 sm:px-8">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                    <ScramblingHeading text="My Work" />
-                    <p className="text-base text-brand-text-secondary mt-4 max-w-3xl mx-auto leading-relaxed">
-                        This is a collection of my professional experience and a deep dive into the projects I've delivered. Explore how I've transformed complex challenges into clear, data-driven solutions.
-                    </p>
-                </div>
-                <SectionNav sectionIds={['work-experience', 'case-studies', 'testimonials', 'archive']} />
+        <>
+            <SectionNav
+                sectionIds={['work-experience', 'case-studies', 'archive', 'testimonials']}
+                className="bg-brand-bg/95 backdrop-blur-md py-2 border-b border-brand-border/10 transition-all duration-300"
+            />
+            <div className="animate-reveal-in pt-16 pb-12 px-4 sm:px-8">
+                <div className="max-w-7xl mx-auto">
+                    <div className="text-center mb-12">
+                        <ScramblingHeading text="My Work" />
+                        <p className="text-lg text-brand-text-primary/80 font-medium mt-3 max-w-2xl mx-auto leading-normal">
+                            A curated collection of my professional experience, key projects, and the results I've delivered.
+                        </p>
+                    </div>
 
-                {/* Experience Section */}
-                <div className="mb-24" id="work-experience" data-title="EXPERIENCE">
-                    <ExperiencePage showMainPage={() => { }} showDetailPage={showExperienceDetailPage} />
-                </div>
 
-                <div id="case-studies" data-title="CASE STUDIES">
-                    <ProjectsPage showMainPage={() => { }} showProjectDetailPage={showProjectDetailPage} />
-                </div>
+                    {/* Experience Section */}
+                    <div className="mb-20" id="work-experience" data-title="EXPERIENCE">
+                        <ExperiencePage showMainPage={() => { }} showDetailPage={showExperienceDetailPage} hideHero={true} />
+                    </div>
 
-                {/* Testimonials Section */}
-                <div id="testimonials" className="mb-24" data-title="TESTIMONIALS">
-                    <Testimonials showProjectDetailPage={showProjectDetailPage} />
+                    <div id="case-studies" data-title="CASE STUDIES" className="mb-20">
+                        <ProjectsPage showMainPage={() => { }} showProjectDetailPage={showProjectDetailPage} hideHero={true} />
+                    </div>
+
+                    {/* Testimonials Section - Moved to End */}
+                    <div id="testimonials" className="mb-0" data-title="TESTIMONIALS">
+                        <Testimonials showProjectDetailPage={showProjectDetailPage} />
+                    </div>
                 </div>
+                <NextPageButton navigateTo={navigateTo} nextPage="about" label="About" />
             </div>
-            <NextPageButton navigateTo={navigateTo} nextPage="about" label="About" />
-        </div>
+        </>
     );
 };
 

@@ -62,7 +62,7 @@ const CostOfInactionSection: React.FC = () => {
                     <h2 className="text-h2 font-poppins text-brand-text-primary mb-6">
                         What Operational Chaos Is <span className="text-brand-chaos drop-shadow-md">Really Costing You</span>
                     </h2>
-                    <p className="text-xl text-brand-text-secondary max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-2xl text-brand-text-primary/80 font-medium max-w-4xl mx-auto leading-relaxed">
                         Most business owners don't realize the true cost of "just dealing with it" until they see the numbers.
                     </p>
                 </div>
@@ -75,10 +75,10 @@ const CostOfInactionSection: React.FC = () => {
                                 <div className="w-14 h-14 rounded-lg bg-brand-chaos/10 flex items-center justify-center mb-6 text-brand-chaos group-hover:scale-105 transition-transform duration-300">
                                     {cost.icon}
                                 </div>
-                                <h4 className="text-xl font-poppins font-bold text-brand-text-primary mb-4">
+                                <h4 className="text-2xl font-poppins font-bold text-brand-text-primary mb-4">
                                     {cost.title}
                                 </h4>
-                                <p className="text-brand-text-secondary leading-relaxed text-base">
+                                <p className="text-brand-text-primary/80 font-medium leading-relaxed text-lg">
                                     {cost.description.split(cost.highlight).map((part, i, arr) => (
                                         <React.Fragment key={i}>
                                             {part}
@@ -94,8 +94,8 @@ const CostOfInactionSection: React.FC = () => {
                 <div className="holographic-panel rounded-2xl p-10 lg:p-14 border-brand-chaos/30 text-center relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-chaos to-transparent opacity-50"></div>
 
-                    <h3 className="text-2xl font-poppins text-brand-text-secondary mb-2">The Real Question</h3>
-                    <p className="text-lg text-brand-text-primary mb-8 max-w-3xl mx-auto">
+                    <h3 className="text-3xl font-poppins text-brand-text-secondary mb-4">The Real Question</h3>
+                    <p className="text-2xl text-brand-text-primary mb-10 max-w-4xl mx-auto">
                         How much is operational chaos costing you annually?
                     </p>
 

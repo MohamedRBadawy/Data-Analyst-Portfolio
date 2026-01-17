@@ -1,6 +1,6 @@
 import React from 'react';
 import Services from '../Services';
-import LiveAudit from '../LiveAudit';
+
 import { ServiceItem } from '../../data/content';
 import { Page } from '../../App';
 import NextPageButton from '../NextPageButton';
@@ -14,16 +14,16 @@ interface ServicesPageProps {
 
 const ServicesPage: React.FC<ServicesPageProps> = ({ showServiceDetailPage, navigateTo }) => {
     return (
-        <div className="animate-reveal-in">
-            <SectionNav sectionIds={['services', 'workflow-audit']} />
-            <div id="services" data-title="MY SERVICES">
-                <Services onViewDetails={showServiceDetailPage} />
+        <>
+            <SectionNav sectionIds={['services']} />
+            <div className="animate-reveal-in">
+                <div id="services" data-title="MY SERVICES">
+                    <Services onViewDetails={showServiceDetailPage} />
+                </div>
+
+                <NextPageButton navigateTo={navigateTo} nextPage="process" label="How I Work" />
             </div>
-            <div id="workflow-audit" data-title="WORKFLOW AUDIT">
-                <LiveAudit navigateToContact={() => navigateTo('contact')} />
-            </div>
-            <NextPageButton navigateTo={navigateTo} nextPage="process" label="How I Work" />
-        </div>
+        </>
     );
 };
 
